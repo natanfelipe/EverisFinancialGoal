@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">EverisFinancialGoal</string>
+    <string name="title_navbar_cadastro">Abra sua conta</string>
+    <string name="txt_button_cadastro">CONTINUAR</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_fragment_email">Abra sua conta em 2 minutos.</string>
+    <string name="subtitle_fragment_email">É gratis!</string>
+    <string name="title_edt_fragment_email">Insira seu e-mail para começar.</string>
+    <string name="txt_hint_email_cadastro">e-mail</string>
 </resources>

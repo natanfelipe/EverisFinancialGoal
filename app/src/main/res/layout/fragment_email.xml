@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.cadastro.EmailFragment"
+    android:background="@color/grey">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/title_fragment_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_fragment_email"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_marginTop="25dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/subtitle_fragment_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/subtitle_fragment_email"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/roboto_medium"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_fragment_email"/>
+
+        <TextView
+            android:id="@+id/title_edt_fragment_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_edt_fragment_email"
+            android:textSize="15sp"
+            android:textColor="@color/dark_grey"
+            android:layout_marginStart="24dp"
+            android:fontFamily="@font/roboto_medium"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subtitle_fragment_email"/>
+
+        <EditText
+            android:id="@+id/edt_email"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="19dp"
+            android:elevation="18dp"
+            android:textColorHint="@color/dark_grey"
+            android:paddingStart="21dp"
+            android:paddingEnd="21dp"
+            android:background="@color/light_grey"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_edt_fragment_email"
+            android:hint="@string/txt_hint_email_cadastro"
+            android:inputType="textEmailAddress"
+            android:autofillHints="" />
+
+        <Button
+            android:id="@+id/btn_cadastro"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="@color/black"
+            android:text="@string/txt_button_cadastro"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:fontFamily="@font/roboto_medium"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
