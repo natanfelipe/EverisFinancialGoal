@@ -8,4 +8,12 @@
     <string name="subtitle_fragment_email">É gratis!</string>
     <string name="title_edt_fragment_email">Insira seu e-mail para começar.</string>
     <string name="txt_hint_email_cadastro">e-mail</string>
+    <string name="title_fragment_nome">Quase lá</string>
+    <string name="title_edt_fragment_nome">Defina como devemos chamar você.</string>
+    <string name="txt_hint_nome">primeiro nome ou apelido</string>
+    <string name="title_fragment_senha">Último passo</string>
+    <string name="title_edt_fragment_senha">Crie uma senha segura para acessar sua conta</string>
+    <string name="txt_hint_senha">senha</string>
+    <string name="txt_btn_senha">CRIAR CONTA</string>
+    <string name="txt_subtitle_edt_fragment_senha">por favor cria uma senha com pelo menos 8 dígitos.</string>
 </resources>
