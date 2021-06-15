@@ -31,7 +31,7 @@ class LoggedOutActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_logged_out)
 
         mViewPager = findViewById(R.id.viewPagerMain)
         tabLayout = findViewById(R.id.tabDots)
