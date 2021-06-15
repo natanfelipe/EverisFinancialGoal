@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">EverisFinancialGoal</string>
+    <string name="headLogin">Login</string>
+    <string name="userName">usuario</string>
+    <string name="password">senha</string>
+    <string name="forgotPassword">esqueci minha senha</string>
+</resources>
