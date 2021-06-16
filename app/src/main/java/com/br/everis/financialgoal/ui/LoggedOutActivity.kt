@@ -12,8 +12,11 @@ class LoggedOutActivity : AppCompatActivity() {
 
     var currentPage = 0
     private lateinit var timer: Timer
-    val DELAY_MS: Long = 500
-    val PERIOD_MS: Long = 3000
+
+    companion object {
+        const val DELAY_MS: Long = 500
+        const val PERIOD_MS: Long = 3000
+    }
 
     var mViewPager: ViewPager? = null
     private var tabLayout: TabLayout? = null
