@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EverisFinancialGoal"
-        tools:ignore="AllowBackup">
+        tools:ignore="AllowBackup">>
+        <activity android:name=".ui.LoggedOutActivity" />
         <activity android:name=".ui.MainActivity"/>
         <activity android:name=".ui.cadastro.CadastroActivity" android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -19,7 +20,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
