@@ -7,6 +7,12 @@
     tools:context=".ui.cadastro.fragment.SenhaFragment"
     android:background="@color/grey">
 
+    <include
+        android:id="@+id/nav_bar"
+        layout="@layout/navbar_cadastro"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <TextView
         android:id="@+id/title_fragment_senha"
@@ -21,7 +27,7 @@
         android:layout_marginTop="25dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/nav_bar"/>
 
     <TextView
         android:id="@+id/title_edt_fragment_senha"
