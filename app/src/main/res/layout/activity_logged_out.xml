@@ -35,6 +35,7 @@
         android:layout_height="52dp"
         android:layout_below="@+id/viewPagerMain"
         android:layout_marginTop="112dp"
+        android:textFontWeight="900"
         android:backgroundTint="@color/color_btn_open_account"
         android:fontFamily="@font/roboto"
         android:text="@string/text_btn_abra_sua_conta"
