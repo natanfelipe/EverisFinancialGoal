@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.cadastro.fragment.SenhaFragment"
+    android:background="@color/grey">
+
+
+    <TextView
+        android:id="@+id/title_fragment_senha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_fragment_senha"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/roboto_medium"
+        android:layout_marginTop="25dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/title_edt_fragment_senha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_edt_fragment_senha"
+        android:textSize="15sp"
+        android:textColor="@color/dark_grey"
+        android:layout_marginStart="24dp"
+        android:fontFamily="@font/roboto_medium"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_fragment_senha"/>
+
+    <EditText
+        android:id="@+id/edt_senha"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="46dp"
+        android:elevation="18dp"
+        android:textColorHint="@color/dark_grey"
+        android:paddingStart="21dp"
+        android:paddingEnd="21dp"
+        android:backgroundTint="@color/light_grey"
+        android:background="@drawable/rounded_edittext"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_edt_fragment_senha"
+        android:hint="@string/txt_hint_senha"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/sub_title_edt_fragment_senha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_subtitle_edt_fragment_senha"
+        android:textSize="13sp"
+        android:textColor="@color/dark_grey"
+        android:layout_marginStart="24dp"
+        android:fontFamily="@font/roboto_medium"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_senha"/>
+
+    <Button
+        android:id="@+id/btn_cadastro_senha"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/black"
+        android:text="@string/txt_btn_senha"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:fontFamily="@font/roboto_medium"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
