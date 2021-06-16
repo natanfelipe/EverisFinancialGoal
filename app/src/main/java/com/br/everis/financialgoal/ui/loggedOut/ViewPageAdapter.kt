@@ -1,4 +1,4 @@
-package com.br.everis.financialgoal.ui
+package com.br.everis.financialgoal.ui.loggedOut
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -13,9 +13,10 @@ import java.util.*
 class ViewPagerAdapter(
     context: Context,
     var images: IntArray
-) :
-    PagerAdapter() {
+) : PagerAdapter() {
+
     var mLayoutInflater: LayoutInflater
+
     override fun getCount(): Int {
         return images.size
     }
@@ -26,9 +27,9 @@ class ViewPagerAdapter(
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
 
-        val itemView: View = mLayoutInflater.inflate(R.layout.activity_logged_out, container, false)
+        val itemView: View = mLayoutInflater.inflate(R.layout.activity_viewpager, container, false)
 
-        val imageView = itemView.findViewById<View>(R.id.imageViewMain) as ImageView
+        val imageView:ImageView = itemView.findViewById(R.id.imageViewMain)
 
         imageView.setImageResource(images[position])
 
