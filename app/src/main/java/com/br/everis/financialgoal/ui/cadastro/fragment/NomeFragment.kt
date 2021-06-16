@@ -23,6 +23,10 @@ class NomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setView(view)
+        setClick()
+    }
+
+    private fun setClick() {
         btnContinuarNome.setOnClickListener {
             parentFragmentManager.beginTransaction().apply {
                 replace(R.id.fragment,SenhaFragment.newInstance())

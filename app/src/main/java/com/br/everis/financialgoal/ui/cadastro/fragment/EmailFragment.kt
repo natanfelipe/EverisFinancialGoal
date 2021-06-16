@@ -22,6 +22,10 @@ class EmailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setView(view)
+        setClick()
+    }
+
+    private fun setClick() {
         btnContinuar.setOnClickListener {
             parentFragmentManager.beginTransaction().apply {
                 replace(R.id.fragment,NomeFragment.newInstance())

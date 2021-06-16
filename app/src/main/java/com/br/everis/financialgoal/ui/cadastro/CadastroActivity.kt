@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.AppCompatImageView
 import com.br.everis.financialgoal.R
-import com.br.everis.financialgoal.ui.MainActivity
 import com.br.everis.financialgoal.ui.cadastro.fragment.EmailFragment
 import com.br.everis.financialgoal.ui.loggedOut.LoggedOutActivity
 
@@ -17,12 +16,20 @@ class CadastroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro)
 
-        btnBack = findViewById(R.id.btn_back_cadastro)
+        setView()
+        setClick()
+        inflateFragment()
+    }
+
+    private fun setClick() {
         btnBack.setOnClickListener {
             startActivity(Intent(this,LoggedOutActivity::class.java))
             finish()
         }
-        inflateFragment()
+    }
+
+    private fun setView() {
+        btnBack = findViewById(R.id.btn_back_cadastro)
     }
 
     private fun inflateFragment() {

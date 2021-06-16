@@ -26,6 +26,10 @@ class SenhaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setView(view)
+        setClick()
+    }
+
+    private fun setClick() {
         val activity = activity as Context
         btnCriarConta.setOnClickListener {
             startActivity(Intent(activity,LoggedOutActivity::class.java))
