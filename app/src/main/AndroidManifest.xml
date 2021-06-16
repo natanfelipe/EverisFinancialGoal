@@ -12,7 +12,6 @@
         android:theme="@style/Theme.EverisFinancialGoal"
         tools:ignore="AllowBackup">
         <activity android:name=".ui.MainActivity"/>
-        <activity android:name=".ui.cadastro.CadastroActivity" android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".ui.loggedOut.LoggedOutActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
