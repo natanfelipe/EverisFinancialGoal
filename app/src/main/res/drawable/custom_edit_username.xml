@@ -2,6 +2,6 @@
 <shape android:shape="rectangle"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <corners android:topLeftRadius="@dimen/radius" android:topRightRadius="@dimen/radius"/>
-    <solid android:color="@color/backgroundLogin" />
+    <solid android:color="@color/grey" />
     <size android:height="@dimen/textBox"/>
 </shape>

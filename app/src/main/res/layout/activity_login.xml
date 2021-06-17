@@ -5,41 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity"
-    android:background="@color/backgroundLogin">
+    android:background="@color/grey">
 
-    <View
-        android:id="@+id/headLogin"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/headNavBar"
-        app:layout_constraintStart_toStartOf="parent"
+    <include
+        android:id="@+id/nav_bar_login"
+        layout="@layout/navbar_cadastro"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/white"/>
-
-    <ImageView
-        android:id="@+id/btnGoToBack"
-        android:layout_width="@dimen/goToBack"
-        android:layout_height="@dimen/goToBack"
-        android:src="@drawable/ic_back"
-        android:layout_marginStart="@dimen/marginGoToBack"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/headLogin"
-        app:layout_constraintStart_toStartOf="parent"
-        />
-
-    <TextView
-        android:id="@+id/textHeadLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/marginTextLogin"
-        android:fontFamily="@font/roboto_bold"
-        android:text="@string/headLogin"
-        android:textColor="@color/black"
-        android:textSize="@dimen/sizeTextHead"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/headLogin"
-        app:layout_constraintStart_toEndOf="@id/btnGoToBack"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <EditText
         android:id="@+id/userName"
@@ -54,7 +27,7 @@
         android:paddingStart="@dimen/paddingText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/nav_bar_login" />
 
     <EditText
         android:id="@+id/password"
@@ -78,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/buttonLogin"
         android:layout_margin="@dimen/marginBox"
-        android:backgroundTint="@color/buttonLogin"
+        android:backgroundTint="@color/color_btn_login"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/headLogin"
         android:textColor="@color/white"

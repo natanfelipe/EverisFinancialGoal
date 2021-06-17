@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
+import com.br.everis.financialgoal.LoginActivity
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.ui.cadastro.CadastroActivity
 import com.google.android.material.tabs.TabLayout
@@ -92,7 +93,7 @@ class LoggedOutActivity : AppCompatActivity(), View.OnClickListener {
 
         when (v.id) {
             R.id.btn_login -> {
-                Toast.makeText(this, "Não implementado", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, LoginActivity::class.java))
             }
             R.id.btn_open_account -> {
                 startActivity(Intent(this,CadastroActivity::class.java))
