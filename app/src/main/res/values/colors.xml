@@ -7,6 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="color_btn_open_account"> #9BAE0C </color>
+    <color name="color_btn_login"> #2F2E33 </color>
+    <color name="dot_selected"> #9BAE0C </color>
+    <color name="dot_next"> #2F2E33 </color>
+    <color name="dot_default"> #8E8E93 </color>
     <color name="grey">#F5F6FA</color>
     <color name="light_grey">#F6F6F6</color>
     <color name="dark_grey">#969696</color>
