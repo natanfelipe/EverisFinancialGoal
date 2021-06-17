@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPagerMain"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tabDots"
+        />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabDots"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_18_dp"
+        android:layout_marginTop="@dimen/margin_18_dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPagerMain"
+        app:tabBackground="@drawable/tab_selector"
+        app:tabMaxWidth="10dp"
+        app:tabGravity="center" />
+
+    <Button
+        android:id="@+id/btn_open_account"
+        android:theme="@style/ButtonLoggedOutStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="86dp"
+        android:backgroundTint="@color/color_btn_open_account"
+        android:text="@string/text_btn_abra_sua_conta"
+        android:layout_marginLeft="@dimen/margin_15_dp"
+        android:layout_marginRight="@dimen/margin_15_dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabDots" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:theme="@style/ButtonLoggedOutStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="77dp"
+        android:backgroundTint="@color/color_btn_login"
+        android:text="@string/text_btn_login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_open_account"
+        app:layout_constraintStart_toStartOf="@+id/btn_open_account"
+        app:layout_constraintTop_toBottomOf="@+id/btn_open_account" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
