@@ -10,7 +10,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.appcompat.widget.AppCompatImageView
 import com.br.everis.financialgoal.R
-import com.br.everis.financialgoal.ui.MainActivity
+import com.br.everis.financialgoal.ui.loggedOut.LoggedOutActivity
+
 
 class SenhaFragment : Fragment() {
 
@@ -33,7 +34,7 @@ class SenhaFragment : Fragment() {
     private fun setClick() {
         val activity = activity as Context
         btnCriarConta.setOnClickListener {
-            startActivity(Intent(activity,MainActivity::class.java))
+            startActivity(Intent(activity,LoggedOutActivity::class.java))
         }
 
         btnBackNavBar.setOnClickListener {
