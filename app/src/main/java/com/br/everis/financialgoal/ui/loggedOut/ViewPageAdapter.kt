@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.viewpager.widget.PagerAdapter
 import com.br.everis.financialgoal.R
 import java.util.*
@@ -21,8 +22,8 @@ class ViewPagerAdapter(
         return images.size
     }
 
-    override fun isViewFromObject(view: View, `object`: Any): Boolean {
-        return view === `object` as LinearLayout
+    override fun isViewFromObject(view: View, viewObject: Any): Boolean {
+        return view === viewObject as ConstraintLayout
     }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
@@ -37,8 +38,8 @@ class ViewPagerAdapter(
         return itemView
     }
 
-    override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-        container.removeView(`object` as LinearLayout)
+    override fun destroyItem(container: ViewGroup, position: Int, viewObject: Any) {
+        container.removeView(viewObject as ConstraintLayout)
     }
 
     init {

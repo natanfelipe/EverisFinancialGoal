@@ -10,12 +10,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.br.everis.financialgoal.R
 import com.google.android.material.tabs.TabLayout
-import java.util.*
+import java.util.Timer
+import java.util.TimerTask
 
 class LoggedOutActivity : AppCompatActivity(), View.OnClickListener {
 
     private var currentPage = 0
     private lateinit var timer: Timer
+    private lateinit var mViewPager: ViewPager
+    private lateinit var tabLayout: TabLayout
     private lateinit var btnOpenAccount: Button
     private lateinit var btnLogin: Button
 
@@ -23,9 +26,6 @@ class LoggedOutActivity : AppCompatActivity(), View.OnClickListener {
         const val DELAY_MS: Long = 500
         const val PERIOD_MS: Long = 3000
     }
-
-    private var mViewPager: ViewPager? = null
-    private var tabLayout: TabLayout? = null
 
     private var images = intArrayOf(
         R.drawable.logged_out_slide_1,
@@ -52,18 +52,26 @@ class LoggedOutActivity : AppCompatActivity(), View.OnClickListener {
         btnLogin = findViewById(R.id.btn_login)
         mViewPager = findViewById(R.id.viewPagerMain)
         tabLayout = findViewById(R.id.tabDots)
-        tabLayout!!.setupWithViewPager(mViewPager, true)
+        tabLayout.setupWithViewPager(mViewPager, true)
     }
 
     private fun setAdapter() {
         mViewPagerAdapter = ViewPagerAdapter(this@LoggedOutActivity, images)
-        mViewPager!!.adapter = mViewPagerAdapter
+        mViewPager.adapter = mViewPagerAdapter
+        handler()
+    }
+
+    private fun handler() {
         val handler = Handler(Looper.getMainLooper())
+        updateTabView(handler)
+    }
+
+    private fun updateTabView(handler: Handler) {
         val update = Runnable {
             if (currentPage == NUM_PAGES) {
                 currentPage = 0
             }
-            mViewPager!!.setCurrentItem(currentPage++, true)
+            mViewPager.setCurrentItem(currentPage++, true)
         }
         timer = Timer()
         timer.schedule(object : TimerTask() {
