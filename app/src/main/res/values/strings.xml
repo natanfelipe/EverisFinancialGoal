@@ -1,13 +1,7 @@
 <resources>
     <string name="app_name">EverisFinancialGoal</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="text_btn_login"
-        font="roboto"
-        weight="900"
-        style="normal"
-        size="16px"
-        line_heigth="18.75px"
-        align="center">LOGIN</string>
+    <string name="text_btn_login">LOGIN</string>
     <string name="text_btn_abra_sua_conta">ABRA SUA CONTA</string>
     <string name="title_navbar_cadastro">Abra sua conta</string>
     <string name="txt_button_cadastro">CONTINUAR</string>
