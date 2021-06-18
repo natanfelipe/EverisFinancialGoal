@@ -20,4 +20,6 @@
     <dimen name="text_size_16_sp">16sp</dimen>
     <dimen name="paddind_star">31dp</dimen>
     <dimen name="paddind_end">26dp</dimen>
+    <dimen name="width_300_dp">300dp</dimen>
+    <dimen name="margin_7_dp">7dp</dimen>
 </resources>

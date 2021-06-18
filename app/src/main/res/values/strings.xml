@@ -21,4 +21,9 @@
     <string name="txt_hint_senha">senha</string>
     <string name="txt_btn_senha">CRIAR CONTA</string>
     <string name="txt_subtitle_edt_fragment_senha">por favor cria uma senha com pelo menos 8 dígitos.</string>
+    <string name="sub_title_dialog">Insira seu email para enviarmos um link para resetar sua senha.</string>
+    <string name="title_dialog">Esqueci a senha</string>
+    <string name="hint_email_dialog">e-mail</string>
+    <string name="txt_btn_ok_dialog">OK</string>
+    <string name="txt_btn_cancelar_dialog">CANCELAR</string>
 </resources>
