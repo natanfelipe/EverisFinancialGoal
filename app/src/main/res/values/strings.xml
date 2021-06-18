@@ -2,6 +2,10 @@
     <string name="app_name">EverisFinancialGoal</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="text_btn_login">LOGIN</string>
+    <string name="headLogin">Login</string>
+    <string name="userName">usuario</string>
+    <string name="password">senha</string>
+    <string name="forgotPassword">esqueci minha senha</string>
     <string name="text_btn_abra_sua_conta">ABRA SUA CONTA</string>
     <string name="title_navbar_cadastro">Abra sua conta</string>
     <string name="txt_button_cadastro">CONTINUAR</string>

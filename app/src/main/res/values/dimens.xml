@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="headNavBar">64dp</dimen>
+    <dimen name="goToBack">30dp</dimen>
+    <dimen name="marginGoToBack">35dp</dimen>
+    <dimen name="marginTextLogin">15dp</dimen>
+    <dimen name="textBox">60dp</dimen>
+    <dimen name="sizeTextHead">20sp</dimen>
+    <dimen name="sizeTextBox">30sp</dimen>
+    <dimen name="marginBox">15dp</dimen>
+    <dimen name="buttonLogin">60dp</dimen>
+    <dimen name="textButtonSize">15sp</dimen>
+    <dimen name="elevation">4dp</dimen>
+    <dimen name="radius">15dp</dimen>
+    <dimen name="topEdit">1dp</dimen>
+    <dimen name="paddingText">20dp</dimen>
     <dimen name="margin_18_dp">18dp</dimen>
     <dimen name="layout_width_343_dp">343dp</dimen>
     <dimen name="margin_15_dp">15dp</dimen>
     <dimen name="text_size_16_sp">16sp</dimen>
+    <dimen name="paddind_star">31dp</dimen>
+    <dimen name="paddind_end">26dp</dimen>
 </resources>
