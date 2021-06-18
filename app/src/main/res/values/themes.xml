@@ -20,6 +20,7 @@
         <item name="fontFamily">@font/roboto_medium</item>
         <item name="android:textSize">@dimen/text_size_16_sp</item>
         <item name="android:padding">@dimen/margin_18_dp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>
