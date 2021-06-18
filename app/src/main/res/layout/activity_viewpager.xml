@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:scaleType="fitXY"
-        app:layout_constraintDimensionRatio="3:4"
         tools:src="@drawable/logged_out_slide_1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
