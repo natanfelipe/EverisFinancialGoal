@@ -18,4 +18,6 @@
     <dimen name="layout_width_343_dp">343dp</dimen>
     <dimen name="margin_15_dp">15dp</dimen>
     <dimen name="text_size_16_sp">16sp</dimen>
+    <dimen name="paddind_star">31dp</dimen>
+    <dimen name="paddind_end">26dp</dimen>
 </resources>

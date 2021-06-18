@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EverisFinancialGoal">
-        <activity android:name=".LoginActivity"
+        <activity android:name=".ui.LoginActivity"
         android:theme="@style/Theme.EverisFinancialGoal"
         tools:ignore="AllowBackup"/>
         <activity android:name=".ui.cadastro.CadastroActivity" android:windowSoftInputMode="adjustResize"/>

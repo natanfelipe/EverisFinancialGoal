@@ -2,17 +2,17 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="64dp"
+    android:layout_height="@dimen/headNavBar"
     android:orientation="horizontal">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/btn_back_cadastro"
+        android:id="@+id/btnBackHome"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:src="@drawable/ic_baseline_arrow_back"
         android:backgroundTint="@color/black"
-        android:paddingStart="31dp"
-        android:paddingEnd="26dp"/>
+        android:paddingStart="@dimen/paddind_star"
+        android:paddingEnd="@dimen/paddind_end"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,7 +21,7 @@
         android:gravity="center"
         android:text="@string/headLogin"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="@dimen/sizeTextHead"
         android:textStyle="bold" />
 
 </LinearLayout>
