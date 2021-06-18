@@ -1,4 +1,4 @@
-package com.br.everis.financialgoal.ui
+package com.br.everis.financialgoal.ui.login
 
 
 import androidx.appcompat.app.AppCompatActivity
@@ -9,12 +9,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import com.br.everis.financialgoal.R
+import com.br.everis.financialgoal.ui.login.fragment.MyFragment
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener{
 
     private lateinit var btnLogin : Button
     private lateinit var textForgot : TextView
     private lateinit var btnBackHome : AppCompatImageView
+    private val dialog = MyFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +43,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
                 Toast.makeText(this, "Não implementado", Toast.LENGTH_SHORT).show()
             }
             R.id.textForgot -> {
-                Toast.makeText(this, "Não implementado", Toast.LENGTH_SHORT).show()
+                dialog.show(supportFragmentManager,"custom dialog")
             }
             else ->{
                 Toast.makeText(this, "Não implementado", Toast.LENGTH_SHORT).show()

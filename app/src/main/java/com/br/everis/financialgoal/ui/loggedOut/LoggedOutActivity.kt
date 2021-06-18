@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
-import com.br.everis.financialgoal.ui.LoginActivity
+import com.br.everis.financialgoal.ui.login.LoginActivity
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.ui.cadastro.CadastroActivity
 import com.google.android.material.tabs.TabLayout
