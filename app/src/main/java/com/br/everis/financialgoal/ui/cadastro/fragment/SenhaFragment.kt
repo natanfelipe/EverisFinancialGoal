@@ -8,15 +8,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.lifecycle.LifecycleOwner
 import com.br.everis.financialgoal.R
+import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
 import com.br.everis.financialgoal.ui.loggedOut.LoggedOutActivity
+import com.br.everis.financialgoal.viewmodel.cadastro.CadastroViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class SenhaFragment : Fragment() {
 
     private lateinit var btnCriarConta: Button
     private lateinit var btnBackNavBar: AppCompatImageView
+    private val mockCadastro: CadastroModelRequest = CadastroModelRequest(
+        "android06@gmail.com",
+        "12345678",
+        "android06"
+    )
+
+    private val cadastroViewModel: CadastroViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,14 +39,18 @@ class SenhaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val activity = activity as Context
         setView(view)
-        setClick()
+        setClick(activity)
     }
 
-    private fun setClick() {
-        val activity = activity as Context
+    private fun setClick(context: Context) {
         btnCriarConta.setOnClickListener {
-            startActivity(Intent(activity,LoggedOutActivity::class.java))
+            cadastroViewModel.init(mockCadastro)
+            cadastroViewModel.response.observe(viewLifecycleOwner){
+                Toast.makeText(context ,it,Toast.LENGTH_SHORT).show()
+            }
+           startActivity(Intent(activity,LoggedOutActivity::class.java))
         }
 
         btnBackNavBar.setOnClickListener {
