@@ -43,6 +43,7 @@ class EmailFragment : Fragment() {
     private fun setView(view: View) {
         btnContinuar = view.findViewById(R.id.btn_cadastro_email)
         btnBackNavBar = view.findViewById(R.id.btn_back_cadastro)
+
     }
 
     companion object {
