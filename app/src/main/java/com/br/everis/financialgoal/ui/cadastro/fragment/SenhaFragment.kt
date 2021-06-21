@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.lifecycle.LifecycleOwner
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
 import com.br.everis.financialgoal.ui.loggedOut.LoggedOutActivity
@@ -23,9 +22,9 @@ class SenhaFragment : Fragment() {
     private lateinit var btnCriarConta: Button
     private lateinit var btnBackNavBar: AppCompatImageView
     private val mockCadastro: CadastroModelRequest = CadastroModelRequest(
-        "android06@gmail.com",
+        "android11@gmail.com",
         "12345678",
-        "android06"
+        "android11"
     )
 
     private val cadastroViewModel: CadastroViewModel by viewModel()
@@ -48,10 +47,14 @@ class SenhaFragment : Fragment() {
         btnCriarConta.setOnClickListener {
             cadastroViewModel.init(mockCadastro)
             cadastroViewModel.response.observe(viewLifecycleOwner){
-                Toast.makeText(context ,it,Toast.LENGTH_SHORT).show()
+                if (it.res){
+                    startActivity(Intent(activity,LoggedOutActivity::class.java))
+                }else if(!it.res){
+                    Toast.makeText(context ,it.message,Toast.LENGTH_SHORT).show()
+                }
             }
-           startActivity(Intent(activity,LoggedOutActivity::class.java))
-        }
+
+       }
 
         btnBackNavBar.setOnClickListener {
             parentFragmentManager.beginTransaction().apply {
