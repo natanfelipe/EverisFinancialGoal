@@ -8,53 +8,37 @@
     android:background="@drawable/rounded_edittext"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context = "ui.login.fragment.MyFragment">
+    tools:context = "ui.login.fragment.ForgottenPasswordAlertDialog">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_dinamic_title"
         android:layout_width="@dimen/width_300_dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
         android:padding="@dimen/margin_7_dp"
-        android:text="@string/sub_title_dialog"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.375"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
     <TextView
-        android:id="@+id/esqueciasenha"
+        android:id="@+id/tv_dinamic_text"
         android:layout_width="@dimen/width_300_dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:padding="@dimen/margin_7_dp"
-        android:text="@string/title_dialog"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/tv_dinamic_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
     </TextView>
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="@dimen/width_300_dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/rounded_edittext"
-        android:backgroundTint="#F6F6F6"
-        android:hint="@string/hint_email_dialog"
-        android:inputType="textEmailAddress"
-        android:padding="@dimen/margin_7_dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
-        android:id="@+id/ok"
+        android:id="@+id/tv_ok"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="23dp"
         android:paddingEnd="@dimen/margin_15_dp"
@@ -62,20 +46,12 @@
         android:textColor="@color/purple_500"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email"
-        app:layout_constraintVertical_bias="0.0"
         tools:ignore="RtlSymmetry" />
-    <TextView
-        android:id="@+id/cancelar"
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="@string/txt_btn_cancelar_dialog"
-        android:textColor="@color/purple_500"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ok"
-        app:layout_constraintHorizontal_bias="0.942"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email"
-        app:layout_constraintVertical_bias="0.0" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="69dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
