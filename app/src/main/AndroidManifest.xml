@@ -14,10 +14,14 @@
         android:name=".MyApp"
         android:theme="@style/Theme.EverisFinancialGoal">
         <activity android:name=".ui.login.LoginActivity"
-        android:theme="@style/Theme.EverisFinancialGoal"
-        tools:ignore="AllowBackup"/>
-        <activity android:name=".ui.cadastro.CadastroActivity" android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".ui.loggedOut.LoggedOutActivity">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.EverisFinancialGoal"
+            tools:ignore="AllowBackup"/>
+        <activity android:name=".ui.cadastro.CadastroActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.loggedOut.LoggedOutActivity"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
