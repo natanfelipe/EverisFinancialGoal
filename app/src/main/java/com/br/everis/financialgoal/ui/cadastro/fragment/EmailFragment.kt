@@ -40,19 +40,19 @@ class EmailFragment : Fragment() {
 
         btnContinuar.setOnClickListener {
 
-            if(fieldValidator.isValidEmail(edtEmail.text.toString())){
+            if(validator()){
                 parentFragmentManager.beginTransaction().apply {
                     replace(R.id.fragment, NomeFragment.newInstance())
                     addToBackStack(null)
                     commit()
                 }
             } else {
-                dialogAlert.onAlertDialog(it, event)
+                dialogAlert.onAlertDialog(it, TITLE, TEXT)
             }
         }
 
         btnBackNavBar.setOnClickListener {
-            activity?.finish()
+            requireActivity().finish()
         }
     }
 
@@ -62,9 +62,12 @@ class EmailFragment : Fragment() {
         edtEmail = view.findViewById(R.id.edt_email)
     }
 
+    private fun validator() : Boolean = fieldValidator.isValidEmail(edtEmail.text.toString())
+
     companion object {
         fun newInstance() = EmailFragment()
-        const val event = 1
+        const val TITLE = "E-mail inválido"
+        const val TEXT = "forneça um endereço de e-mail válido"
     }
 
 }

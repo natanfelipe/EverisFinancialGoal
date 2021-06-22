@@ -8,19 +8,15 @@ class DialogAlert {
 
     private lateinit var alertDialogBuilder: AlertDialog.Builder
     private lateinit var alertDialog: AlertDialog
-    private lateinit var dialogEventManager: DialogEventManager
 
-    fun onAlertDialog(view: View, event: Int) {
-
-        dialogEventManager = DialogEventManager()
-        dialogEventManager.setTitleAndMessage(event)
+    fun onAlertDialog(view: View, title: String, text: String) {
 
         alertDialogBuilder = AlertDialog.Builder(view.context)
         alertDialog = alertDialogBuilder
-            .setTitle(DialogEventManager.TITLE)
-            .setMessage(DialogEventManager.MESSAGE)
+            .setTitle(title)
+            .setMessage(text)
             .setCancelable(false)
-            .setPositiveButton(DialogEventManager.POSITIVE_BUTTON) { dialog, id ->
+            .setPositiveButton("OK") { dialog, id ->
                 dialog.dismiss()
             }
             .create()

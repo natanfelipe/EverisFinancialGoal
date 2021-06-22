@@ -3,7 +3,6 @@ package com.br.everis.financialgoal.ui.cadastro.fragment
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -54,26 +53,27 @@ class SenhaFragment : Fragment() {
     }
 
     private fun setClick(context: Context) {
+
         btnCriarConta.setOnClickListener {
 
-            if (fieldValidator.isValidPassword(edtSenha.text.toString())) {
+            if (validator()) {
                 cadastroViewModel.init(mockCadastro)
                 cadastroViewModel.response.observe(viewLifecycleOwner) {
                     Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
                     startActivity(Intent(activity, LoggedOutActivity::class.java))
                 }
             } else {
-                dialogAlert.onAlertDialog(it, event)
+                dialogAlert.onAlertDialog(it, TITLE, TEXT)
             }
         }
 
-        btnBackNavBar.setOnClickListener {
-            parentFragmentManager.beginTransaction().apply {
-                replace(R.id.fragment,NomeFragment.newInstance())
-                addToBackStack(null)
-                commit()
+            btnBackNavBar.setOnClickListener {
+                parentFragmentManager.beginTransaction().apply {
+                    replace(R.id.fragment, NomeFragment.newInstance())
+                    addToBackStack(null)
+                    commit()
+                }
             }
-        }
     }
 
     private fun setView(view: View) {
@@ -82,8 +82,11 @@ class SenhaFragment : Fragment() {
         edtSenha = view.findViewById(R.id.edt_senha)
     }
 
+    private fun validator() : Boolean = fieldValidator.isValidPassword(edtSenha.text.toString())
+
     companion object {
         fun newInstance() = SenhaFragment()
-        const val event = 3
+        const val TITLE = "Senha inválida"
+        const val TEXT = "a senha deve ter pelo menos 8 dígitos"
     }
 }

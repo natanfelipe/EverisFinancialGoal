@@ -1,7 +1,6 @@
 package com.br.everis.financialgoal.ui.cadastro.fragment
 
 import android.os.Bundle
-import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -41,16 +40,16 @@ class NomeFragment : Fragment() {
 
         btnContinuarNome.setOnClickListener {
 
-            if (fieldValidator.isValidNameOrNickame(edtNome.text.toString())) {
+            if (validator()) {
                 parentFragmentManager.beginTransaction().apply {
                     replace(R.id.fragment, SenhaFragment.newInstance())
                     addToBackStack(null)
                     commit()
                 }
             } else {
-                dialogAlert.onAlertDialog(it, event)
+                dialogAlert.onAlertDialog(it, TITLE, TEXT)
             }
-
+        }
             btnBackNavBar.setOnClickListener {
                 parentFragmentManager.beginTransaction().apply {
                     replace(R.id.fragment, EmailFragment.newInstance())
@@ -58,7 +57,6 @@ class NomeFragment : Fragment() {
                     commit()
                 }
             }
-        }
     }
 
     private fun setView(view: View) {
@@ -67,8 +65,11 @@ class NomeFragment : Fragment() {
         edtNome = view.findViewById(R.id.edt_nome)
     }
 
+    private fun validator() : Boolean = fieldValidator.isValidNameOrNickame(edtNome.text.toString())
+
     companion object {
         fun newInstance() = NomeFragment()
-        const val event = 2
+        const val TITLE = "Nome/Apelido inválido"
+        const val TEXT = "O nome/apelido deve ter pelo menos 1 carácter"
     }
 }
