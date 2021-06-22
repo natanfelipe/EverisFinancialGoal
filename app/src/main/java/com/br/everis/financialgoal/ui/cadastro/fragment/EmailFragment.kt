@@ -1,6 +1,5 @@
 package com.br.everis.financialgoal.ui.cadastro.fragment
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -11,13 +10,16 @@ import android.widget.EditText
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.DialogFragment
 import com.br.everis.financialgoal.R
+import com.br.everis.financialgoal.utils.DialogAlert
+import com.br.everis.financialgoal.utils.FieldValidator
 
 class EmailFragment : DialogFragment() {
 
     private lateinit var edtEmail: EditText
     private lateinit var btnContinuar:Button
     private lateinit var btnBackNavBar:AppCompatImageView
-    private lateinit var alertDialog: AlertDialog.Builder
+    private lateinit var dialogAlert: DialogAlert
+    private lateinit var fieldValidator: FieldValidator
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,7 +31,8 @@ class EmailFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        dialogAlert = DialogAlert()
+        fieldValidator = FieldValidator()
         setView(view)
         setClick()
     }
@@ -37,14 +40,15 @@ class EmailFragment : DialogFragment() {
     private fun setClick() {
 
         btnContinuar.setOnClickListener {
-            if(!isBoolean()){
+
+            if(fieldValidator.isValidEmail(edtEmail.text.toString())){
                 parentFragmentManager.beginTransaction().apply {
                     replace(R.id.fragment, NomeFragment.newInstance())
                     addToBackStack(null)
                     commit()
                 }
             } else {
-                onAlertDialog(it)
+                dialogAlert.onAlertDialog(it, event)
             }
         }
 
@@ -59,27 +63,9 @@ class EmailFragment : DialogFragment() {
         edtEmail = view.findViewById(R.id.edt_email)
     }
 
-    private fun onAlertDialog(view: View) {
-
-        alertDialog = AlertDialog.Builder(view.context)
-        alertDialog.setTitle(TITLE)
-        alertDialog.setMessage(MESSAGE)
-            .setCancelable(false)
-            .setPositiveButton(POSITIVE_BUTTON) { dialog, id ->
-                dialog.dismiss()
-            }
-        alertDialog.show()
-    }
-
-    private fun isBoolean() : Boolean {
-        return TextUtils.isEmpty(edtEmail.text.toString())
-    }
-
     companion object {
         fun newInstance() = EmailFragment()
-        const val TITLE = "E-mail inválido"
-        const val MESSAGE = "forneça um endereço de e-mail válido"
-        const val POSITIVE_BUTTON = "OK"
+        const val event = 1
     }
 
 }
