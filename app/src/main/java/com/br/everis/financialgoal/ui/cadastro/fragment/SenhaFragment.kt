@@ -22,9 +22,9 @@ class SenhaFragment : Fragment() {
     private lateinit var btnCriarConta: Button
     private lateinit var btnBackNavBar: AppCompatImageView
     private val mockCadastro: CadastroModelRequest = CadastroModelRequest(
-        "android11@gmail.com",
+        "android14@gmail.com",
         "12345678",
-        "android11"
+        "android14"
     )
 
     private val cadastroViewModel: CadastroViewModel by viewModel()
@@ -48,6 +48,7 @@ class SenhaFragment : Fragment() {
             cadastroViewModel.init(mockCadastro)
             cadastroViewModel.response.observe(viewLifecycleOwner){
                 if (it.res){
+                    Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                     startActivity(Intent(activity,LoggedOutActivity::class.java))
                 }else if(!it.res){
                     Toast.makeText(context ,it.message,Toast.LENGTH_SHORT).show()

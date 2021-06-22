@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelResponse
+import com.br.everis.financialgoal.data.datasource.worker.cadastro.CadastroResult
 import com.br.everis.financialgoal.repository.cadastro.ImpCadastroRepository
 
 class CadastroViewModel(
@@ -20,15 +21,19 @@ class CadastroViewModel(
     }
 
     private fun getResponseApi(cadastro: CadastroModelRequest) {
-        repository.cadastroRepository(::responseSuccess,::responseError, cadastro)
+        repository.cadastroRepository(::getResponse,cadastro)
     }
 
-    private fun responseSuccess(response: CadastroModelResponse?){
-        _response.postValue(response)
-    }
+    private fun getResponse(response: CadastroResult){
+        when(response){
+            is CadastroResult.RequestSuccess -> {
+                _response.postValue(response.success)
+            }
 
-    private fun responseError(response: CadastroModelResponse?){
-        _response.postValue(response)
+            is CadastroResult.RequestError -> {
+                _response.postValue(response.error)
+            }
+        }
     }
 
 }

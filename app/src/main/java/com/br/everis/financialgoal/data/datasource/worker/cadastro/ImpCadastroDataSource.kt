@@ -9,6 +9,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+sealed class CadastroResult {
+    class RequestSuccess(val success: CadastroModelResponse?) : CadastroResult()
+    class RequestError(val error: CadastroModelResponse?) : CadastroResult()
+}
+
 class ImpCadastroDataSource(
     private var apiService:ImpApiService
 ): CadastroDataSource {
@@ -16,24 +21,23 @@ class ImpCadastroDataSource(
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
     override fun cadastroDataSource(
-        Success: (success: CadastroModelResponse?) -> Unit,
-        Error: (error: CadastroModelResponse?) -> Unit,
+        cadastroResultCallback: (result: CadastroResult) -> Unit,
         cadastro: CadastroModelRequest
     ) {
         coroutineScope.launch {
             withContext(Dispatchers.IO){
                 val request = apiService.cadastro().cadastroRequest(cadastro).clone().execute()
                 if (request.code() == 201){
-                    Success.invoke(
+                    cadastroResultCallback(CadastroResult.RequestSuccess(
                         CadastroModelResponse(
-                        message = "Cadastro Realizado com sucesso",
-                        res = true
+                            message = "Cadastro Realizado com sucesso",
+                            res = true
+                        )
                     ))
                 }else{
                     val gson = Gson()
                     val response = gson.fromJson(request.errorBody()?.charStream(), CadastroModelResponse::class.java)
-                    print(response)
-                    Error.invoke(response)
+                   cadastroResultCallback(CadastroResult.RequestError(response))
                 }
             }
         }
