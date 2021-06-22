@@ -6,13 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import androidx.appcompat.widget.AppCompatImageView
 import com.br.everis.financialgoal.R
+import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
 
 class EmailFragment : Fragment() {
 
     private lateinit var btnContinuar:Button
     private lateinit var btnBackNavBar:AppCompatImageView
+    private lateinit var edtEmail:EditText
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +33,8 @@ class EmailFragment : Fragment() {
     private fun setClick() {
         btnContinuar.setOnClickListener {
             parentFragmentManager.beginTransaction().apply {
-                replace(R.id.fragment,NomeFragment.newInstance())
+                val cadastroObjectEmail= CadastroModelRequest(edtEmail.text.toString(),"","")
+                replace(R.id.fragment,NomeFragment.newInstance(cadastroObjectEmail))
                 addToBackStack(null)
                 commit()
             }
@@ -43,7 +47,7 @@ class EmailFragment : Fragment() {
     private fun setView(view: View) {
         btnContinuar = view.findViewById(R.id.btn_cadastro_email)
         btnBackNavBar = view.findViewById(R.id.btn_back_cadastro)
-
+        edtEmail = view.findViewById(R.id.edt_email)
     }
 
     companion object {
