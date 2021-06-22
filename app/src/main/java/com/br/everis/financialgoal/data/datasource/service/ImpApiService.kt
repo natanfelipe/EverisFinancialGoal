@@ -13,5 +13,5 @@ class ImpApiService {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    fun cadastro() :ApiService = provider().create(ApiService::class.java)
+    fun requestAPI() :ApiService = provider().create(ApiService::class.java)
 }
