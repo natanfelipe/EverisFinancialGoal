@@ -26,7 +26,7 @@ class ImpCadastroDataSource(
     ) {
         coroutineScope.launch {
             withContext(Dispatchers.IO){
-                val request = apiService.cadastro().cadastroRequest(cadastro).clone().execute()
+                val request = apiService.requestAPI().cadastroRequest(cadastro).clone().execute()
                 if (request.code() == 201){
                     cadastroResultCallback(CadastroResult.RequestSuccess(
                         CadastroModelResponse(
