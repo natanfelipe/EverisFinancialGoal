@@ -60,8 +60,8 @@ class SenhaFragment : Fragment() {
                 cadastroViewModel.init(mockCadastro)
                 cadastroViewModel.response.observe(viewLifecycleOwner) {
                     Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(activity, LoggedOutActivity::class.java))
                 }
-                startActivity(Intent(activity, LoggedOutActivity::class.java))
             } else {
                 dialogAlert.onAlertDialog(it, event)
             }

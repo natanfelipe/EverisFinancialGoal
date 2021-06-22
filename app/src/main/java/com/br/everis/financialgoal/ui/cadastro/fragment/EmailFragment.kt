@@ -1,19 +1,18 @@
 package com.br.everis.financialgoal.ui.cadastro.fragment
 
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.utils.DialogAlert
 import com.br.everis.financialgoal.utils.FieldValidator
 
-class EmailFragment : DialogFragment() {
+class EmailFragment : Fragment() {
 
     private lateinit var edtEmail: EditText
     private lateinit var btnContinuar:Button
