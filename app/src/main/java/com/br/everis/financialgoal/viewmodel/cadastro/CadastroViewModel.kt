@@ -12,11 +12,11 @@ class CadastroViewModel(
     private val repository: ImpCadastroRepository
 ): ViewModel() {
 
-    var _response = MutableLiveData<CadastroModelResponse>()
+    private var _response = MutableLiveData<CadastroModelResponse>()
     val response: LiveData<CadastroModelResponse>
         get() = _response
 
-    fun init(cadastro: CadastroModelRequest){
+    fun initialize(cadastro: CadastroModelRequest){
         getResponseApi(cadastro)
     }
 

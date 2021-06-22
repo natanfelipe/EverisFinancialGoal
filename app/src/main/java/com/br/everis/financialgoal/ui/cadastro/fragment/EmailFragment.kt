@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
+import com.br.everis.financialgoal.utils.cadastro.ChangeFragment.navigationFragment
 
-class EmailFragment : Fragment() {
+class EmailFragment(private val contextActivity: FragmentActivity) : Fragment() {
 
     private lateinit var btnContinuar:Button
     private lateinit var btnBackNavBar:AppCompatImageView
@@ -32,12 +34,7 @@ class EmailFragment : Fragment() {
 
     private fun setClick() {
         btnContinuar.setOnClickListener {
-            parentFragmentManager.beginTransaction().apply {
-                val cadastroObjectEmail= CadastroModelRequest(edtEmail.text.toString(),"","")
-                replace(R.id.fragment,NomeFragment.newInstance(cadastroObjectEmail))
-                addToBackStack(null)
-                commit()
-            }
+            navigationFragment(contextActivity,"nome",CadastroModelRequest(edtEmail.text.toString(),null,null))
         }
         btnBackNavBar.setOnClickListener {
             activity?.finish()
@@ -51,7 +48,7 @@ class EmailFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance() = EmailFragment()
+        fun newInstance(contextActivity:FragmentActivity) = EmailFragment(contextActivity)
     }
 
 }

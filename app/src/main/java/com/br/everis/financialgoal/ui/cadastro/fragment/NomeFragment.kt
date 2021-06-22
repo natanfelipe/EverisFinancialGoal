@@ -8,11 +8,16 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
+import com.br.everis.financialgoal.utils.cadastro.ChangeFragment.navigationFragment
 import java.util.*
 
-class NomeFragment(private val cadastroObjectNome:CadastroModelRequest) : Fragment() {
+class NomeFragment(
+        private val cadastroObjectNome:CadastroModelRequest,
+        private val contextActivity: FragmentActivity
+        ) : Fragment() {
 
     private lateinit var btnContinuarNome:Button
     private lateinit var btnBackNavBar: AppCompatImageView
@@ -34,19 +39,11 @@ class NomeFragment(private val cadastroObjectNome:CadastroModelRequest) : Fragme
 
     private fun setClick() {
         btnContinuarNome.setOnClickListener {
-            val cadastroObject = CadastroModelRequest(cadastroObjectNome.username,"",edtNome.text.toString())
-            parentFragmentManager.beginTransaction().apply {
-                replace(R.id.fragment,SenhaFragment.newInstance(cadastroObject))
-                addToBackStack(null)
-                commit()
-            }
+            val cadastroObject = CadastroModelRequest(cadastroObjectNome.username,null,edtNome.text.toString())
+            navigationFragment(contextActivity, "senha", cadastroObject)
         }
         btnBackNavBar.setOnClickListener {
-            parentFragmentManager.beginTransaction().apply {
-                replace(R.id.fragment,EmailFragment.newInstance())
-                addToBackStack(null)
-                commit()
-            }
+            navigationFragment(contextActivity,"email",null)
         }
     }
 
@@ -57,6 +54,9 @@ class NomeFragment(private val cadastroObjectNome:CadastroModelRequest) : Fragme
     }
 
     companion object {
-        fun newInstance(cadastroObject: CadastroModelRequest) = NomeFragment(cadastroObject)
+        fun newInstance(
+                cadastroObject: CadastroModelRequest,
+                contextActivity: FragmentActivity
+        ) = NomeFragment(cadastroObject,contextActivity)
     }
 }

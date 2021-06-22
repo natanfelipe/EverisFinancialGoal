@@ -18,27 +18,22 @@ class ImpCadastroDataSource(
     private var apiService:ImpApiService
 ): CadastroDataSource {
 
-    private val coroutineScope = CoroutineScope(Dispatchers.Main)
+    private val coroutineScope = CoroutineScope(Dispatchers.IO)
 
     override fun cadastroDataSource(
         cadastroResultCallback: (result: CadastroResult) -> Unit,
         cadastro: CadastroModelRequest
     ) {
         coroutineScope.launch {
-            withContext(Dispatchers.IO){
-                val request = apiService.requestAPI().cadastroRequest(cadastro).clone().execute()
-                if (request.code() == 201){
-                    cadastroResultCallback(CadastroResult.RequestSuccess(
-                        CadastroModelResponse(
-                            message = "Cadastro Realizado com sucesso",
-                            res = true
-                        )
-                    ))
-                }else{
-                    val gson = Gson()
-                    val response = gson.fromJson(request.errorBody()?.charStream(), CadastroModelResponse::class.java)
-                   cadastroResultCallback(CadastroResult.RequestError(response))
-                }
+            val request = apiService.requestAPI().cadastroRequest(cadastro).clone().execute()
+            if (request.code() == 201){
+                cadastroResultCallback(CadastroResult.RequestSuccess(
+                        request.body()
+                ))
+            }else {
+                val gson = Gson()
+                val response = gson.fromJson(request.errorBody()?.charStream(), CadastroModelResponse::class.java)
+                    cadastroResultCallback(CadastroResult.RequestError(response))
             }
         }
     }

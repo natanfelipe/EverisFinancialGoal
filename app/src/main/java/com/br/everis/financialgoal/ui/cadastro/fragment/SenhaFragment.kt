@@ -9,16 +9,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
 import com.br.everis.financialgoal.ui.loggedOut.LoggedOutActivity
+import com.br.everis.financialgoal.utils.cadastro.ChangeFragment.navigationFragment
+import com.br.everis.financialgoal.utils.cadastro.setToastMessage.setMessage
 import com.br.everis.financialgoal.viewmodel.cadastro.CadastroViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class SenhaFragment(private val cadastro:CadastroModelRequest) : Fragment() {
+class SenhaFragment(
+        private val cadastro:CadastroModelRequest,
+        private val contextActivity: FragmentActivity
+        ) : Fragment() {
 
     private lateinit var btnCriarConta: Button
     private lateinit var btnBackNavBar: AppCompatImageView
@@ -43,25 +48,20 @@ class SenhaFragment(private val cadastro:CadastroModelRequest) : Fragment() {
     private fun setClick(context: Context) {
         btnCriarConta.setOnClickListener {
             val cadastroObject = CadastroModelRequest(cadastro.username, edtSenha.text.toString(), cadastro.nickname)
-            cadastroViewModel.init(cadastroObject)
+            cadastroViewModel.initialize(cadastroObject)
             cadastroViewModel.response.observe(viewLifecycleOwner){
                 if (it.res){
-                    Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
-                    activity?.finish()
+                    setMessage(context,it.message)
+                    requireActivity().finish()
                     startActivity(Intent(activity,LoggedOutActivity::class.java))
                 }else if(!it.res){
-                    Toast.makeText(context ,it.message,Toast.LENGTH_SHORT).show()
+                    setMessage(context,it.message)
                 }
             }
-
        }
 
         btnBackNavBar.setOnClickListener {
-            parentFragmentManager.beginTransaction().apply {
-                replace(R.id.fragment,NomeFragment.newInstance(cadastro))
-                addToBackStack(null)
-                commit()
-            }
+            navigationFragment(contextActivity,"nome",cadastro)
         }
     }
 
@@ -72,6 +72,9 @@ class SenhaFragment(private val cadastro:CadastroModelRequest) : Fragment() {
     }
 
     companion object {
-        fun newInstance(cadastroObject:CadastroModelRequest) = SenhaFragment(cadastroObject)
+        fun newInstance(
+                cadastroObject:CadastroModelRequest,
+                contextActivity: FragmentActivity
+        ) = SenhaFragment(cadastroObject,contextActivity)
     }
 }
