@@ -8,11 +8,14 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
-import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.utils.DialogAlert
 import com.br.everis.financialgoal.utils.FieldValidator
+import androidx.fragment.app.FragmentActivity
+import com.br.everis.financialgoal.R
+import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
+import com.br.everis.financialgoal.utils.cadastro.ChangeFragment.navigationFragment
 
-class EmailFragment : Fragment() {
+class EmailFragment(private val contextActivity: FragmentActivity) : Fragment() {
 
     private lateinit var edtEmail: EditText
     private lateinit var btnContinuar:Button
@@ -47,17 +50,12 @@ class EmailFragment : Fragment() {
     private fun setClick() {
 
         btnContinuar.setOnClickListener {
-
             if(validator()){
-                parentFragmentManager.beginTransaction().apply {
-                    replace(R.id.fragment, NomeFragment.newInstance())
-                    addToBackStack(null)
-                    commit()
+                navigationFragment(contextActivity,"nome",CadastroModelRequest(edtEmail.text.toString()))
                 }
             } else {
                 dialogAlert.onAlertDialog(it, title, text, positive_button)
             }
-        }
 
         btnBackNavBar.setOnClickListener {
             requireActivity().finish()
@@ -73,8 +71,6 @@ class EmailFragment : Fragment() {
     private fun validator() : Boolean = fieldValidator.isValidEmail(edtEmail.text.toString())
 
     companion object {
-        fun newInstance() = EmailFragment()
-       }
-
-}
+        fun newInstance(contextActivity:FragmentActivity) = EmailFragment(contextActivity)
+    }
 

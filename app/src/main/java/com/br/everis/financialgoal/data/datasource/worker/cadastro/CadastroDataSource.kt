@@ -6,8 +6,7 @@ import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelR
 interface CadastroDataSource {
 
     fun cadastroDataSource(
-        Success:(success: CadastroModelResponse?) -> Unit,
-        Error:(error: CadastroModelResponse?) -> Unit,
+        cadastroResultCallback: (result: CadastroResult) -> Unit,
         cadastro:CadastroModelRequest
     )
 }

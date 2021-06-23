@@ -11,15 +11,23 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
+import com.br.everis.financialgoal.utils.DialogAlert
+import com.br.everis.financialgoal.utils.FieldValidator
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
 import com.br.everis.financialgoal.ui.loggedOut.LoggedOutActivity
-import com.br.everis.financialgoal.utils.DialogAlert
-import com.br.everis.financialgoal.utils.FieldValidator
+import com.br.everis.financialgoal.utils.cadastro.ChangeFragment.navigationFragment
+import com.br.everis.financialgoal.utils.cadastro.setToastMessage.setMessage
 import com.br.everis.financialgoal.viewmodel.cadastro.CadastroViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SenhaFragment : Fragment() {
+
+class SenhaFragment(
+        private val cadastro:CadastroModelRequest?,
+        private val contextActivity: FragmentActivity
+        ) : Fragment() {
 
     private lateinit var edtSenha: EditText
     private lateinit var btnCriarConta: Button
@@ -29,12 +37,6 @@ class SenhaFragment : Fragment() {
     private lateinit var title: String
     private lateinit var text: String
     private lateinit var positive_button: String
-
-    private val mockCadastro: CadastroModelRequest = CadastroModelRequest(
-        "android06@gmail.com",
-        "12345678",
-        "android06"
-    )
 
     private val cadastroViewModel: CadastroViewModel by viewModel()
 
@@ -63,11 +65,14 @@ class SenhaFragment : Fragment() {
 
         btnCriarConta.setOnClickListener {
 
+          val cadastroObject = CadastroModelRequest(cadastro?.username, edtSenha.text.toString(), cadastro?.nickname)
+            cadastroViewModel.initialize(cadastroObject)
+            cadastroViewModel.response.observe(viewLifecycleOwner){
+          
             if (validator()) {
-                cadastroViewModel.init(mockCadastro)
-                cadastroViewModel.response.observe(viewLifecycleOwner) {
-                    Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(activity, LoggedOutActivity::class.java))
+                setMessage(context,it.message)
+                    requireActivity().finish()
+                    startActivity(Intent(activity,LoggedOutActivity::class.java))
                 }
             } else {
                 dialogAlert.onAlertDialog(it, title, text, positive_button)
@@ -75,12 +80,11 @@ class SenhaFragment : Fragment() {
         }
 
             btnBackNavBar.setOnClickListener {
-                parentFragmentManager.beginTransaction().apply {
-                    replace(R.id.fragment, NomeFragment.newInstance())
-                    addToBackStack(null)
-                    commit()
+               navigationFragment(contextActivity,"nome",cadastro)
                 }
             }
+        }
+
     }
 
     private fun setView(view: View) {
@@ -92,6 +96,9 @@ class SenhaFragment : Fragment() {
     private fun validator() : Boolean = fieldValidator.isValidPassword(edtSenha.text.toString())
 
     companion object {
-        fun newInstance() = SenhaFragment()
-      }
+        fun newInstance(
+                cadastroObject:CadastroModelRequest?,
+                contextActivity: FragmentActivity
+        ) = SenhaFragment(cadastroObject,contextActivity)
+    }
 }
