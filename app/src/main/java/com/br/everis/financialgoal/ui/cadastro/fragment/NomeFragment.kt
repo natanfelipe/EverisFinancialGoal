@@ -6,13 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
+import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
+import com.br.everis.financialgoal.utils.cadastro.ChangeFragment.navigationFragment
+import java.util.*
 
-class NomeFragment : Fragment() {
+class NomeFragment(
+        private val cadastroObjectNome:CadastroModelRequest?,
+        private val contextActivity: FragmentActivity
+        ) : Fragment() {
 
     private lateinit var btnContinuarNome:Button
     private lateinit var btnBackNavBar: AppCompatImageView
+    private lateinit var edtNome:EditText
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,27 +39,24 @@ class NomeFragment : Fragment() {
 
     private fun setClick() {
         btnContinuarNome.setOnClickListener {
-            parentFragmentManager.beginTransaction().apply {
-                replace(R.id.fragment,SenhaFragment.newInstance())
-                addToBackStack(null)
-                commit()
-            }
+            val cadastroObject = CadastroModelRequest(username = cadastroObjectNome?.username,nickname = edtNome.text.toString())
+            navigationFragment(contextActivity, "senha", cadastroObject)
         }
         btnBackNavBar.setOnClickListener {
-            parentFragmentManager.beginTransaction().apply {
-                replace(R.id.fragment,EmailFragment.newInstance())
-                addToBackStack(null)
-                commit()
-            }
+            navigationFragment(contextActivity,"email",null)
         }
     }
 
     private fun setView(view: View) {
         btnContinuarNome = view.findViewById(R.id.btn_cadastro_nome)
         btnBackNavBar = view.findViewById(R.id.btn_back_cadastro)
+        edtNome = view.findViewById(R.id.edt_nome)
     }
 
     companion object {
-        fun newInstance() = NomeFragment()
+        fun newInstance(
+                cadastroObject: CadastroModelRequest?,
+                contextActivity: FragmentActivity
+        ) = NomeFragment(cadastroObject,contextActivity)
     }
 }

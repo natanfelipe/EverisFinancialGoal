@@ -6,13 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
+import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
+import com.br.everis.financialgoal.utils.cadastro.ChangeFragment.navigationFragment
 
-class EmailFragment : Fragment() {
+class EmailFragment(private val contextActivity: FragmentActivity) : Fragment() {
 
     private lateinit var btnContinuar:Button
     private lateinit var btnBackNavBar:AppCompatImageView
+    private lateinit var edtEmail:EditText
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,11 +34,7 @@ class EmailFragment : Fragment() {
 
     private fun setClick() {
         btnContinuar.setOnClickListener {
-            parentFragmentManager.beginTransaction().apply {
-                replace(R.id.fragment,NomeFragment.newInstance())
-                addToBackStack(null)
-                commit()
-            }
+            navigationFragment(contextActivity,"nome",CadastroModelRequest(edtEmail.text.toString()))
         }
         btnBackNavBar.setOnClickListener {
             activity?.finish()
@@ -43,11 +44,11 @@ class EmailFragment : Fragment() {
     private fun setView(view: View) {
         btnContinuar = view.findViewById(R.id.btn_cadastro_email)
         btnBackNavBar = view.findViewById(R.id.btn_back_cadastro)
-
+        edtEmail = view.findViewById(R.id.edt_email)
     }
 
     companion object {
-        fun newInstance() = EmailFragment()
+        fun newInstance(contextActivity:FragmentActivity) = EmailFragment(contextActivity)
     }
 
 }
