@@ -1,11 +1,12 @@
 package com.br.everis.financialgoal.data.datasource.service
 
+import com.br.everis.financialgoal.BuildConfig
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class ImpApiService {
     companion object{
-        const val BASE_URL = "https://zdktzx1nbi.execute-api.sa-east-1.amazonaws.com"
+        const val BASE_URL = BuildConfig.BASE_URL
     }
 
     private fun provider(): Retrofit = Retrofit.Builder()
@@ -13,5 +14,5 @@ class ImpApiService {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    fun cadastro() :ApiService = provider().create(ApiService::class.java)
+    fun requestAPI() :ApiService = provider().create(ApiService::class.java)
 }
