@@ -26,6 +26,9 @@ class SenhaFragment : Fragment() {
     private lateinit var btnBackNavBar: AppCompatImageView
     private lateinit var dialogAlert: DialogAlert
     private lateinit var fieldValidator: FieldValidator
+    private lateinit var TITLE: String
+    private lateinit var TEXT: String
+    private lateinit var POSITIVE_BUTTON: String
 
     private val mockCadastro: CadastroModelRequest = CadastroModelRequest(
         "android06@gmail.com",
@@ -46,6 +49,10 @@ class SenhaFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val activity = activity as Context
 
+        TITLE = view.context.getString(R.string.password_alert_title)
+        TEXT = view.context.getString(R.string.password_alert_text)
+        POSITIVE_BUTTON = view.context.getString(R.string.positive_button)
+
         fieldValidator = FieldValidator()
         dialogAlert = DialogAlert()
         setView(view)
@@ -63,7 +70,7 @@ class SenhaFragment : Fragment() {
                     startActivity(Intent(activity, LoggedOutActivity::class.java))
                 }
             } else {
-                dialogAlert.onAlertDialog(it, TITLE, TEXT)
+                dialogAlert.onAlertDialog(it, TITLE, TEXT, POSITIVE_BUTTON)
             }
         }
 
@@ -86,7 +93,5 @@ class SenhaFragment : Fragment() {
 
     companion object {
         fun newInstance() = SenhaFragment()
-        const val TITLE = "Senha inválida"
-        const val TEXT = "a senha deve ter pelo menos 8 dígitos"
-    }
+      }
 }

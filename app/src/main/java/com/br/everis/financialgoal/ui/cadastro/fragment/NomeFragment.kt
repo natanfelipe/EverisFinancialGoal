@@ -19,6 +19,9 @@ class NomeFragment : Fragment() {
     private lateinit var btnBackNavBar: AppCompatImageView
     private lateinit var dialogAlert: DialogAlert
     private lateinit var fieldValidator: FieldValidator
+    private lateinit var TITLE: String
+    private lateinit var TEXT: String
+    private lateinit var POSITIVE_BUTTON: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +32,10 @@ class NomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        TITLE = view.context.getString(R.string.nameOrNickname_alert_title)
+        TEXT = view.context.getString(R.string.nameOrNickname_alert_text)
+        POSITIVE_BUTTON = view.context.getString(R.string.positive_button)
 
         fieldValidator = FieldValidator()
         dialogAlert = DialogAlert()
@@ -47,7 +54,7 @@ class NomeFragment : Fragment() {
                     commit()
                 }
             } else {
-                dialogAlert.onAlertDialog(it, TITLE, TEXT)
+                dialogAlert.onAlertDialog(it, TITLE, TEXT, POSITIVE_BUTTON)
             }
         }
             btnBackNavBar.setOnClickListener {
@@ -69,7 +76,5 @@ class NomeFragment : Fragment() {
 
     companion object {
         fun newInstance() = NomeFragment()
-        const val TITLE = "Nome/Apelido inválido"
-        const val TEXT = "O nome/apelido deve ter pelo menos 1 carácter"
-    }
+       }
 }

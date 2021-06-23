@@ -19,6 +19,9 @@ class EmailFragment : Fragment() {
     private lateinit var btnBackNavBar:AppCompatImageView
     private lateinit var dialogAlert: DialogAlert
     private lateinit var fieldValidator: FieldValidator
+    private lateinit var TITLE: String
+    private lateinit var TEXT: String
+    private lateinit var POSITIVE_BUTTON: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +33,11 @@ class EmailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        TITLE = view.context.getString(R.string.email_alert_title)
+        TEXT = view.context.getString(R.string.email_alert_text)
+        POSITIVE_BUTTON = view.context.getString(R.string.positive_button)
+
         dialogAlert = DialogAlert()
         fieldValidator = FieldValidator()
         setView(view)
@@ -47,7 +55,7 @@ class EmailFragment : Fragment() {
                     commit()
                 }
             } else {
-                dialogAlert.onAlertDialog(it, TITLE, TEXT)
+                dialogAlert.onAlertDialog(it, TITLE, TEXT, POSITIVE_BUTTON)
             }
         }
 
@@ -66,9 +74,7 @@ class EmailFragment : Fragment() {
 
     companion object {
         fun newInstance() = EmailFragment()
-        const val TITLE = "E-mail inválido"
-        const val TEXT = "forneça um endereço de e-mail válido"
-    }
+       }
 
 }
 
