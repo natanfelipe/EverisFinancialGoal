@@ -18,8 +18,8 @@ import com.br.everis.financialgoal.utils.cadastro.ChangeFragment.navigationFragm
 class EmailFragment(private val contextActivity: FragmentActivity) : Fragment() {
 
     private lateinit var edtEmail: EditText
-    private lateinit var btnContinuar:Button
-    private lateinit var btnBackNavBar:AppCompatImageView
+    private lateinit var btnContinuar: Button
+    private lateinit var btnBackNavBar: AppCompatImageView
     private lateinit var dialogAlert: DialogAlert
     private lateinit var fieldValidator: FieldValidator
     private lateinit var title: String
@@ -50,27 +50,33 @@ class EmailFragment(private val contextActivity: FragmentActivity) : Fragment() 
     private fun setClick() {
 
         btnContinuar.setOnClickListener {
-            if(validator()){
-                navigationFragment(contextActivity,"nome",CadastroModelRequest(edtEmail.text.toString()))
-                }
+
+            if (validator()) {
+                navigationFragment(
+                    contextActivity,
+                    "nome",
+                    CadastroModelRequest(edtEmail.text.toString())
+                )
             } else {
                 dialogAlert.onAlertDialog(it, title, text, positive_button)
             }
 
-        btnBackNavBar.setOnClickListener {
-            requireActivity().finish()
+            btnBackNavBar.setOnClickListener {
+                requireActivity().finish()
+            }
         }
     }
 
-    private fun setView(view: View) {
-        btnContinuar = view.findViewById(R.id.btn_cadastro_email)
-        btnBackNavBar = view.findViewById(R.id.btn_back_cadastro)
-        edtEmail = view.findViewById(R.id.edt_email)
+        private fun setView(view: View) {
+            btnContinuar = view.findViewById(R.id.btn_cadastro_email)
+            btnBackNavBar = view.findViewById(R.id.btn_back_cadastro)
+            edtEmail = view.findViewById(R.id.edt_email)
+        }
+
+        private fun validator(): Boolean = fieldValidator.isValidEmail(edtEmail.text.toString())
+
+        companion object {
+            fun newInstance(contextActivity: FragmentActivity) = EmailFragment(contextActivity)
+        }
+
     }
-
-    private fun validator() : Boolean = fieldValidator.isValidEmail(edtEmail.text.toString())
-
-    companion object {
-        fun newInstance(contextActivity:FragmentActivity) = EmailFragment(contextActivity)
-    }
-

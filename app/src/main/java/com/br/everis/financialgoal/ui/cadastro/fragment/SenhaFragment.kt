@@ -9,11 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import com.br.everis.financialgoal.utils.DialogAlert
 import com.br.everis.financialgoal.utils.FieldValidator
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
@@ -68,14 +66,14 @@ class SenhaFragment(
           val cadastroObject = CadastroModelRequest(cadastro?.username, edtSenha.text.toString(), cadastro?.nickname)
             cadastroViewModel.initialize(cadastroObject)
             cadastroViewModel.response.observe(viewLifecycleOwner){
-          
+
             if (validator()) {
                 setMessage(context,it.message)
                     requireActivity().finish()
                     startActivity(Intent(activity,LoggedOutActivity::class.java))
-                }
+
             } else {
-                dialogAlert.onAlertDialog(it, title, text, positive_button)
+                view?.let { it1 -> dialogAlert.onAlertDialog(it1, title, text, positive_button) }
             }
         }
 
@@ -84,8 +82,6 @@ class SenhaFragment(
                 }
             }
         }
-
-    }
 
     private fun setView(view: View) {
         btnCriarConta = view.findViewById(R.id.btn_cadastro_senha)

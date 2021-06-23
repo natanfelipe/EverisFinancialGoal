@@ -14,7 +14,6 @@ import com.br.everis.financialgoal.utils.DialogAlert
 import com.br.everis.financialgoal.utils.FieldValidator
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
 import com.br.everis.financialgoal.utils.cadastro.ChangeFragment.navigationFragment
-import java.util.*
 
 class NomeFragment(
         private val cadastroObjectNome:CadastroModelRequest?,
@@ -58,7 +57,7 @@ class NomeFragment(
             if (validator()) {
                 val cadastroObject = CadastroModelRequest(username = cadastroObjectNome?.username,nickname = edtNome.text.toString())
             navigationFragment(contextActivity, "senha", cadastroObject)
-                }
+
             } else {
                 dialogAlert.onAlertDialog(it, title, text, positive_button)
             }
@@ -67,8 +66,6 @@ class NomeFragment(
                 navigationFragment(contextActivity,"email",null)
                 }
             }
-
-    }
 
     private fun setView(view: View) {
         btnContinuarNome = view.findViewById(R.id.btn_cadastro_nome)
