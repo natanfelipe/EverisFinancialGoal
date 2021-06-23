@@ -25,7 +25,7 @@ class ImpLoginDataSource(
         login: LoginModelRequest
     ) {
         coroutineScope.launch {
-            withContext(Dispatchers.IO){
+
                 val request = apiService.requestAPI().loginRequest(login).clone().execute()
                  if(request.code()==200){
                         loginResultCallback(LoginResult.RequestLoginSucess(
@@ -37,7 +37,7 @@ class ImpLoginDataSource(
                         val response = gson.fromJson(request.errorBody()?.charStream(), LoginModelResponse::class.java)
                         loginResultCallback(LoginResult.RequestLoginError(response))
                 }
-            }
+
         }
     }
 }
