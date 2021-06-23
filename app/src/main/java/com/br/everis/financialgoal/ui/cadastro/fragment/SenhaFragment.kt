@@ -26,9 +26,9 @@ class SenhaFragment : Fragment() {
     private lateinit var btnBackNavBar: AppCompatImageView
     private lateinit var dialogAlert: DialogAlert
     private lateinit var fieldValidator: FieldValidator
-    private lateinit var TITLE: String
-    private lateinit var TEXT: String
-    private lateinit var POSITIVE_BUTTON: String
+    private lateinit var title: String
+    private lateinit var text: String
+    private lateinit var positive_button: String
 
     private val mockCadastro: CadastroModelRequest = CadastroModelRequest(
         "android06@gmail.com",
@@ -49,9 +49,9 @@ class SenhaFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val activity = activity as Context
 
-        TITLE = view.context.getString(R.string.password_alert_title)
-        TEXT = view.context.getString(R.string.password_alert_text)
-        POSITIVE_BUTTON = view.context.getString(R.string.positive_button)
+        title = view.context.getString(R.string.password_alert_title)
+        text = view.context.getString(R.string.password_alert_text)
+        positive_button = view.context.getString(R.string.positive_button)
 
         fieldValidator = FieldValidator()
         dialogAlert = DialogAlert()
@@ -70,7 +70,7 @@ class SenhaFragment : Fragment() {
                     startActivity(Intent(activity, LoggedOutActivity::class.java))
                 }
             } else {
-                dialogAlert.onAlertDialog(it, TITLE, TEXT, POSITIVE_BUTTON)
+                dialogAlert.onAlertDialog(it, title, text, positive_button)
             }
         }
 

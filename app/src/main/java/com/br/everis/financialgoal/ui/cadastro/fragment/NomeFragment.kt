@@ -19,9 +19,9 @@ class NomeFragment : Fragment() {
     private lateinit var btnBackNavBar: AppCompatImageView
     private lateinit var dialogAlert: DialogAlert
     private lateinit var fieldValidator: FieldValidator
-    private lateinit var TITLE: String
-    private lateinit var TEXT: String
-    private lateinit var POSITIVE_BUTTON: String
+    private lateinit var title: String
+    private lateinit var text: String
+    private lateinit var positive_button: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,9 +33,9 @@ class NomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        TITLE = view.context.getString(R.string.nameOrNickname_alert_title)
-        TEXT = view.context.getString(R.string.nameOrNickname_alert_text)
-        POSITIVE_BUTTON = view.context.getString(R.string.positive_button)
+        title = view.context.getString(R.string.nameOrNickname_alert_title)
+        text = view.context.getString(R.string.nameOrNickname_alert_text)
+        positive_button = view.context.getString(R.string.positive_button)
 
         fieldValidator = FieldValidator()
         dialogAlert = DialogAlert()
@@ -54,7 +54,7 @@ class NomeFragment : Fragment() {
                     commit()
                 }
             } else {
-                dialogAlert.onAlertDialog(it, TITLE, TEXT, POSITIVE_BUTTON)
+                dialogAlert.onAlertDialog(it, title, text, positive_button)
             }
         }
             btnBackNavBar.setOnClickListener {

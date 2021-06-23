@@ -24,10 +24,6 @@ class DialogAlert {
             .create()
         alertDialog.show()
         alertDialog.getButton(AlertDialog.BUTTON_POSITIVE)
-            .setTextColor(Color.parseColor(
-                "#"+Integer.toHexString(
-                    ContextCompat.getColor(
-                        view.context, R.color.positive_button))))
+            .setTextColor(Color.parseColor(DialogSetColor().setColor(view)))
     }
-
 }
