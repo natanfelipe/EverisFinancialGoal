@@ -54,7 +54,7 @@ class SenhaFragment(
                     setMessage(context,it.message)
                     requireActivity().finish()
                     startActivity(Intent(activity,LoggedOutActivity::class.java))
-                }else if(!it.res){
+                }else{
                     setMessage(context,it.message)
                 }
             }
