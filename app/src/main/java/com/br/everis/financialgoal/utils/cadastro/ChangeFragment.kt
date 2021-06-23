@@ -18,14 +18,14 @@ object ChangeFragment {
         lateinit var fragmentNav: Fragment
 
         when(fragment){
-            "email" -> {
+            CadastroEnum.email.toString() -> {
                 fragmentNav = EmailFragment.newInstance(context)
             }
-            "senha" -> {
+            CadastroEnum.senha.toString() -> {
                 fragmentNav = SenhaFragment.newInstance(cadastroObject,context)
             }
 
-            "nome" -> {
+            CadastroEnum.nome.toString() -> {
                 fragmentNav = NomeFragment.newInstance(cadastroObject, context)
             }
         }
