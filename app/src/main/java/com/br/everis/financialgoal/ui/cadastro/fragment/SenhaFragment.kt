@@ -21,7 +21,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class SenhaFragment(
-        private val cadastro:CadastroModelRequest,
+        private val cadastro:CadastroModelRequest?,
         private val contextActivity: FragmentActivity
         ) : Fragment() {
 
@@ -47,7 +47,7 @@ class SenhaFragment(
 
     private fun setClick(context: Context) {
         btnCriarConta.setOnClickListener {
-            val cadastroObject = CadastroModelRequest(cadastro.username, edtSenha.text.toString(), cadastro.nickname)
+            val cadastroObject = CadastroModelRequest(cadastro?.username, edtSenha.text.toString(), cadastro?.nickname)
             cadastroViewModel.initialize(cadastroObject)
             cadastroViewModel.response.observe(viewLifecycleOwner){
                 if (it.res){
@@ -73,7 +73,7 @@ class SenhaFragment(
 
     companion object {
         fun newInstance(
-                cadastroObject:CadastroModelRequest,
+                cadastroObject:CadastroModelRequest?,
                 contextActivity: FragmentActivity
         ) = SenhaFragment(cadastroObject,contextActivity)
     }

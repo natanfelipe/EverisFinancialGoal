@@ -34,7 +34,7 @@ class EmailFragment(private val contextActivity: FragmentActivity) : Fragment() 
 
     private fun setClick() {
         btnContinuar.setOnClickListener {
-            navigationFragment(contextActivity,"nome",CadastroModelRequest(edtEmail.text.toString(),null,null))
+            navigationFragment(contextActivity,"nome",CadastroModelRequest(edtEmail.text.toString()))
         }
         btnBackNavBar.setOnClickListener {
             activity?.finish()

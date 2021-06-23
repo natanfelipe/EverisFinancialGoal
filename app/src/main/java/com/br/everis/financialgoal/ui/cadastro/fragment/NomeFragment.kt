@@ -15,7 +15,7 @@ import com.br.everis.financialgoal.utils.cadastro.ChangeFragment.navigationFragm
 import java.util.*
 
 class NomeFragment(
-        private val cadastroObjectNome:CadastroModelRequest,
+        private val cadastroObjectNome:CadastroModelRequest?,
         private val contextActivity: FragmentActivity
         ) : Fragment() {
 
@@ -39,7 +39,7 @@ class NomeFragment(
 
     private fun setClick() {
         btnContinuarNome.setOnClickListener {
-            val cadastroObject = CadastroModelRequest(cadastroObjectNome.username,null,edtNome.text.toString())
+            val cadastroObject = CadastroModelRequest(username = cadastroObjectNome?.username,nickname = edtNome.text.toString())
             navigationFragment(contextActivity, "senha", cadastroObject)
         }
         btnBackNavBar.setOnClickListener {
@@ -55,7 +55,7 @@ class NomeFragment(
 
     companion object {
         fun newInstance(
-                cadastroObject: CadastroModelRequest,
+                cadastroObject: CadastroModelRequest?,
                 contextActivity: FragmentActivity
         ) = NomeFragment(cadastroObject,contextActivity)
     }
