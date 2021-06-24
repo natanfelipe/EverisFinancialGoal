@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoggedInActivity"
+    tools:context=".ui.loggedIn.LoggedInActivity"
     android:background="@color/green">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
