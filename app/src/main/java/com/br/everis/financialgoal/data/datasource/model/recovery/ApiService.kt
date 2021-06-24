@@ -1,4 +1,4 @@
-package com.br.everis.financialgoal.data.datasource.service
+package com.br.everis.financialgoal.data.datasource.model.recovery
 
 
 import com.br.everis.financialgoal.BuildConfig
@@ -12,7 +12,7 @@ import retrofit2.http.POST
 interface ApiService
 {
     @Headers("x-api-key: ${BuildConfig.API_KEY}")
-    @POST("/${BuildConfig.AMBIENTE}/usuarios")
-    fun cadastroRequest(@Body cadastroBody: CadastroModelRequest): Call<CadastroModelResponse>
+    @POST("/${BuildConfig.AMBIENTE}/recovery-password")
+    fun recoveryRequest(@Body cadastroBody: RecoveryModelRequest): Call<RecoveryModelRequest>
 
 }
