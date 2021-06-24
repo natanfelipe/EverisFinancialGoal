@@ -24,7 +24,7 @@ class EmailFragment(private val contextActivity: FragmentActivity) : Fragment() 
     private lateinit var fieldValidator: FieldValidator
     private lateinit var title: String
     private lateinit var text: String
-    private lateinit var positive_button: String
+    private lateinit var positiveButton: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +39,7 @@ class EmailFragment(private val contextActivity: FragmentActivity) : Fragment() 
 
         title = view.context.getString(R.string.email_alert_title)
         text = view.context.getString(R.string.email_alert_text)
-        positive_button = view.context.getString(R.string.positive_button)
+        positiveButton = view.context.getString(R.string.positive_button)
 
         dialogAlert = DialogAlert()
         fieldValidator = FieldValidator()
@@ -58,7 +58,7 @@ class EmailFragment(private val contextActivity: FragmentActivity) : Fragment() 
                     CadastroModelRequest(edtEmail.text.toString())
                 )
             } else {
-                dialogAlert.onAlertDialog(it, title, text, positive_button)
+                dialogAlert.onAlertDialog(it, title, text, positiveButton)
             }
 
             btnBackNavBar.setOnClickListener {

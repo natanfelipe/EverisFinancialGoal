@@ -34,7 +34,7 @@ class SenhaFragment(
     private lateinit var fieldValidator: FieldValidator
     private lateinit var title: String
     private lateinit var text: String
-    private lateinit var positive_button: String
+    private lateinit var positiveButton: String
 
     private val cadastroViewModel: CadastroViewModel by viewModel()
 
@@ -51,7 +51,7 @@ class SenhaFragment(
 
         title = view.context.getString(R.string.password_alert_title)
         text = view.context.getString(R.string.password_alert_text)
-        positive_button = view.context.getString(R.string.positive_button)
+        positiveButton = view.context.getString(R.string.positive_button)
 
         fieldValidator = FieldValidator()
         dialogAlert = DialogAlert()
@@ -73,7 +73,7 @@ class SenhaFragment(
                     startActivity(Intent(activity,LoggedOutActivity::class.java))
 
             } else {
-                view?.let { it1 -> dialogAlert.onAlertDialog(it1, title, text, positive_button) }
+                view?.let { it1 -> dialogAlert.onAlertDialog(it1, title, text, positiveButton) }
             }
         }
 

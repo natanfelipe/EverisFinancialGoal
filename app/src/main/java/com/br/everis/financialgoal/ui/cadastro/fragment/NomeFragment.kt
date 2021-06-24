@@ -27,7 +27,7 @@ class NomeFragment(
     private lateinit var fieldValidator: FieldValidator
     private lateinit var title: String
     private lateinit var text: String
-    private lateinit var positive_button: String
+    private lateinit var positiveButton: String
 
 
     override fun onCreateView(
@@ -42,7 +42,7 @@ class NomeFragment(
 
         title = view.context.getString(R.string.nameOrNickname_alert_title)
         text = view.context.getString(R.string.nameOrNickname_alert_text)
-        positive_button = view.context.getString(R.string.positive_button)
+        positiveButton = view.context.getString(R.string.positive_button)
 
         fieldValidator = FieldValidator()
         dialogAlert = DialogAlert()
@@ -59,7 +59,7 @@ class NomeFragment(
             navigationFragment(contextActivity, "senha", cadastroObject)
 
             } else {
-                dialogAlert.onAlertDialog(it, title, text, positive_button)
+                dialogAlert.onAlertDialog(it, title, text, positiveButton)
             }
         }
             btnBackNavBar.setOnClickListener {
