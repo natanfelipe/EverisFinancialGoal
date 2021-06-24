@@ -26,4 +26,14 @@
     <string name="hint_email_dialog">e-mail</string>
     <string name="txt_btn_ok_dialog">OK</string>
     <string name="txt_btn_cancelar_dialog">CANCELAR</string>
+
+    <!-- Textos AlertDialog -->
+    <string name="email_alert_title">E-mail inválido</string>
+    <string name="email_alert_text">forneça um endereço de e-mail válido</string>
+    <string name="nameOrNickname_alert_title">Nome/Apelido inválido</string>
+    <string name="nameOrNickname_alert_text">O nome/apelido deve ter pelo menos 1 carácter</string>
+    <string name="password_alert_title">Senha inválida</string>
+    <string name="password_alert_text">a senha deve ter pelo menos 8 dígitos</string>
+    <string name="positive_button">OK</string>
+
 </resources>

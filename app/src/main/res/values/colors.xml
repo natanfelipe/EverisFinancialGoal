@@ -17,5 +17,6 @@
     <color name="dark_grey">#969696</color>
     <color name="green">#4CAF50</color>
     <color name="frame_background">#802F2E33</color>
+    <color name="positive_button">#7b1fa2</color>
 
 </resources>

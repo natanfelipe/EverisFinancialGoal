@@ -9,11 +9,13 @@ import androidx.appcompat.widget.AppCompatImageView
 import com.br.everis.financialgoal.ui.loggedIn.LoggedInActivity
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.data.datasource.model.login.LoginModelRequest
-import com.br.everis.financialgoal.ui.login.fragment.MyFragment
+import com.br.everis.financialgoal.ui.login.fragment.ForgottenPasswordAlertDialog
+import com.br.everis.financialgoal.utils.DialogAlert
+import com.br.everis.financialgoal.utils.FieldValidator
 import com.br.everis.financialgoal.viewmodel.login.LoginViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class LoginActivity : AppCompatActivity(), View.OnClickListener{
+class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var btnLogin : Button
     private lateinit var textForgot : TextView
@@ -21,8 +23,15 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
     private lateinit var email : EditText
     private lateinit var senha : EditText
     private lateinit var frame : FrameLayout
+    private lateinit var fieldValidator: FieldValidator
+    private lateinit var dialogAlert: DialogAlert
+    private lateinit var btnOk:TextView
+    private lateinit var btnCancelar:TextView
+    private lateinit var title: String
+    private lateinit var text: String
+    private lateinit var positive_button: String
 
-    private val dialog = MyFragment()
+    private val dialog = ForgottenPasswordAlertDialog()
     val loginViewModel: LoginViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +41,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
         click()
     }
 
-    fun click(){
+    fun click() {
         btnLogin = findViewById(R.id.buttonLogin)
         textForgot = findViewById(R.id.textForgot)
         btnBackHome = findViewById(R.id.btnBackHome)
@@ -44,29 +53,40 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
 
     }
 
-
     fun login(){
         frame = findViewById(R.id.frame_laout)
         email = findViewById(R.id.userName)
         senha = findViewById(R.id.password)
 
-        if(email.text.toString() != "" && senha.text.toString() != ""){
-            frame.visibility = View.VISIBLE
-            val loginDados = LoginModelRequest(email.text.toString().toLowerCase(),senha.text.toString())
-            loginViewModel.init(loginDados)
-            loginViewModel.response.observe(this){
-                if(it.res){
-                    frame.visibility = View.GONE
-                    startActivity(Intent(this, LoggedInActivity::class.java))
-                }else{
-                    frame.visibility = View.GONE
-                    Toast.makeText(this,"Deu ruim!",Toast.LENGTH_SHORT).show()
-                }
-            }
-        }else{
-            Toast.makeText(this,"Preencha todos os campos!",Toast.LENGTH_SHORT).show()
-        }
+        title = getString(R.string.email_alert_title)
+        text = getString(R.string.email_alert_text)
+        positive_button = getString(R.string.positive_button)
 
+        fieldValidator = FieldValidator()
+
+        if (fieldValidator.isValidEmail(email.text.toString()) == true){
+            if(fieldValidator.isValidPassword(senha.text.toString())== true){
+
+                frame.visibility = View.VISIBLE
+                val loginDados = LoginModelRequest(email.text.toString().toLowerCase(),senha.text.toString())
+                loginViewModel.init(loginDados)
+                loginViewModel.response.observe(this){
+                    if(it.res == true){
+                        frame.visibility = View.GONE
+                        startActivity(Intent(this, LoggedInActivity::class.java))
+                    }else{
+                        frame.visibility = View.GONE
+                        Toast.makeText(this,"Deu ruim!",Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+            }else{
+                Toast.makeText(this,"Senha incorreta!",Toast.LENGTH_SHORT).show()
+            }
+
+            }else{
+            Toast.makeText(this,"E-mail incorreto!",Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onClick(v: View) {
@@ -83,4 +103,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
 
         }
     }
+
+
+
 }
