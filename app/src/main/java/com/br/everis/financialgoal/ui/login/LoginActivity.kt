@@ -1,6 +1,5 @@
 package com.br.everis.financialgoal.ui.login
 
-
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,14 +8,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import com.br.everis.financialgoal.R
-import com.br.everis.financialgoal.ui.login.fragment.MyFragment
+import com.br.everis.financialgoal.ui.login.fragment.ForgottenPasswordAlertDialog
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener{
 
     private lateinit var btnLogin : Button
     private lateinit var textForgot : TextView
     private lateinit var btnBackHome : AppCompatImageView
-    private val dialog = MyFragment()
+    private val dialog = ForgottenPasswordAlertDialog()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

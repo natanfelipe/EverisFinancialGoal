@@ -15,5 +15,6 @@
     <color name="grey">#F5F6FA</color>
     <color name="light_grey">#F6F6F6</color>
     <color name="dark_grey">#969696</color>
+    <color name="positive_button">#7b1fa2</color>
 
 </resources>

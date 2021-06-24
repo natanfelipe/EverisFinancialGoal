@@ -10,18 +10,25 @@ import android.widget.EditText
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
+import com.br.everis.financialgoal.utils.DialogAlert
+import com.br.everis.financialgoal.utils.FieldValidator
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
 import com.br.everis.financialgoal.utils.cadastro.ChangeFragment.navigationFragment
-import java.util.*
 
 class NomeFragment(
         private val cadastroObjectNome:CadastroModelRequest?,
         private val contextActivity: FragmentActivity
         ) : Fragment() {
 
+    private lateinit var edtNome: EditText
     private lateinit var btnContinuarNome:Button
     private lateinit var btnBackNavBar: AppCompatImageView
-    private lateinit var edtNome:EditText
+    private lateinit var dialogAlert: DialogAlert
+    private lateinit var fieldValidator: FieldValidator
+    private lateinit var title: String
+    private lateinit var text: String
+    private lateinit var positiveButton: String
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,19 +40,32 @@ class NomeFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        title = view.context.getString(R.string.nameOrNickname_alert_title)
+        text = view.context.getString(R.string.nameOrNickname_alert_text)
+        positiveButton = view.context.getString(R.string.positive_button)
+
+        fieldValidator = FieldValidator()
+        dialogAlert = DialogAlert()
         setView(view)
         setClick()
     }
 
     private fun setClick() {
+
         btnContinuarNome.setOnClickListener {
-            val cadastroObject = CadastroModelRequest(username = cadastroObjectNome?.username,nickname = edtNome.text.toString())
+
+            if (validator()) {
+                val cadastroObject = CadastroModelRequest(username = cadastroObjectNome?.username,nickname = edtNome.text.toString())
             navigationFragment(contextActivity, "senha", cadastroObject)
+
+            } else {
+                dialogAlert.onAlertDialog(it, title, text, positiveButton)
+            }
         }
-        btnBackNavBar.setOnClickListener {
-            navigationFragment(contextActivity,"email",null)
-        }
-    }
+            btnBackNavBar.setOnClickListener {
+                navigationFragment(contextActivity,"email",null)
+                }
+            }
 
     private fun setView(view: View) {
         btnContinuarNome = view.findViewById(R.id.btn_cadastro_nome)
@@ -53,7 +73,10 @@ class NomeFragment(
         edtNome = view.findViewById(R.id.edt_nome)
     }
 
+    private fun validator() : Boolean = fieldValidator.isValidNameOrNickame(edtNome.text.toString())
+
     companion object {
+
         fun newInstance(
                 cadastroObject: CadastroModelRequest?,
                 contextActivity: FragmentActivity
