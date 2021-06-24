@@ -24,6 +24,7 @@ android {
         all{
             buildConfigField "String", "API_KEY", "\"" + localProperties.getProperty("baseApi") + "\""
             buildConfigField "String", "AMBIENTE", "\"" + localProperties.getProperty("ambiente") + "\""
+            buildConfigField "String", "BASE_URL", "\"" + localProperties.getProperty("baseUrl") + "\""
         }
 
         release {
@@ -62,6 +63,10 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.+'
+
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
+    testImplementation 'android.arch.core:core-testing:1.1.1'
+    
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }

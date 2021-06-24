@@ -1,4 +1,3 @@
-
 package com.br.everis.financialgoal.utils
 
 import android.view.View
@@ -11,6 +10,4 @@ class DialogSetColor {
         "#" + Integer.toHexString(
             ContextCompat.getColor(view.context, R.color.positive_button)
         )
-
-
 }

@@ -13,13 +13,13 @@ import org.koin.dsl.module
 val mainModule = module {
     factory<ImpApiService> { ImpApiService() }
 
-    single<ImpCadastroDataSource> {
+    factory<ImpCadastroDataSource> {
         ImpCadastroDataSource(
             apiService = get()
         )
     }
 
-    single<ImpCadastroRepository> {
+    factory<ImpCadastroRepository> {
         ImpCadastroRepository(
             dataSource = get()
         )

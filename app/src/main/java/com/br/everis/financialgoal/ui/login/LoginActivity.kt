@@ -100,10 +100,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btnBackHome ->{
                 finish()
             }
-
         }
     }
-
-
-
 }

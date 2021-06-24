@@ -13,7 +13,7 @@ import retrofit2.http.POST
 interface ApiService
 {
     @Headers("x-api-key: ${BuildConfig.API_KEY}")
-    @POST("${BuildConfig.AMBIENTE}/usuarios")
+    @POST("/${BuildConfig.AMBIENTE}/usuarios")
     fun cadastroRequest(@Body cadastroBody: CadastroModelRequest): Call<CadastroModelResponse>
 
     @Headers("x-api-key: ${BuildConfig.API_KEY}")
