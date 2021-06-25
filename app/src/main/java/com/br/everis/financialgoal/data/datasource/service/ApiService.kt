@@ -1,6 +1,9 @@
 package com.br.everis.financialgoal.data.datasource.service
 
+
 import com.br.everis.financialgoal.BuildConfig
+import com.br.everis.financialgoal.data.datarecoverysource.model.RecoveryModelRequest
+import com.br.everis.financialgoal.data.datarecoverysource.model.RecoveryModelResponse
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelResponse
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
 import retrofit2.Call
@@ -14,4 +17,7 @@ interface ApiService
     @POST("/${BuildConfig.AMBIENTE}/usuarios")
     fun cadastroRequest(@Body cadastroBody: CadastroModelRequest): Call<CadastroModelResponse>
 
+    @Headers("x-api-key: ${BuildConfig.API_KEY}")
+    @POST("/${BuildConfig.AMBIENTE}/recovery-password")
+    fun recoveryRequest(@Body recoveryBody: RecoveryModelRequest): Call<RecoveryModelResponse>
 }

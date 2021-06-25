@@ -8,8 +8,11 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import com.br.everis.financialgoal.R
+import com.br.everis.financialgoal.data.datarecoverysource.model.RecoveryModelRequest
 import com.br.everis.financialgoal.utils.DialogAlert
 import com.br.everis.financialgoal.utils.FieldValidator
+import com.br.everis.financialgoal.viewmodel.recovery.RecoveryViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ForgottenPasswordAlertDialog : DialogFragment() {
 
@@ -21,6 +24,7 @@ class ForgottenPasswordAlertDialog : DialogFragment() {
     private lateinit var title: String
     private lateinit var text: String
     private lateinit var positiveButton: String
+    private val recoveryViewModel: RecoveryViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,7 +51,8 @@ class ForgottenPasswordAlertDialog : DialogFragment() {
     private fun setClick() {
         btnOk.setOnClickListener {
             if (validator()) {
-                dismiss()
+                val email = email.text.toString()
+                setViewModel(email,it)
             } else {
                 dialogAlert.onAlertDialog(it, title, text, positiveButton)
             }
@@ -57,7 +62,19 @@ class ForgottenPasswordAlertDialog : DialogFragment() {
             dismiss()
         }
     }
-
+    private fun setViewModel(email:String,view: View) {
+        val recoveryModelRequest = RecoveryModelRequest(
+            username = email
+        )
+        recoveryViewModel.initialize(recoveryModelRequest)
+        recoveryViewModel.response.observe(viewLifecycleOwner){
+            if (it.res){
+                dialog?.cancel()
+            }else{
+                dialogAlert.onAlertDialog(view, title, it.message, positiveButton)
+            }
+        }
+    }
     private fun validator(): Boolean = fieldValidator.isValidEmail(email.text.toString())
 
 }
