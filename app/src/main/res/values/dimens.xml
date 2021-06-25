@@ -10,7 +10,8 @@
     <dimen name="marginBox">15dp</dimen>
     <dimen name="buttonLogin">60dp</dimen>
     <dimen name="textButtonSize">15sp</dimen>
-    <dimen name="elevation">4dp</dimen>
+    <dimen name="elevation">2dp</dimen>
+    <dimen name="elevetionLoginFrameLoading">3dp</dimen>
     <dimen name="radius">15dp</dimen>
     <dimen name="topEdit">1dp</dimen>
     <dimen name="paddingText">20dp</dimen>

@@ -30,8 +30,8 @@ class ImpLoginDataSource(
                  if(request.code()==200){
                         loginResultCallback(LoginResult.RequestLoginSucess(
                             LoginModelResponse(
-                                message = "Login ok!",
-                                res = true)))
+                                request.message(),
+                                request.isSuccessful)))
                     }else{
                         val gson = Gson()
                         val response = gson.fromJson(request.errorBody()?.charStream(), LoginModelResponse::class.java)
