@@ -60,10 +60,10 @@ class EmailFragment(private val contextActivity: FragmentActivity) : Fragment() 
             } else {
                 dialogAlert.onAlertDialog(it, title, text, positiveButton)
             }
+        }
 
-            btnBackNavBar.setOnClickListener {
-                requireActivity().finish()
-            }
+        btnBackNavBar.setOnClickListener {
+            requireActivity().finish()
         }
     }
 
