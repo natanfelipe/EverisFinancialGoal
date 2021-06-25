@@ -19,5 +19,5 @@ interface ApiService
 
     @Headers("x-api-key: ${BuildConfig.API_KEY}")
     @POST("/${BuildConfig.AMBIENTE}/recovery-password")
-    fun recoveryRequest(@Body cadastroBody: RecoveryModelRequest): Call<RecoveryModelResponse>
+    fun recoveryRequest(@Body recoveryBody: RecoveryModelRequest): Call<RecoveryModelResponse>
 }
