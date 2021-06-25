@@ -54,6 +54,7 @@ class ForgottenPasswordAlertDialog : DialogFragment() {
                 val email = email.text.toString()
                 setViewModel(email,it)
             } else {
+                dialog?.dismiss()
                 dialogAlert.onAlertDialog(it, title, text, positiveButton)
             }
         }

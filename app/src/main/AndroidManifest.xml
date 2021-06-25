@@ -16,11 +16,13 @@
         <activity android:name=".ui.login.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.EverisFinancialGoal"
+            android:windowSoftInputMode="adjustPan"
             tools:ignore="AllowBackup"/>
         <activity android:name=".ui.cadastro.CadastroActivity"
-            android:windowSoftInputMode="adjustResize"
+            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait" />
         <activity android:name=".ui.loggedOut.LoggedOutActivity"
+            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
