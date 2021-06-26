@@ -21,7 +21,6 @@ import com.br.everis.financialgoal.utils.cadastro.setToastMessage.setMessage
 import com.br.everis.financialgoal.viewmodel.cadastro.CadastroViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 class SenhaFragment(
         private val cadastro:CadastroModelRequest?,
         private val contextActivity: FragmentActivity
@@ -63,24 +62,29 @@ class SenhaFragment(
 
         btnCriarConta.setOnClickListener {
 
-          val cadastroObject = CadastroModelRequest(cadastro?.username, edtSenha.text.toString(), cadastro?.nickname)
+            if (validator(edtSenha.text.toString())) {
+
+            val cadastroObject = CadastroModelRequest(
+                cadastro?.username,
+                edtSenha.text.toString(),
+                cadastro?.nickname
+            )
             cadastroViewModel.initialize(cadastroObject)
-            cadastroViewModel.response.observe(viewLifecycleOwner){
+            cadastroViewModel.response.observe(viewLifecycleOwner) {
 
-            if (validator()) {
-                setMessage(context,it.message)
+                    setMessage(context, it.message)
                     requireActivity().finish()
-                    startActivity(Intent(activity,LoggedOutActivity::class.java))
+                    startActivity(Intent(activity, LoggedOutActivity::class.java))
 
+                }
             } else {
                 view?.let { it1 -> dialogAlert.onAlertDialog(it1, title, text, positiveButton) }
             }
         }
 
-            btnBackNavBar.setOnClickListener {
-               navigationFragment(contextActivity,"nome",cadastro)
-                }
-            }
+        btnBackNavBar.setOnClickListener {
+            navigationFragment(contextActivity,"nome",cadastro)
+        }
         }
 
     private fun setView(view: View) {
@@ -89,7 +93,7 @@ class SenhaFragment(
         edtSenha = view.findViewById(R.id.edt_senha)
     }
 
-    private fun validator() : Boolean = fieldValidator.isValidPassword(edtSenha.text.toString())
+    private fun validator(senha: String) : Boolean = fieldValidator.isValidPassword(senha)
 
     companion object {
         fun newInstance(
