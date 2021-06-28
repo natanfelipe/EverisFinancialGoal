@@ -14,7 +14,11 @@ class LoginViewModel(private val repository: ImpLoginRepository): ViewModel() {
 
     private var loginModelResponse = MutableLiveData<LoginModelResponse>()
     val response: LiveData<LoginModelResponse> get() = loginModelResponse
-
+    private lateinit var fieldValidator: FieldValidator
+    private var validatorLiveData = MutableLiveData<Boolean>()
+    val validaDados = validatorLiveData
+    private var validatorMessage = MutableLiveData<String>()
+    val messageValidator = validatorMessage
 
     fun init(login: LoginModelRequest) {
         getResponseApi(login)
@@ -32,6 +36,24 @@ class LoginViewModel(private val repository: ImpLoginRepository): ViewModel() {
             is LoginResult.RequestLoginError -> {
                 loginModelResponse.postValue(response.error)
             }
+        }
+    }
+    fun isValid(email:String, senha:String):Boolean{
+        fieldValidator = FieldValidator()
+
+
+        if(!fieldValidator.isValidEmail(email)){
+            messageValidator.postValue("Email incorreto!")
+            return false
+
+        }else if (!fieldValidator.isValidPassword(senha)){
+            messageValidator.postValue("Senha incorreta!")
+            return false
+
+        }else{
+            messageValidator.postValue("Tudo certo!")
+            return true
+
         }
     }
 }

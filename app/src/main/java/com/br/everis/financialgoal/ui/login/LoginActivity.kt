@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.br.everis.financialgoal.ui.loggedIn.LoggedInActivity
 import com.br.everis.financialgoal.R
@@ -28,9 +29,9 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
     private lateinit var email : EditText
     private lateinit var senha : EditText
     private lateinit var frame : FrameLayout
-    private lateinit var fieldValidator: FieldValidator
-    private lateinit var dialogAlert: DialogAlert
     private lateinit var title: String
+    private lateinit var message: String
+    private lateinit var fieldValidator: FieldValidator
 
 
     private val dialog = ForgottenPasswordAlertDialog()
@@ -40,8 +41,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        initViews()
         fieldValidator = FieldValidator()
+
+        initViews()
+
     }
 
     fun initViews() {
@@ -58,10 +61,24 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
         btnBackHome.setOnClickListener(this)
     }
 
-        fun login(view: View) {
+        fun login() {
 
-            if (validator(email.text.toString(),senha.text.toString())) {
-               frame.visibility = View.VISIBLE
+            if(loginViewModel.isValid(email.text.toString(),senha.text.toString())){
+
+                loginViewModel.messageValidator.observe(this, Observer {
+                        t -> message
+                    onAlertDialogLogin(message)
+                })
+
+
+            }else{
+                loginViewModel.messageValidator.observe(this, Observer {
+                        t -> message
+                    onAlertDialogLogin(message)
+                })
+            }
+
+            /*frame.visibility = View.VISIBLE
                 val loginDados =LoginModelRequest(email.text.toString().toLowerCase(), senha.text.toString())
                 loginViewModel.init(loginDados)
                 loginViewModel.response.observe(this) {
@@ -72,16 +89,14 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
                         frame.visibility = View.GONE
                         onAlertDialogLogin()
                     }
-                }
-            }else{
-                onAlertDialogLogin()
-            }
+                }*/
         }
 
     override fun onClick(v: View) {
         when(v.id){
             R.id.buttonLogin ->{
-              login(v)
+                login()
+
             }
             R.id.textForgot -> {
                 dialog.show(supportFragmentManager,"custom dialog")
@@ -92,11 +107,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
         }
     }
 
-    fun onAlertDialogLogin() {
-
+    fun onAlertDialogLogin(message:String) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Usuário inválido")
-        builder.setMessage("Login ou senha inválido")
+        builder.setMessage(message)
         builder.setPositiveButton("Ok"){dialog, which ->
             dialog.dismiss()
         }
@@ -104,13 +118,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
         val dialog: AlertDialog = builder.create()
         dialog.show()
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLUE)
+
+
     }
 
-    private fun validator(email:String, senha:String) :Boolean{
-       if(fieldValidator.isValidEmail(email) && fieldValidator.isValidPassword(senha)) {
-           return true
-       }else{
-           return false
-       }
-    }
+
+
+
 }
