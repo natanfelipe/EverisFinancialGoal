@@ -70,28 +70,26 @@ class SenhaFragment(
                 )
                 cadastroViewModel.initialize(cadastroObject)
                 cadastroViewModel.response.observe(viewLifecycleOwner) { response ->
-                        cadastroViewModel.responseCode.observe(viewLifecycleOwner) {
-                            if (it == "200") {
-                                setMessage(context, response.message)
-                                requireActivity().finish()
-                                startActivity(Intent(activity, LoggedOutActivity::class.java))
-                            } else if (it == "422") {
-                                setMessage(context, response.message)
-                                requireActivity().finish()
-                                startActivity(Intent(context, LoginActivity::class.java))
-                            } else {
-                                view?.let { it1 ->
-                                    dialogAlert.onAlertDialog(
-                                        it1,
-                                        title,
-                                        text,
-                                        positiveButton
-                                    )
-                                }
-                            }
+                    if (response.statusCode == 200) {
+                        setMessage(context, response.message)
+                        requireActivity().finish()
+                        startActivity(Intent(activity, LoggedOutActivity::class.java))
+                    } else if (response.statusCode == 422) {
+                        setMessage(context, response.message)
+                        requireActivity().finish()
+                        startActivity(Intent(context, LoginActivity::class.java))
+                    } else {
+                        view?.let { it1 ->
+                            dialogAlert.onAlertDialog(
+                                it1,
+                                title,
+                                text,
+                                positiveButton
+                            )
                         }
                     }
                 }
+            }
         }
 
         btnBackNavBar.setOnClickListener {
