@@ -1,6 +1,7 @@
 package com.br.everis.financialgoal.ui.loggedOut
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -35,6 +36,13 @@ class LoggedOutActivity : AppCompatActivity(), View.OnClickListener {
         R.drawable.logged_out_slide_2,
         R.drawable.logged_out_slide_3,
         R.drawable.logged_out_slide_4,
+    )
+
+    private var backgroundColors = intArrayOf(
+        R.color.slide1,
+        R.color.slide2,
+        R.color.slide3,
+        R.color.slide4
     )
 
     private var NUM_PAGES = images.size
@@ -74,6 +82,7 @@ class LoggedOutActivity : AppCompatActivity(), View.OnClickListener {
             if (currentPage == NUM_PAGES) {
                 currentPage = 0
             }
+            mViewPager.setBackgroundColor(resources.getColor(backgroundColors[currentPage]))
             mViewPager.setCurrentItem(currentPage++, true)
         }
         timer = Timer()
