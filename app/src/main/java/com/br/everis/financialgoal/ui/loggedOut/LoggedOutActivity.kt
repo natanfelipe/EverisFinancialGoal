@@ -12,6 +12,8 @@ import androidx.viewpager.widget.ViewPager
 import com.br.everis.financialgoal.ui.login.LoginActivity
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.ui.cadastro.CadastroActivity
+import com.br.everis.financialgoal.ui.home.HomeActivity
+import com.br.everis.financialgoal.utils.sessionManagment.SessionManagement
 import com.google.android.material.tabs.TabLayout
 import java.util.Timer
 import java.util.TimerTask
@@ -24,6 +26,8 @@ class LoggedOutActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var tabLayout: TabLayout
     private lateinit var btnOpenAccount: Button
     private lateinit var btnLogin: Button
+
+    private lateinit var sessionManager:SessionManagement
 
     companion object {
         const val DELAY_MS: Long = 500
@@ -45,9 +49,20 @@ class LoggedOutActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_logged_out)
 
+        getInfoSession()
+
         setView()
         setAdapter()
         click()
+    }
+
+    private fun getInfoSession() {
+        sessionManager = SessionManagement(this)
+        val infoSession = sessionManager.getInfoSession()
+
+        if (infoSession){
+            startActivity(Intent(this,HomeActivity::class.java))
+        }
     }
 
     private fun setView() {
