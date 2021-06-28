@@ -8,6 +8,8 @@
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPagerMain"
+        app:layout_constraintHeight_percent="0.56"
+        app:layout_constraintWidth_percent="1"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline_image"

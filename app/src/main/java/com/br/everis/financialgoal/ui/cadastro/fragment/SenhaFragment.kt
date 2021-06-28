@@ -35,6 +35,7 @@ class SenhaFragment(
     private lateinit var title: String
     private lateinit var text: String
     private lateinit var positiveButton: String
+    private lateinit var password: String
 
     private val cadastroViewModel: CadastroViewModel by viewModel()
 
@@ -62,6 +63,7 @@ class SenhaFragment(
     private fun setClick(context: Context) {
 
         btnCriarConta.setOnClickListener {
+
             if (validator(edtSenha.text.toString())) {
                 val cadastroObject = CadastroModelRequest(
                     cadastro?.username,
@@ -95,12 +97,14 @@ class SenhaFragment(
         btnBackNavBar.setOnClickListener {
             navigationFragment(contextActivity,"nome",cadastro)
         }
-    }
+        }
 
     private fun setView(view: View) {
         btnCriarConta = view.findViewById(R.id.btn_cadastro_senha)
         btnBackNavBar = view.findViewById(R.id.btn_back_cadastro)
         edtSenha = view.findViewById(R.id.edt_senha)
+
+        password = edtSenha.text.toString()
     }
 
     private fun validator(senha: String) : Boolean = fieldValidator.isValidPassword(senha)
