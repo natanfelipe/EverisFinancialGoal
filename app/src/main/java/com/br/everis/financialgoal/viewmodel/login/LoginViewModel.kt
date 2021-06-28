@@ -9,14 +9,11 @@ import com.br.everis.financialgoal.data.datasource.worker.login.LoginResult
 import com.br.everis.financialgoal.repository.cadastro.ImpLoginRepository
 import com.br.everis.financialgoal.utils.FieldValidator
 
-
 class LoginViewModel(private val repository: ImpLoginRepository): ViewModel() {
 
     private var loginModelResponse = MutableLiveData<LoginModelResponse>()
     val response: LiveData<LoginModelResponse> get() = loginModelResponse
     private lateinit var fieldValidator: FieldValidator
-    private var validatorLiveData = MutableLiveData<Boolean>()
-    val validaDados = validatorLiveData
     private var validatorMessage = MutableLiveData<String>()
     val messageValidator = validatorMessage
 
@@ -41,19 +38,15 @@ class LoginViewModel(private val repository: ImpLoginRepository): ViewModel() {
     fun isValid(email:String, senha:String):Boolean{
         fieldValidator = FieldValidator()
 
-
         if(!fieldValidator.isValidEmail(email)){
-            messageValidator.postValue("Email incorreto!")
+            messageValidator.value = "Email incorreto!"
             return false
-
         }else if (!fieldValidator.isValidPassword(senha)){
-            messageValidator.postValue("Senha incorreta!")
+            messageValidator.value = "Senha incorreta!"
             return false
-
         }else{
-            messageValidator.postValue("Tudo certo!")
+            messageValidator.value ="Tudo certo!"
             return true
-
         }
     }
 }
