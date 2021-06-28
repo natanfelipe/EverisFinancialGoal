@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
 import com.br.everis.financialgoal.ui.loggedOut.LoggedOutActivity
+import com.br.everis.financialgoal.ui.login.LoginActivity
 import com.br.everis.financialgoal.utils.cadastro.ChangeFragment.navigationFragment
 import com.br.everis.financialgoal.utils.cadastro.setToastMessage.setMessage
 import com.br.everis.financialgoal.viewmodel.cadastro.CadastroViewModel
@@ -64,22 +65,32 @@ class SenhaFragment(
         btnCriarConta.setOnClickListener {
 
             if (validator(edtSenha.text.toString())) {
-
-            val cadastroObject = CadastroModelRequest(
-                cadastro?.username,
-                edtSenha.text.toString(),
-                cadastro?.nickname
-            )
-            cadastroViewModel.initialize(cadastroObject)
-            cadastroViewModel.response.observe(viewLifecycleOwner) {
-
-                    setMessage(context, it.message)
-                    requireActivity().finish()
-                    startActivity(Intent(activity, LoggedOutActivity::class.java))
-
+                val cadastroObject = CadastroModelRequest(
+                    cadastro?.username,
+                    edtSenha.text.toString(),
+                    cadastro?.nickname
+                )
+                cadastroViewModel.initialize(cadastroObject)
+                cadastroViewModel.response.observe(viewLifecycleOwner) { response ->
+                    if (response.statusCode == 200) {
+                        setMessage(context, response.message)
+                        requireActivity().finish()
+                        startActivity(Intent(activity, LoggedOutActivity::class.java))
+                    } else if (response.statusCode == 422) {
+                        setMessage(context, response.message)
+                        requireActivity().finish()
+                        startActivity(Intent(context, LoginActivity::class.java))
+                    } else {
+                        view?.let { it1 ->
+                            dialogAlert.onAlertDialog(
+                                it1,
+                                title,
+                                text,
+                                positiveButton
+                            )
+                        }
+                    }
                 }
-            } else {
-                view?.let { it1 -> dialogAlert.onAlertDialog(it1, title, text, positiveButton) }
             }
         }
 

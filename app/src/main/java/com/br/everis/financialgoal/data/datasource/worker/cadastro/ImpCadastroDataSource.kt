@@ -10,8 +10,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 sealed class CadastroResult {
-    class RequestSuccess(val success: CadastroModelResponse?, val codeSuccess:String) : CadastroResult()
-    class RequestError(val error: CadastroModelResponse?, val codeError:String) : CadastroResult()
+    class RequestSuccess(val success: CadastroModelResponse?) : CadastroResult()
+    class RequestError(val error: CadastroModelResponse?) : CadastroResult()
 }
 
 class ImpCadastroDataSource(
@@ -28,13 +28,24 @@ class ImpCadastroDataSource(
             val request = apiService.requestAPI().cadastroRequest(cadastro).clone().execute()
             if (request.code() == 201){
                 cadastroResultCallback(CadastroResult.RequestSuccess(
-                        request.body(),
-                        request.code().toString()
+                    request.body()?.let {
+                        CadastroModelResponse(
+                            it.message,
+                            it.res,
+                            request.code()
+                        )
+                    }
                 ))
             }else {
                 val gson = Gson()
                 val response = gson.fromJson(request.errorBody()?.charStream(), CadastroModelResponse::class.java)
-                    cadastroResultCallback(CadastroResult.RequestError(response,request.code().toString()))
+                    cadastroResultCallback(CadastroResult.RequestError(
+                        CadastroModelResponse(
+                            response.message,
+                            response.res,
+                            request.code()
+                        )
+                    ))
             }
         }
     }
