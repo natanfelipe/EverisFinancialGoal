@@ -16,7 +16,6 @@ import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
 import com.br.everis.financialgoal.ui.loggedOut.LoggedOutActivity
-import com.br.everis.financialgoal.ui.login.LoginActivity
 import com.br.everis.financialgoal.utils.cadastro.ChangeFragment.navigationFragment
 import com.br.everis.financialgoal.utils.cadastro.setToastMessage.setMessage
 import com.br.everis.financialgoal.viewmodel.cadastro.CadastroViewModel
@@ -62,42 +61,31 @@ class SenhaFragment(
     private fun setClick(context: Context) {
 
         btnCriarConta.setOnClickListener {
+
             if (validator(edtSenha.text.toString())) {
-                val cadastroObject = CadastroModelRequest(
-                    cadastro?.username,
-                    edtSenha.text.toString(),
-                    cadastro?.nickname
-                )
-                cadastroViewModel.initialize(cadastroObject)
-                cadastroViewModel.response.observe(viewLifecycleOwner) { response ->
-                        cadastroViewModel.responseCode.observe(viewLifecycleOwner) {
-                            if (it == "200") {
-                                setMessage(context, response.message)
-                                requireActivity().finish()
-                                startActivity(Intent(activity, LoggedOutActivity::class.java))
-                            } else if (it == "422") {
-                                setMessage(context, response.message)
-                                requireActivity().finish()
-                                startActivity(Intent(context, LoginActivity::class.java))
-                            } else {
-                                view?.let { it1 ->
-                                    dialogAlert.onAlertDialog(
-                                        it1,
-                                        title,
-                                        text,
-                                        positiveButton
-                                    )
-                                }
-                            }
-                        }
-                    }
+
+            val cadastroObject = CadastroModelRequest(
+                cadastro?.username,
+                edtSenha.text.toString(),
+                cadastro?.nickname
+            )
+            cadastroViewModel.initialize(cadastroObject)
+            cadastroViewModel.response.observe(viewLifecycleOwner) {
+
+                    setMessage(context, it.message)
+                    requireActivity().finish()
+                    startActivity(Intent(activity, LoggedOutActivity::class.java))
+
                 }
+            } else {
+                view?.let { it1 -> dialogAlert.onAlertDialog(it1, title, text, positiveButton) }
+            }
         }
 
         btnBackNavBar.setOnClickListener {
             navigationFragment(contextActivity,"nome",cadastro)
         }
-    }
+        }
 
     private fun setView(view: View) {
         btnCriarConta = view.findViewById(R.id.btn_cadastro_senha)
