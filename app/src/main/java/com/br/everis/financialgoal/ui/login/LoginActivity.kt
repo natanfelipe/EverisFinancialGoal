@@ -1,5 +1,6 @@
 package com.br.everis.financialgoal.ui.login
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -8,7 +9,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import com.br.everis.financialgoal.R
+import com.br.everis.financialgoal.ui.home.HomeActivity
 import com.br.everis.financialgoal.ui.login.fragment.ForgottenPasswordAlertDialog
+import com.br.everis.financialgoal.utils.sessionManagment.SessionManagement
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener{
 
@@ -16,6 +19,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
     private lateinit var textForgot : TextView
     private lateinit var btnBackHome : AppCompatImageView
     private val dialog = ForgottenPasswordAlertDialog()
+    lateinit var sessionManagement: SessionManagement
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,12 +38,15 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
 
         btnLogin.setOnClickListener(this)
         textForgot.setOnClickListener(this)
+
+        sessionManagement = SessionManagement(this)
     }
 
     override fun onClick(v: View) {
         when(v.id){
             R.id.buttonLogin ->{
-                Toast.makeText(this, "Não implementado", Toast.LENGTH_SHORT).show()
+                sessionManagement.initializeSession()
+                startActivity(Intent(this,HomeActivity::class.java))
             }
             R.id.textForgot -> {
                 dialog.show(supportFragmentManager,"custom dialog")
