@@ -35,5 +35,7 @@
     <string name="password_alert_title">Senha inválida</string>
     <string name="password_alert_text">a senha deve ter pelo menos 8 dígitos</string>
     <string name="positive_button">OK</string>
+    <string name="tag_dialog">custom dialog</string>
+    <string name="dialog_title">Usuário inválido</string>
 
 </resources>

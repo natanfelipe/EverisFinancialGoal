@@ -75,7 +75,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
                 }
             }else{
                 loginViewModel.messageValidator.observe(this, Observer {
-                        message -> onAlertDialogLogin(message)
+                        message -> onAlertDialogLogin(getString(message))
                 })
                 loginViewModel.messageValidator.removeObservers((this as AppCompatActivity?)!!)
             }
@@ -87,7 +87,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
                 login()
             }
             R.id.textForgot -> {
-                dialog.show(supportFragmentManager,"custom dialog")
+                dialog.show(supportFragmentManager, R.string.tag_dialog.toString())
             }
             R.id.btnBackHome ->{
                 finish()
@@ -97,9 +97,9 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
 
     fun onAlertDialogLogin(message:String) {
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Usuário inválido")
+        builder.setTitle(R.string.dialog_title)
         builder.setMessage(message)
-        builder.setPositiveButton("Ok"){dialog, which ->
+        builder.setPositiveButton(R.string.positive_button){dialog, which ->
             dialog.dismiss()
         }
 
