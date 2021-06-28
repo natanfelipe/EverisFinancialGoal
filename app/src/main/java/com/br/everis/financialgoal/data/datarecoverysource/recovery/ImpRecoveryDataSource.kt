@@ -30,7 +30,7 @@ class ImpRecoveryDataSource(
     ) {
         coroutineScope.launch {
             val request = apiService.requestAPI().recoveryRequest(recovery).clone().execute()
-            if (request.code() == 201){
+            if (request.code() == 200){
                 recoveryResultCallback(
                     RecoveryResult.RequestSuccess(
                     request.body()

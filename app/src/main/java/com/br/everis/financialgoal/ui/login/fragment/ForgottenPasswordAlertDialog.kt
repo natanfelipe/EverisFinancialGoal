@@ -71,6 +71,7 @@ class ForgottenPasswordAlertDialog : DialogFragment() {
         recoveryViewModel.response.observe(viewLifecycleOwner){
             if (it.res){
                 dialog?.cancel()
+                dialogAlert.onAlertDialog(view, title, it.message, positiveButton)
             }else{
                 dialog?.cancel()
                 dialogAlert.onAlertDialog(view, title, it.message, positiveButton)
