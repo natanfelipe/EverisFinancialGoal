@@ -18,7 +18,8 @@
             android:theme="@style/Theme.EverisFinancialGoal"
             android:windowSoftInputMode="adjustPan"
             tools:ignore="AllowBackup"/>
-        <activity android:name=".ui.cadastro.CadastroActivity"
+        <activity 
+            android:name=".ui.cadastro.CadastroActivity"
             android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait" />
         <activity android:name=".ui.loggedOut.LoggedOutActivity"
