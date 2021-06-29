@@ -15,7 +15,6 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.lifecycle.Observer
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.data.datasource.model.login.LoginModelRequest
-import com.br.everis.financialgoal.ui.loggedIn.LoggedInActivity
 import com.br.everis.financialgoal.utils.FieldValidator
 import com.br.everis.financialgoal.viewmodel.login.LoginViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -33,11 +32,16 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
     private lateinit var frame : FrameLayout
     private lateinit var title: String
     private lateinit var fieldValidator: FieldValidator
+    private lateinit var bundle:Bundle
 
     private val dialog = ForgottenPasswordAlertDialog()
 
     val loginViewModel: LoginViewModel by viewModel()
     lateinit var sessionManagement: SessionManagement
+
+    companion object{
+        const val FLAG_NAME_BUNDLE = "NAME"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +65,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
         textForgot.setOnClickListener(this)
         btnBackHome.setOnClickListener(this)
         sessionManagement = SessionManagement(this)
+        bundle= Bundle()
     }
 
         fun login() {
@@ -73,7 +78,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
                 loginViewModel.response.observe(this) {
                     if (it.res) {
                         frame.visibility = View.GONE
-                        sessionManagement.initializeSession()
+                        sessionManagement.initializeSession(it)
                         startActivity(Intent(this,HomeActivity::class.java))
 
                     } else {
