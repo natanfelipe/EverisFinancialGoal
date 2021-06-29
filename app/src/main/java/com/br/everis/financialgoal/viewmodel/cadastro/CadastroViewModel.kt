@@ -28,7 +28,9 @@ class CadastroViewModel(
     }
 
     private fun getResponse(response: CadastroResult){
+
         when(response){
+
             is CadastroResult.RequestSuccess -> {
                 _response.postValue(response.success)
 //                _responseCode.postValue(response.codeSuccess)
