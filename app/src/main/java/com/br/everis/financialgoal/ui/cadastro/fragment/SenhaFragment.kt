@@ -92,7 +92,7 @@ class SenhaFragment(
                }
         }
         btnBackNavBar.setOnClickListener {
-            navigationFragment(contextActivity, "nome", cadastro)
+            navigationFragment(contextActivity, "nome",R.id.fragment, cadastro)
         }
 }
 

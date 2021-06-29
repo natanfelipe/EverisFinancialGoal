@@ -7,6 +7,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.br.everis.financialgoal.R
+import com.br.everis.financialgoal.ui.calcs.CalcActivity
 import com.br.everis.financialgoal.ui.login.LoginActivity
 import com.br.everis.financialgoal.utils.preferences.AppPreferences
 import com.br.everis.financialgoal.utils.sessionManagment.SessionManagement
@@ -39,7 +40,7 @@ class HomeActivity : AppCompatActivity() {
             Toast.makeText(this,"Não implementado", Toast.LENGTH_SHORT).show()
         }
         cardCalculadora.setOnClickListener {
-            Toast.makeText(this,"Não implementado", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this,CalcActivity::class.java))
         }
         cardSimulador.setOnClickListener {
             Toast.makeText(this,"Não implementado", Toast.LENGTH_SHORT).show()

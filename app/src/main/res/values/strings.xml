@@ -42,5 +42,8 @@
     <string name="arrow_simulacao"><![CDATA[>]]></string>
     <string name="tag_dialog">custom dialog</string>
     <string name="dialog_title">Usuário inválido</string>
+    <string name="title_navbar_listCalcs">Calculadoras</string>
+    <string name="title_card_aplicação_mensal">Investimento com aplicação mensal</string>
+    <string name="title_aplicacao_unica">Investimento com aplicação única</string>
 
 </resources>

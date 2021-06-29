@@ -55,6 +55,7 @@ class EmailFragment(private val contextActivity: FragmentActivity) : Fragment() 
                 navigationFragment(
                     contextActivity,
                     "nome",
+                    R.id.fragment,
                     CadastroModelRequest(edtEmail.text.toString())
                 )
             } else {
