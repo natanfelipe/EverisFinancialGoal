@@ -6,10 +6,11 @@ import androidx.lifecycle.ViewModel
 import com.br.everis.financialgoal.data.datarecoverysource.model.RecoveryModelRequest
 import com.br.everis.financialgoal.data.datarecoverysource.model.RecoveryModelResponse
 import com.br.everis.financialgoal.data.datarecoverysource.recovery.RecoveryResult
+import com.br.everis.financialgoal.repository.recovery.ImpRecoveryRepository
 import com.br.everis.financialgoal.repository.recovery.RecoveryRepository
 
 class RecoveryViewModel (
-    private val repository: RecoveryRepository
+    private val repository: ImpRecoveryRepository
 ): ViewModel() {
 
     private var _response = MutableLiveData<RecoveryModelResponse>()

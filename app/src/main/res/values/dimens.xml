@@ -23,4 +23,14 @@
     <dimen name="paddind_end">26dp</dimen>
     <dimen name="width_300_dp">300dp</dimen>
     <dimen name="margin_7_dp">7dp</dimen>
+    <dimen name="margin_8dp">8dp</dimen>
+    <dimen name="margin_13dp">13dp</dimen>
+    <dimen name="margin_22dp">22dp</dimen>
+    <dimen name="margin_62dp">62dp</dimen>
+    <dimen name="margin_44dp">44dp</dimen>
+    <dimen name="margin_5p">5dp</dimen>
+    <dimen name="margin_9dp">9dp</dimen>
+    <dimen name="margin_14dp">14dp</dimen>
+    <dimen name="margin_25dp">25dp</dimen>
+    <dimen name="text_view_32sp">32sp</dimen>
 </resources>

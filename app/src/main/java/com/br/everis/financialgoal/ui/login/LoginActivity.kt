@@ -12,11 +12,9 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.data.datasource.model.login.LoginModelRequest
-import com.br.everis.financialgoal.ui.loggedIn.LoggedInActivity
 import com.br.everis.financialgoal.utils.FieldValidator
 import com.br.everis.financialgoal.viewmodel.login.LoginViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
