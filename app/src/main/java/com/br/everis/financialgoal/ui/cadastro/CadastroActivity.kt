@@ -11,16 +11,12 @@ import com.br.everis.financialgoal.utils.cadastro.ChangeFragment.navigationFragm
 
 class CadastroActivity : AppCompatActivity() {
 
-    lateinit var myContext: FragmentActivity
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro)
 
         inflateFragment()
     }
-
-
 
     private fun inflateFragment() {
         navigationFragment(this,"email", null)

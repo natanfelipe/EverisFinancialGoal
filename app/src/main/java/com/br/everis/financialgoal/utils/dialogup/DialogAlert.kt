@@ -1,10 +1,8 @@
-package com.br.everis.financialgoal.utils
+package com.br.everis.financialgoal.utils.dialogup
 
 import android.app.AlertDialog
 import android.graphics.Color
 import android.view.View
-import androidx.core.content.ContextCompat
-import com.br.everis.financialgoal.R
 
 class DialogAlert {
 

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -44,7 +43,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_monthly_period"
-        android:inputType="number" />
+        android:inputType="number"
+        android:digits="0123456789"/>
 
     <TextView
         android:id="@+id/tv_monthly_tax"
@@ -106,7 +106,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_unique_application_value"
-        android:inputType="" />
+        android:inputType="numberDecimal" />
 
     <TextView
         android:id="@+id/tv_final_value"
@@ -137,8 +137,7 @@
         android:background="@drawable/rounded_edittext"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_final_value"
-        android:inputType="" />
+        app:layout_constraintTop_toBottomOf="@id/tv_final_value" />
 
     <Button
         android:id="@+id/btn_calcular"
