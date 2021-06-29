@@ -5,18 +5,19 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import android.view.View.OnTouchListener
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
-import com.br.everis.financialgoal.ui.login.LoginActivity
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.ui.cadastro.CadastroActivity
+import com.br.everis.financialgoal.ui.login.LoginActivity
 import com.br.everis.financialgoal.ui.home.HomeActivity
 import com.br.everis.financialgoal.utils.sessionManagment.SessionManagement
 import com.google.android.material.tabs.TabLayout
-import java.util.Timer
-import java.util.TimerTask
+import java.util.*
+
 
 class LoggedOutActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -39,6 +40,13 @@ class LoggedOutActivity : AppCompatActivity(), View.OnClickListener {
         R.drawable.logged_out_slide_2,
         R.drawable.logged_out_slide_3,
         R.drawable.logged_out_slide_4,
+    )
+
+    private var backgroundColors = intArrayOf(
+        R.color.slide1,
+        R.color.slide2,
+        R.color.slide3,
+        R.color.slide4
     )
 
     private var NUM_PAGES = images.size
@@ -76,6 +84,7 @@ class LoggedOutActivity : AppCompatActivity(), View.OnClickListener {
     private fun setAdapter() {
         mViewPagerAdapter = ViewPagerAdapter(this@LoggedOutActivity, images)
         mViewPager.adapter = mViewPagerAdapter
+        mViewPager.setOnTouchListener { _, _ -> true }
         handler()
     }
 
@@ -89,6 +98,7 @@ class LoggedOutActivity : AppCompatActivity(), View.OnClickListener {
             if (currentPage == NUM_PAGES) {
                 currentPage = 0
             }
+            mViewPager.setBackgroundColor(resources.getColor(backgroundColors[currentPage]))
             mViewPager.setCurrentItem(currentPage++, true)
         }
         timer = Timer()

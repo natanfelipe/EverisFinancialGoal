@@ -16,5 +16,9 @@
     <color name="light_grey">#F6F6F6</color>
     <color name="dark_grey">#969696</color>
     <color name="positive_button">#7b1fa2</color>
+    <color name="slide1">#9bae0c</color>
+    <color name="slide2">#ff914d</color>
+    <color name="slide3">#ff5757</color>
+    <color name="slide4">#92551f</color>
 
 </resources>

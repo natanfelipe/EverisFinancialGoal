@@ -16,11 +16,11 @@ import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
 import com.br.everis.financialgoal.ui.loggedOut.LoggedOutActivity
+import com.br.everis.financialgoal.ui.login.LoginActivity
 import com.br.everis.financialgoal.utils.cadastro.ChangeFragment.navigationFragment
 import com.br.everis.financialgoal.utils.cadastro.setToastMessage.setMessage
 import com.br.everis.financialgoal.viewmodel.cadastro.CadastroViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 
 class SenhaFragment(
         private val cadastro:CadastroModelRequest?,
@@ -35,6 +35,7 @@ class SenhaFragment(
     private lateinit var title: String
     private lateinit var text: String
     private lateinit var positiveButton: String
+    private lateinit var password: String
 
     private val cadastroViewModel: CadastroViewModel by viewModel()
 
@@ -63,33 +64,50 @@ class SenhaFragment(
 
         btnCriarConta.setOnClickListener {
 
-          val cadastroObject = CadastroModelRequest(cadastro?.username, edtSenha.text.toString(), cadastro?.nickname)
-            cadastroViewModel.initialize(cadastroObject)
-            cadastroViewModel.response.observe(viewLifecycleOwner){
-
-            if (validator()) {
-                setMessage(context,it.message)
-                    requireActivity().finish()
-                    startActivity(Intent(activity,LoggedOutActivity::class.java))
-
-            } else {
-                view?.let { it1 -> dialogAlert.onAlertDialog(it1, title, text, positiveButton) }
+            if (validator(edtSenha.text.toString())) {
+                val cadastroObject = CadastroModelRequest(
+                    cadastro?.username,
+                    edtSenha.text.toString(),
+                    cadastro?.nickname
+                )
+                cadastroViewModel.initialize(cadastroObject)
+                cadastroViewModel.response.observe(viewLifecycleOwner) { response ->
+                    if (response.statusCode == 200) {
+                        setMessage(context, response.message)
+                        requireActivity().finish()
+                        startActivity(Intent(activity, LoggedOutActivity::class.java))
+                    } else if (response.statusCode == 422) {
+                        setMessage(context, response.message)
+                        requireActivity().finish()
+                        startActivity(Intent(context, LoginActivity::class.java))
+                    } else {
+                        view?.let { it1 ->
+                            dialogAlert.onAlertDialog(
+                                it1,
+                                title,
+                                text,
+                                positiveButton
+                            )
+                        }
+                    }
+                }
             }
         }
 
-            btnBackNavBar.setOnClickListener {
-               navigationFragment(contextActivity,"nome",cadastro)
-                }
-            }
+        btnBackNavBar.setOnClickListener {
+            navigationFragment(contextActivity,"nome",cadastro)
+        }
         }
 
     private fun setView(view: View) {
         btnCriarConta = view.findViewById(R.id.btn_cadastro_senha)
         btnBackNavBar = view.findViewById(R.id.btn_back_cadastro)
         edtSenha = view.findViewById(R.id.edt_senha)
+
+        password = edtSenha.text.toString()
     }
 
-    private fun validator() : Boolean = fieldValidator.isValidPassword(edtSenha.text.toString())
+    private fun validator(senha: String) : Boolean = fieldValidator.isValidPassword(senha)
 
     companion object {
         fun newInstance(
