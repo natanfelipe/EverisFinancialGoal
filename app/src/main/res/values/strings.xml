@@ -1,4 +1,13 @@
 <resources>
+    <!-- Textos AlertDialog -->
+    <string name="email_alert_title">E-mail inválido</string>
+    <string name="email_alert_text">forneça um endereço de e-mail válido</string>
+    <string name="nameOrNickname_alert_title">Nome/Apelido inválido</string>
+    <string name="nameOrNickname_alert_text">O nome/apelido deve ter pelo menos 1 carácter</string>
+    <string name="password_alert_title">Senha inválida</string>
+    <string name="password_alert_text">a senha deve ter pelo menos 8 dígitos</string>
+    <string name="positive_button">OK</string>
+
     <string name="app_name">EverisFinancialGoal</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="text_btn_login">LOGIN</string>
@@ -27,13 +36,13 @@
     <string name="txt_btn_ok_dialog">OK</string>
     <string name="txt_btn_cancelar_dialog">CANCELAR</string>
 
-    <!-- Textos AlertDialog -->
-    <string name="email_alert_title">E-mail inválido</string>
-    <string name="email_alert_text">forneça um endereço de e-mail válido</string>
-    <string name="nameOrNickname_alert_title">Nome/Apelido inválido</string>
-    <string name="nameOrNickname_alert_text">O nome/apelido deve ter pelo menos 1 carácter</string>
-    <string name="password_alert_title">Senha inválida</string>
-    <string name="password_alert_text">a senha deve ter pelo menos 8 dígitos</string>
-    <string name="positive_button">OK</string>
+    <string name="head_yearly">aplicação única</string>
+    <string name="txt_hint_aplicação_única_120">120</string>
+    <string name="edt_txt_periodo_meses">Período em meses</string>
+    <string name="txt_btn_calcular">CALCULAR</string>
+    <string name="txt_taxa_de_juros_mensal">Taxa de juros mensal</string>
+    <string name="tv_valor_da_aplica_o_nica_hoje">Valor da aplicação única hoje</string>
+    <string name="txt_valor_obtido_no_final">Valor obtido no final</string>
+
 
 </resources>
