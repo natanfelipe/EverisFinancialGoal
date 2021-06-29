@@ -2,6 +2,7 @@ package com.br.everis.financialgoal.ui.cadastro.fragment
 
 import android.content.Context
 import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.FrameLayout
 import androidx.appcompat.widget.AppCompatImageView
 import com.br.everis.financialgoal.utils.DialogAlert
 import com.br.everis.financialgoal.utils.FieldValidator
@@ -36,6 +38,7 @@ class SenhaFragment(
     private lateinit var text: String
     private lateinit var positiveButton: String
     private lateinit var password: String
+    private lateinit var load : FrameLayout
 
     private val cadastroViewModel: CadastroViewModel by viewModel()
 
@@ -64,6 +67,8 @@ class SenhaFragment(
 
         btnCriarConta.setOnClickListener {
 
+            load.visibility = View.VISIBLE
+
             val cadastroObject = CadastroModelRequest(
                 cadastro?.username,
                 edtSenha.text.toString(),
@@ -71,6 +76,7 @@ class SenhaFragment(
             )
             cadastroViewModel.initialize(cadastroObject)
             cadastroViewModel.response.observe(viewLifecycleOwner) { response ->
+                load.visibility = View.GONE
                 if (response.statusCode == 200) {
                     setMessage(context, response.message)
                     requireActivity().finish()
@@ -92,7 +98,7 @@ class SenhaFragment(
                }
         }
         btnBackNavBar.setOnClickListener {
-            navigationFragment(contextActivity, "nome", cadastro)
+            navigationFragment(contextActivity, "nome",R.id.fragment, cadastro)
         }
 }
 
@@ -100,6 +106,7 @@ private fun setView(view: View) {
     btnCriarConta = view.findViewById(R.id.btn_cadastro_senha)
     btnBackNavBar = view.findViewById(R.id.btn_back_cadastro)
     edtSenha = view.findViewById(R.id.edt_senha)
+    load = view.findViewById(R.id.loadingFrameLaoyut_senha)
 
     password = edtSenha.text.toString()
 }

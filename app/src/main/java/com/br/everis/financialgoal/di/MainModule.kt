@@ -51,7 +51,7 @@ val mainModule = module {
             apiService = get()
         )
     }
-    factory<RecoveryRepository> {
+    factory<ImpRecoveryRepository> {
         ImpRecoveryRepository(
             dataRecoverySource = get()
         )

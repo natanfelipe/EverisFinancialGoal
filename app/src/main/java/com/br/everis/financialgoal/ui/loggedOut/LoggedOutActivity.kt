@@ -128,4 +128,9 @@ class LoggedOutActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        isDestroyed
+    }
 }

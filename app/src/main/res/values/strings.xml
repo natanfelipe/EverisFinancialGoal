@@ -42,9 +42,15 @@
     <string name="password_alert_title">Senha inválida</string>
     <string name="password_alert_text">a senha deve ter pelo menos 8 dígitos</string>
     <string name="positive_button">OK</string>
+    <string name="title_card_calculator">calculadora</string>
+    <string name="title_card_simulator">simulador</string>
+    <string name="text_card_simulacao">acesse sua última</string>
+    <string name="text_title2_card_simulacao">simulacao</string>
+    <string name="arrow_simulacao"><![CDATA[>]]></string>
     <string name="tag_dialog">custom dialog</string>
     <string name="dialog_title">Usuário inválido</string>
-    
-    
+    <string name="title_navbar_listCalcs">Calculadoras</string>
+    <string name="title_card_aplicação_mensal">Investimento com aplicação mensal</string>
+    <string name="title_aplicacao_unica">Investimento com aplicação única</string>
 
 </resources>

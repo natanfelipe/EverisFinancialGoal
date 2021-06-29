@@ -19,8 +19,8 @@ import com.br.everis.financialgoal.ui.home.HomeActivity
 import com.br.everis.financialgoal.utils.FieldValidator
 import com.br.everis.financialgoal.viewmodel.login.LoginViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.br.everis.financialgoal.ui.loggedOut.LoggedOutActivity
 import com.br.everis.financialgoal.ui.login.fragment.ForgottenPasswordAlertDialog
-import com.br.everis.financialgoal.ui.monthly.MonthlyFragment
 import com.br.everis.financialgoal.utils.sessionManagment.SessionManagement
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener{
@@ -33,7 +33,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
     private lateinit var frame : FrameLayout
     private lateinit var title: String
     private lateinit var fieldValidator: FieldValidator
-
+    private lateinit var bundle:Bundle
 
     private val dialog = ForgottenPasswordAlertDialog()
 
@@ -62,6 +62,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
         textForgot.setOnClickListener(this)
         btnBackHome.setOnClickListener(this)
         sessionManagement = SessionManagement(this)
+        bundle= Bundle()
     }
 
         @SuppressLint("ResourceType")
@@ -75,8 +76,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
                 loginViewModel.response.observe(this) {
                     if (it.res) {
                         frame.visibility = View.GONE
-                       sessionManagement.initializeSession()
-                       startActivity(Intent(this,HomeActivity::class.java))
+
+                        sessionManagement.initializeSession(it)
+                        startActivity(Intent(this,HomeActivity::class.java))
+
                     } else {
                         frame.visibility = View.GONE
                         onAlertDialogLogin(loginViewModel.response.value?.message.toString())
@@ -99,6 +102,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
                 dialog.show(supportFragmentManager, R.string.tag_dialog.toString())
             }
             R.id.btnBackHome ->{
+                startActivity(Intent(this,LoggedOutActivity::class.java))
                 finish()
             }
         }
@@ -116,6 +120,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
         dialog.show()
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLUE)
     }
-}
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this,LoggedOutActivity::class.java))
+        finish()
+    }
+}
 

@@ -29,9 +29,12 @@ class ImpLoginDataSource(
                 val request = apiService.requestAPI().loginRequest(login).clone().execute()
                  if(request.code()==200){
                         loginResultCallback(LoginResult.RequestLoginSucess(
-                            LoginModelResponse(
-                                request.message(),
-                                request.isSuccessful)))
+                            request.body()?.let {
+                                LoginModelResponse(
+                                    request.message(),
+                                    request.isSuccessful,
+                                    it.user)
+                            }))
                     }else{
                         val gson = Gson()
                         val response = gson.fromJson(request.errorBody()?.charStream(), LoginModelResponse::class.java)
