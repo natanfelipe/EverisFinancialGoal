@@ -110,6 +110,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/card_ultima_simulacao"
         android:layout_width="match_parent"
         android:layout_height="122dp"
         android:layout_marginStart="44dp"

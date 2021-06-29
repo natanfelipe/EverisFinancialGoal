@@ -6,61 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".ui.login.LoginActivity"
     android:background="@color/grey">
-
-    <include
-        android:id="@+id/nav_bar_login"
-        layout="@layout/navbar_login"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/userName"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/textBox"
-        android:layout_margin="@dimen/marginBox"
-        android:background="@drawable/custom_edit_username"
-        android:elevation="@dimen/elevation"
-        android:fontFamily="@font/roboto"
-        android:hint="@string/userName"
-        android:inputType="textEmailAddress"
-        android:paddingStart="@dimen/paddingText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nav_bar_login" />
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/textBox"
-        android:layout_marginStart="@dimen/marginBox"
-        android:layout_marginTop="@dimen/topEdit"
-        android:layout_marginEnd="@dimen/marginBox"
-        android:background="@drawable/custom_edit_password"
-        android:elevation="@dimen/elevation"
-        android:fontFamily="@font/roboto"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        android:paddingStart="@dimen/paddingText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userName" />
-
-    <Button
-        android:id="@+id/buttonLogin"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/buttonLogin"
-        android:layout_margin="@dimen/marginBox"
-        android:backgroundTint="@color/color_btn_login"
-        android:fontFamily="@font/roboto_bold"
-        android:text="@string/headLogin"
-        android:textColor="@color/white"
-        android:textSize="@dimen/textButtonSize"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password" />
-
+        <include
+            android:id="@+id/navBarLogin"
+            layout="@layout/navbar_login"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/userName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/textBox"
+            android:layout_margin="@dimen/marginBox"
+            android:background="@drawable/custom_edit_username"
+            android:elevation="@dimen/elevation"
+            android:fontFamily="@font/roboto"
+            android:hint="@string/userName"
+            android:inputType="textEmailAddress"
+            android:paddingStart="@dimen/paddingText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/navBarLogin" />
+        <EditText
+            android:id="@+id/loginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/textBox"
+            android:layout_marginStart="@dimen/marginBox"
+            android:layout_marginTop="@dimen/topEdit"
+            android:layout_marginEnd="@dimen/marginBox"
+            android:background="@drawable/custom_edit_password"
+            android:elevation="@dimen/elevation"
+            android:fontFamily="@font/roboto"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:paddingStart="@dimen/paddingText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userName" />
     <TextView
         android:id="@+id/textForgot"
         android:layout_width="match_parent"
@@ -71,8 +52,33 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonLogin" />
-
-
-
+        app:layout_constraintTop_toBottomOf="@id/buttonLogin"/>
+        <Button
+            android:id="@+id/buttonLogin"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/buttonLogin"
+            android:layout_margin="@dimen/marginBox"
+            android:backgroundTint="@color/color_btn_login"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/headLogin"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textButtonSize"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/loginPassword" />
+    <FrameLayout
+        android:id="@+id/loadingFrameLaoyut"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/frame_background"
+        android:elevation="@dimen/elevetionLoginFrameLoading"
+        android:visibility="gone">
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
