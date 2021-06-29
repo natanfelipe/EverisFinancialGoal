@@ -15,8 +15,8 @@ sealed class CadastroResult {
 }
 
 class ImpCadastroDataSource(
-    private var apiService:ImpApiService
-): CadastroDataSource {
+    private var apiService: ImpApiService
+) : CadastroDataSource {
 
     private val coroutineScope = CoroutineScope(Dispatchers.IO)
 
@@ -27,20 +27,33 @@ class ImpCadastroDataSource(
         coroutineScope.launch {
 
             withContext(Dispatchers.IO) {
+
                 val request = apiService.requestAPI().cadastroRequest(cadastro).clone().execute()
                 if (request.code() == 201) {
-                    cadastroResultCallback(
-                        CadastroResult.RequestSuccess(
-                            request.body()
-                        )
-                    )
+                    cadastroResultCallback(CadastroResult.RequestSuccess(
+                        request.body()?.let {
+                            CadastroModelResponse(
+                                it.message,
+                                it.res,
+                                request.code()
+                            )
+                        }
+                    ))
                 } else {
                     val gson = Gson()
                     val response = gson.fromJson(
                         request.errorBody()?.charStream(),
                         CadastroModelResponse::class.java
                     )
-                    cadastroResultCallback(CadastroResult.RequestError(response))
+                    cadastroResultCallback(
+                        CadastroResult.RequestError(
+                            CadastroModelResponse(
+                                response.message,
+                                response.res,
+                                request.code()
+                            )
+                        )
+                    )
                 }
             }
         }

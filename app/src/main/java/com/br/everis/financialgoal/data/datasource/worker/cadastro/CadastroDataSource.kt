@@ -8,6 +8,6 @@ interface CadastroDataSource {
 
     fun cadastroDataSource(
         cadastroResultCallback: (result: CadastroResult) -> Unit,
-        cadastro:CadastroModelRequest
+        cadastro:CadastroModelRequest,
     )
 }
