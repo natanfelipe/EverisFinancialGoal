@@ -1,21 +1,21 @@
 package com.br.everis.financialgoal.ui.loggedOut
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import android.view.View.OnTouchListener
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
-import com.br.everis.financialgoal.ui.login.LoginActivity
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.ui.cadastro.CadastroActivity
+import com.br.everis.financialgoal.ui.login.LoginActivity
 import com.google.android.material.tabs.TabLayout
-import java.util.Timer
-import java.util.TimerTask
+import java.util.*
+
 
 class LoggedOutActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -69,6 +69,7 @@ class LoggedOutActivity : AppCompatActivity(), View.OnClickListener {
     private fun setAdapter() {
         mViewPagerAdapter = ViewPagerAdapter(this@LoggedOutActivity, images)
         mViewPager.adapter = mViewPagerAdapter
+        mViewPager.setOnTouchListener { _, _ -> true }
         handler()
     }
 
