@@ -22,4 +22,5 @@
     <dimen name="paddind_end">26dp</dimen>
     <dimen name="width_300_dp">300dp</dimen>
     <dimen name="margin_7_dp">7dp</dimen>
+    <dimen name="margin_16dp">16dp</dimen>
 </resources>
