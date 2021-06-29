@@ -9,8 +9,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="382dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="62dp"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/card_calculadora"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/rounded_constrain_layout"
@@ -59,11 +61,15 @@
         android:layout_marginStart="44dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:elevation="3dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/icon_money"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="9dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -88,11 +94,15 @@
         android:layout_marginStart="14dp"
         app:layout_constraintStart_toEndOf="@+id/card_calculadora"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:elevation="3dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/icon_simulacao"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="9dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -117,7 +127,8 @@
         android:layout_marginEnd="44dp"
         android:background="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/card_simulador"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:elevation="3dp">
 
         <TextView
             android:id="@+id/title1_card_simulacao"
