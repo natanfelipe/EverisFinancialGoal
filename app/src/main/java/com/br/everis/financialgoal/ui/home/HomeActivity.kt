@@ -3,10 +3,12 @@ package com.br.everis.financialgoal.ui.home
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View.inflate
 import android.widget.Button
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.ui.login.LoginActivity
 import com.br.everis.financialgoal.utils.sessionManagment.SessionManagement
+import java.util.zip.Inflater
 
 class HomeActivity : AppCompatActivity() {
 
@@ -25,6 +27,7 @@ class HomeActivity : AppCompatActivity() {
             sessionManagement.finishSession()
             startActivity(Intent(this,LoginActivity::class.java))
             finish()
+
         }
     }
 

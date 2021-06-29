@@ -13,6 +13,7 @@
     <dimen name="elevation">2dp</dimen>
     <dimen name="elevetionLoginFrameLoading">3dp</dimen>
     <dimen name="radius">15dp</dimen>
+    <dimen name="radius_edit">35dp</dimen>
     <dimen name="topEdit">1dp</dimen>
     <dimen name="paddingText">20dp</dimen>
     <dimen name="margin_18_dp">18dp</dimen>
@@ -23,4 +24,8 @@
     <dimen name="paddind_end">26dp</dimen>
     <dimen name="width_300_dp">300dp</dimen>
     <dimen name="margin_7_dp">7dp</dimen>
+    <dimen name="margin_txt_monthly">16dp</dimen>
+    <dimen name="text_size_monthly">18sp</dimen>
+    <dimen name="margin_edit">30dp</dimen>
+    <dimen name="text_margin">5dp</dimen>
 </resources>
