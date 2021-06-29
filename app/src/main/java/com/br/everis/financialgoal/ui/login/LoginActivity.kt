@@ -19,6 +19,7 @@ import com.br.everis.financialgoal.utils.FieldValidator
 import com.br.everis.financialgoal.viewmodel.login.LoginViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.br.everis.financialgoal.ui.home.HomeActivity
+import com.br.everis.financialgoal.ui.loggedOut.LoggedOutActivity
 import com.br.everis.financialgoal.ui.login.fragment.ForgottenPasswordAlertDialog
 import com.br.everis.financialgoal.utils.sessionManagment.SessionManagement
 
@@ -38,10 +39,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
 
     val loginViewModel: LoginViewModel by viewModel()
     lateinit var sessionManagement: SessionManagement
-
-    companion object{
-        const val FLAG_NAME_BUNDLE = "NAME"
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -104,6 +101,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
                 dialog.show(supportFragmentManager, R.string.tag_dialog.toString())
             }
             R.id.btnBackHome ->{
+                startActivity(Intent(this,LoggedOutActivity::class.java))
                 finish()
             }
         }
@@ -120,5 +118,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
         val dialog: AlertDialog = builder.create()
         dialog.show()
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLUE)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this,LoggedOutActivity::class.java))
+        finish()
     }
 }
