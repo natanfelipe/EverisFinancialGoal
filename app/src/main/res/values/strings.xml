@@ -32,6 +32,7 @@
     <string name="txt_monthly_val_mensal">Valor de aplicação mensal</string>
     <string name="txt_monthly_val_final">Valor obtido no final</string>
     <string name="btn_montlhy">Calcular</string>
+    <string name="nav_bar_monthly">aplicação mensal</string>
 
     <!-- Textos AlertDialog -->
     <string name="email_alert_title">E-mail inválido</string>

@@ -75,8 +75,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
                 loginViewModel.response.observe(this) {
                     if (it.res) {
                         frame.visibility = View.GONE
-                        sessionManagement.initializeSession()
-                        startActivity(Intent(this,HomeActivity::class.java))
+                       sessionManagement.initializeSession()
+                       startActivity(Intent(this,HomeActivity::class.java))
                     } else {
                         frame.visibility = View.GONE
                         onAlertDialogLogin(loginViewModel.response.value?.message.toString())

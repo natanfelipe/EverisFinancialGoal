@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:background="@color/grey"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.monthly.MonthlyFragment">
+    tools:context=".ui.monthly.MonthlyFragment"
+    android:id="@+id/layout_monthly">
 
     <include
         android:id="@+id/monthly_nav_bar"

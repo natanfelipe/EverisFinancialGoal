@@ -15,6 +15,7 @@
         android:paddingEnd="@dimen/paddind_end"/>
 
     <TextView
+        android:id="@+id/textNav"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:fontFamily="@font/roboto"
