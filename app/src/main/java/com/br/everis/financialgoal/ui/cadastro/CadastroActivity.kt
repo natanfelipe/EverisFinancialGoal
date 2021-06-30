@@ -18,7 +18,13 @@ class CadastroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro)
 
-        inflateFragment()
+       //inflateFragment()
+        val newFragment = MonthlyFragment()
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragment, newFragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+
     }
 
 

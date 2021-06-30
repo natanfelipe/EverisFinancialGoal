@@ -8,6 +8,8 @@ import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelR
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
 import com.br.everis.financialgoal.data.datasource.model.login.LoginModelRequest
 import com.br.everis.financialgoal.data.datasource.model.login.LoginModelResponse
+import com.br.everis.financialgoal.data.datasource.model.monthly.MonthlyModelRequest
+import com.br.everis.financialgoal.data.datasource.model.monthly.MonthlyModelResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.Headers
@@ -25,4 +27,8 @@ interface ApiService
 
     @POST("/${BuildConfig.AMBIENTE}/recovery-password")
     fun recoveryRequest(@Body recoveryBody: RecoveryModelRequest): Call<RecoveryModelResponse>
+
+    @Headers("x-api-key: ${BuildConfig.API_KEY}")
+    @POST("${BuildConfig.AMBIENTE}/calcularjuroscomposto")
+    fun monthlyRequest(@Body monthlyBody: MonthlyModelRequest): Call<MonthlyModelResponse>
 }
