@@ -7,6 +7,7 @@ import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelR
 import com.br.everis.financialgoal.ui.cadastro.fragment.EmailFragment
 import com.br.everis.financialgoal.ui.cadastro.fragment.NomeFragment
 import com.br.everis.financialgoal.ui.cadastro.fragment.SenhaFragment
+import com.br.everis.financialgoal.ui.home.fragment.YearlyFragment
 
 object ChangeFragment {
 
@@ -27,6 +28,10 @@ object ChangeFragment {
 
             CadastroEnum.nome.toString() -> {
                 fragmentNav = NomeFragment.newInstance(cadastroObject, context)
+            }
+
+            CadastroEnum.yearly.toString() -> {
+                fragmentNav = YearlyFragment.newInstance(context)
             }
         }
 

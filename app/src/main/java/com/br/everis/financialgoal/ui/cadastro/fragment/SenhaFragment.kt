@@ -10,8 +10,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.widget.AppCompatImageView
-import com.br.everis.financialgoal.utils.DialogAlert
-import com.br.everis.financialgoal.utils.FieldValidator
+import com.br.everis.financialgoal.utils.dialogup.DialogAlert
+import com.br.everis.financialgoal.utils.validators.FieldValidator
 import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
@@ -97,7 +97,7 @@ class SenhaFragment(
         btnBackNavBar.setOnClickListener {
             navigationFragment(contextActivity,"nome",cadastro)
         }
-        }
+    }
 
     private fun setView(view: View) {
         btnCriarConta = view.findViewById(R.id.btn_cadastro_senha)

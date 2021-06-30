@@ -26,7 +26,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
         setContentView(R.layout.activity_login)
 
         click()
-        btnBackHome = findViewById(R.id.btnBackHome)
+        btnBackHome = findViewById(R.id.btn_back_home)
         btnBackHome.setOnClickListener {
             finish()
         }
