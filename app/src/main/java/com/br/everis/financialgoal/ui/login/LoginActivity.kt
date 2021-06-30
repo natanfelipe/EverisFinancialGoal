@@ -1,9 +1,9 @@
 package com.br.everis.financialgoal.ui.login
 
-
+import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.graphics.Color
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -15,10 +15,10 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.lifecycle.Observer
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.data.datasource.model.login.LoginModelRequest
+import com.br.everis.financialgoal.ui.home.HomeActivity
 import com.br.everis.financialgoal.utils.FieldValidator
 import com.br.everis.financialgoal.viewmodel.login.LoginViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import com.br.everis.financialgoal.ui.home.HomeActivity
 import com.br.everis.financialgoal.ui.loggedOut.LoggedOutActivity
 import com.br.everis.financialgoal.ui.login.fragment.ForgottenPasswordAlertDialog
 import com.br.everis.financialgoal.utils.sessionManagment.SessionManagement
@@ -65,6 +65,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
         bundle= Bundle()
     }
 
+        @SuppressLint("ResourceType")
         fun login() {
 
             if(loginViewModel.isValid(email.text.toString(),senha.text.toString())){
@@ -75,6 +76,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
                 loginViewModel.response.observe(this) {
                     if (it.res) {
                         frame.visibility = View.GONE
+
                         sessionManagement.initializeSession(it)
                         startActivity(Intent(this,HomeActivity::class.java))
 
@@ -95,7 +97,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
         when(v.id){
             R.id.buttonLogin ->{
                 login()
-
             }
             R.id.textForgot -> {
                 dialog.show(supportFragmentManager, R.string.tag_dialog.toString())
@@ -126,3 +127,4 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
         finish()
     }
 }
+

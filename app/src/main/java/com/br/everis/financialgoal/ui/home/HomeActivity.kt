@@ -12,6 +12,7 @@ import com.br.everis.financialgoal.ui.login.LoginActivity
 import com.br.everis.financialgoal.utils.preferences.AppPreferences
 import com.br.everis.financialgoal.utils.sessionManagment.SessionManagement
 
+
 class HomeActivity : AppCompatActivity() {
 
     companion object{
