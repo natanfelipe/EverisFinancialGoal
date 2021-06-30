@@ -57,7 +57,10 @@ class HomeActivity : AppCompatActivity() {
         cardUltimaSimulacao.setOnClickListener {
             val fragmentCalcs:String = sessionManagementHome.getFlagFragment()
             if (fragmentCalcs.isNotEmpty()){
-                startActivity(Intent(this,CalcActivity(fragmentCalcs)::class.java))
+                startActivity(Intent(this,CalcActivity::class.java).apply {
+                    putExtra("fragment",fragmentCalcs)
+                }
+                )
             }
         }
     }
@@ -90,7 +93,10 @@ class HomeActivity : AppCompatActivity() {
 
                 when(fragment){
                     HomeEnum.calculadora.toString() -> {
-                       startActivity(Intent(context,CalcActivity::class.java))
+                       startActivity(Intent(context,CalcActivity::class.java).apply {
+                           putExtra("fragment","calculadora")
+                            }
+                       )
                     }
 
                     HomeEnum.simulador.toString() -> {

@@ -9,8 +9,8 @@ import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.data.datarecoverysource.model.RecoveryModelRequest
-import com.br.everis.financialgoal.utils.DialogAlert
-import com.br.everis.financialgoal.utils.FieldValidator
+import com.br.everis.financialgoal.utils.dialogup.DialogAlert
+import com.br.everis.financialgoal.utils.validators.FieldValidator
 import com.br.everis.financialgoal.viewmodel.recovery.RecoveryViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

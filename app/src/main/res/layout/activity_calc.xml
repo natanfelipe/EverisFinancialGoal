@@ -7,20 +7,13 @@
     tools:context=".ui.calcs.CalcActivity"
     android:background="@color/grey">
 
-    <include
-        android:id="@+id/nav_bar"
-        layout="@layout/navbar_cadastro"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
-
     <FrameLayout
         android:id="@+id/fragment_calcs"
         android:layout_width="match_parent"
         android:layout_height="340dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nav_bar"
+        app:layout_constraintTop_toTopOf="parent"
         android:background="@color/white"/>
 
 

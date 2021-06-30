@@ -33,6 +33,20 @@
     <string name="txt_monthly_val_final">Valor obtido no final</string>
     <string name="btn_montlhy">Calcular</string>
     <string name="nav_bar_monthly">aplicação mensal</string>
+    <string name="head_yearly">aplicação única</string>
+    <string name="txt_hint_aplicação_única_120">120</string>
+    <string name="edt_txt_periodo_meses">Período em meses</string>
+    <string name="txt_btn_calcular">CALCULAR</string>
+    <string name="txt_taxa_de_juros_mensal">Taxa de juros mensal</string>
+    <string name="tv_valor_da_aplica_o_nica_hoje">Valor da aplicação única hoje</string>
+    <string name="txt_valor_obtido_no_final">Valor obtido no final</string>
+
+    <string name="txt_campo_invalido"> Campo inválido </string>
+    <string name="txt_periodo_text"> O período não pode estar em branco e deve ser maior que 0</string>
+
+    <string name="txt_taxa_text"> Preencha o campo de taxa de juros </string>
+
+    <string name="txt_valor_text"> Preencha o campo de valor de aplicação </string>
 
     <!-- Textos AlertDialog -->
     <string name="email_alert_title">E-mail inválido</string>

@@ -1,4 +1,4 @@
-package com.br.everis.financialgoal.utils
+package com.br.everis.financialgoal.utils.dialogup
 
 import android.app.AlertDialog
 import android.graphics.Color
