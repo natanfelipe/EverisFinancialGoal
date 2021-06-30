@@ -9,7 +9,7 @@ class DialogAlert {
     private lateinit var alertDialogBuilder: AlertDialog.Builder
     private lateinit var alertDialog: AlertDialog
 
-    fun onAlertDialog(view: View, title: String, text: String, positiveButton: String) {
+    fun onAlertDialog(view: View, title: String?, text: String?, positiveButton: String?) {
 
         alertDialogBuilder = AlertDialog.Builder(view.context)
         alertDialog = alertDialogBuilder

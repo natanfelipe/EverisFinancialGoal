@@ -13,4 +13,12 @@ class AppPreferences(context:Context) {
     fun getSessionInfo(key: String): Boolean{
         return mSharedPreferences.getBoolean(key, false) ?: false
     }
+
+    fun storeString(key: String, Value: String){
+        mSharedPreferences.edit().putString(key,Value).apply()
+    }
+
+    fun getString(key: String): String{
+        return mSharedPreferences.getString(key, "") ?: ""
+    }
 }

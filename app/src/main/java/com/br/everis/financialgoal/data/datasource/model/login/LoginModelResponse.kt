@@ -6,5 +6,7 @@ data class LoginModelResponse(
     @SerializedName("message")
     val message : String,
     @SerializedName("res")
-    val res : Boolean
+    val res : Boolean,
+    @SerializedName("user")
+    val user:UserModel
 )

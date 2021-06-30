@@ -22,6 +22,7 @@ class ForgottenPasswordAlertDialog : DialogFragment() {
     private lateinit var btnCancelar:TextView
     private lateinit var email: EditText
     private lateinit var title: String
+    private lateinit var titleSuccess:String
     private lateinit var text: String
     private lateinit var positiveButton: String
     private val recoveryViewModel: RecoveryViewModel by viewModel()
@@ -42,6 +43,7 @@ class ForgottenPasswordAlertDialog : DialogFragment() {
         fieldValidator = FieldValidator()
 
         title = view.context.getString(R.string.email_alert_title)
+        titleSuccess= view.context.getString(R.string.title_email_sucesso)
         text = view.context.getString(R.string.email_alert_text)
         positiveButton = view.context.getString(R.string.positive_button)
 
@@ -69,9 +71,9 @@ class ForgottenPasswordAlertDialog : DialogFragment() {
         )
         recoveryViewModel.initialize(recoveryModelRequest)
         recoveryViewModel.response.observe(viewLifecycleOwner){
-            if (it.res){
+            if (it.statusCode == 200){
                 dialog?.cancel()
-                dialogAlert.onAlertDialog(view, title, it.message, positiveButton)
+                dialogAlert.onAlertDialog(view, titleSuccess, it.message, positiveButton)
             }else{
                 dialog?.cancel()
                 dialogAlert.onAlertDialog(view, title, it.message, positiveButton)

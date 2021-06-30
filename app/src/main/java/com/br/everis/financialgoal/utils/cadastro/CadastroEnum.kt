@@ -1,5 +1,5 @@
 package com.br.everis.financialgoal.utils.cadastro
 
 enum class CadastroEnum {
-    email,senha,nome, yearly
+    email,senha,nome, yearly,calc_list
 }

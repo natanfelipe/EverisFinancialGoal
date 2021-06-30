@@ -55,14 +55,14 @@ class NomeFragment(
 
             if (validator()) {
                 val cadastroObject = CadastroModelRequest(username = cadastroObjectNome?.username,nickname = edtNome.text.toString())
-            navigationFragment(contextActivity, "senha", cadastroObject)
+            navigationFragment(contextActivity, "senha",R.id.fragment, cadastroObject)
 
             } else {
                 dialogAlert.onAlertDialog(it, title, text, positiveButton)
             }
         }
             btnBackNavBar.setOnClickListener {
-                navigationFragment(contextActivity,"email",null)
+                navigationFragment(contextActivity,"email",R.id.fragment,null)
                 }
             }
 

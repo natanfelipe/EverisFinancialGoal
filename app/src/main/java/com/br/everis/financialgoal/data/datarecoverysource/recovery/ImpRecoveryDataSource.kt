@@ -33,7 +33,10 @@ class ImpRecoveryDataSource(
             if (request.code() == 200){
                 recoveryResultCallback(
                     RecoveryResult.RequestSuccess(
-                    request.body()
+                    RecoveryModelResponse(
+                        request.body()?.message,
+                        request.code()
+                    )
                 ))
             }else {
                 val gson = Gson()
