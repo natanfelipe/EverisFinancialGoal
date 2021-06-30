@@ -13,7 +13,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/card_aplicação_mensal"
         android:layout_width="match_parent"
