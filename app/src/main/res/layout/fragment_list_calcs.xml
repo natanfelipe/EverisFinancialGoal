@@ -107,7 +107,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/title_card_aplicação_mensal"
+            android:text="Correção de valor por um índice"
             android:textSize="@dimen/text_size_14sp"
             android:textColor="@color/dot_default"
             android:fontFamily="@font/poppins"
@@ -144,7 +144,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/title_card_aplicação_mensal"
+            android:text="Conversão de taxas"
             android:textSize="@dimen/text_size_14sp"
             android:textColor="@color/dot_default"
             android:fontFamily="@font/poppins"

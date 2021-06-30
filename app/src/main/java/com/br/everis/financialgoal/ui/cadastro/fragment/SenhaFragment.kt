@@ -77,7 +77,7 @@ class SenhaFragment(
             cadastroViewModel.initialize(cadastroObject)
             cadastroViewModel.response.observe(viewLifecycleOwner) { response ->
                 load.visibility = View.GONE
-                if (response.statusCode == 200) {
+                if (response.statusCode == 201) {
                     setMessage(context, response.message)
                     requireActivity().finish()
                     startActivity(Intent(activity, LoggedOutActivity::class.java))

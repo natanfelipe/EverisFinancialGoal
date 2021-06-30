@@ -23,6 +23,7 @@ interface ApiService
     @POST("${BuildConfig.AMBIENTE}/login")
     fun loginRequest(@Body loginBody: LoginModelRequest): Call<LoginModelResponse>
 
+    @Headers("x-api-key: ${BuildConfig.API_KEY}")
     @POST("/${BuildConfig.AMBIENTE}/recovery-password")
     fun recoveryRequest(@Body recoveryBody: RecoveryModelRequest): Call<RecoveryModelResponse>
 }
