@@ -30,7 +30,7 @@ class EmailFragment(private val contextActivity: FragmentActivity) : Fragment() 
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_yearly, container, false)
+        return inflater.inflate(R.layout.fragment_email, container, false)
 
     }
 

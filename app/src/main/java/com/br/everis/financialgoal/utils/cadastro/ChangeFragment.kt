@@ -30,7 +30,7 @@ object ChangeFragment {
                 fragmentNav = NomeFragment.newInstance(cadastroObject, context)
             }
 
-            "yearly" -> {
+            CadastroEnum.yearly.toString() -> {
                 fragmentNav = YearlyFragment.newInstance(context)
             }
         }

@@ -10,12 +10,16 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
+import com.br.everis.financialgoal.data.yearlysource.model.YearlyModelRequest
 import com.br.everis.financialgoal.utils.dialogup.DialogAlert
 import com.br.everis.financialgoal.utils.validators.FieldValidator
+import com.br.everis.financialgoal.viewmodel.yearly.YearlyViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.DecimalFormat
-import kotlin.math.pow
 
-class YearlyFragment (private val contextActivity: FragmentActivity) : Fragment() {
+class YearlyFragment (
+    private val contextActivity: FragmentActivity
+    ) : Fragment() {
 
     private lateinit var edtMonthlyPeriod: EditText
     private lateinit var edtMonthlyTax: EditText
@@ -25,6 +29,7 @@ class YearlyFragment (private val contextActivity: FragmentActivity) : Fragment(
     private lateinit var btnCalcular: Button
     private lateinit var dialogAlert: DialogAlert
     private lateinit var fieldValidator: FieldValidator
+    private val yearlyViewModel: YearlyViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,10 +41,6 @@ class YearlyFragment (private val contextActivity: FragmentActivity) : Fragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        title = view.context.getString(R.string.email_alert_title)
-//        text = view.context.getString(R.string.email_alert_text)
-//        positiveButton = view.context.getString(R.string.positive_button)
-
         dialogAlert = DialogAlert()
         fieldValidator = FieldValidator()
         setView(view)
@@ -49,34 +50,27 @@ class YearlyFragment (private val contextActivity: FragmentActivity) : Fragment(
     private fun setClick() {
 
         btnCalcular.setOnClickListener {
-            if(edtMonthlyPeriod.text.isNotEmpty()
-                && edtMonthlyTax.text.isNotEmpty()
-                && edtUniqueApplicationValue.text.isNotEmpty()) {
-                if (validatorApplicationValue() && validatorPeriod() && validatorTax()) {
-                   calcularJurosComposto(
-                       edtUniqueApplicationValue.text.toString().toFloat(),
-                       edtMonthlyTax.text.toString().toFloat(),
-                       edtMonthlyPeriod.text.toString().toInt()
-                   )
+                if (validatorPeriod(it) && validatorTax(it) && validatorApplicationValue(it)) {
+
+                    val calculoObject = YearlyModelRequest(
+                        initial = edtUniqueApplicationValue.text.toString().toDouble(),
+                        month = 0.0,
+                        profitability = edtMonthlyTax.text.toString().toFloat(),
+                        period = edtMonthlyPeriod.text.toString().toInt(),
+                        interestIsMonthly = true
+                    )
+
+                    yearlyViewModel.initialize(calculoObject)
+                    yearlyViewModel.response.observe(viewLifecycleOwner) { response ->
+                        edtFinalValue.setText(response.accruedEarnings.toString())
+
+                    }
                 }
-            } else {
-                dialogAlert.onAlertDialog(it, "title", "text", "positiveButton")
-            }
         }
 
         btnBackNavBar.setOnClickListener {
             requireActivity().finish()
         }
-    }
-
-    private fun calcularJurosComposto(capital: Float, taxaJuros: Float, periodo: Int) {
-        val expo = (1+(taxaJuros/100)).pow(periodo)
-        edtFinalValue.setText((capital*expo).format()).toString()
-    }
-
-    private fun Float.format(): String {
-        val df = DecimalFormat("#.00")
-        return df.format(this)
     }
 
     private fun setView(view: View) {
@@ -88,12 +82,51 @@ class YearlyFragment (private val contextActivity: FragmentActivity) : Fragment(
         btnCalcular = view.findViewById(R.id.btn_calcular)
     }
 
-    private fun validatorPeriod(): Boolean = fieldValidator.isValidPeriod(edtMonthlyPeriod.text.toString().toInt())
-    private fun validatorTax(): Boolean = fieldValidator.isValidTax(edtMonthlyTax.text.toString().toFloat())
-    private fun validatorApplicationValue(): Boolean = fieldValidator.isValidUniqueApplication(edtUniqueApplicationValue.text.toString().toFloat())
+    private fun Float.format(): String {
+        val df = DecimalFormat("#.00")
+        return df.format(this)
+    }
+
+    private fun validatorPeriod(view: View): Boolean {
+        if(edtMonthlyPeriod.text.isNotEmpty()) {
+            if (!fieldValidator.isValidPeriod(edtMonthlyPeriod.text.toString().toInt())) {
+                return true
+            } else {
+                if (edtMonthlyPeriod.text.toString().toInt() == 0) {
+                    dialogAlert.onAlertDialog(
+                        view,
+                        view.context.getString(R.string.txt_campo_invalido),
+                        "Agaboma",
+                        "teste11"
+                    )
+                    return true
+                }
+            }
+        }
+        dialogAlert.onAlertDialog(view, view.context.getString(R.string.txt_campo_invalido), "teste11", "teste11")
+        return false
+    }
+
+    private fun validatorTax(view: View): Boolean {
+        if (edtMonthlyTax.text.isNotEmpty()) {
+            return fieldValidator.isValidTax(edtMonthlyTax.text.toString().toFloat())
+        }
+        dialogAlert.onAlertDialog(view, view.context.getString(R.string.txt_campo_invalido), "teste22", "teste22")
+        return false
+    }
+
+    private fun validatorApplicationValue(view: View): Boolean {
+        if (edtUniqueApplicationValue.text.isNotEmpty()) {
+           return fieldValidator.isValidUniqueApplication(edtUniqueApplicationValue.text.toString().toDouble())
+        }
+        dialogAlert.onAlertDialog(view, view.context.getString(R.string.txt_campo_invalido), "teste33", "teste33")
+        return false
+    }
 
     companion object {
-        fun newInstance(contextActivity: FragmentActivity) = YearlyFragment(contextActivity)
+        fun newInstance(
+            contextActivity: FragmentActivity
+        ) = YearlyFragment(contextActivity)
     }
 
 

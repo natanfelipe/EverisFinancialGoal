@@ -2,6 +2,8 @@ package com.br.everis.financialgoal.data.datasource.service
 
 
 import com.br.everis.financialgoal.BuildConfig
+import com.br.everis.financialgoal.data.yearlysource.model.YearlyModelRequest
+import com.br.everis.financialgoal.data.yearlysource.model.YearlyModelResponse
 import com.br.everis.financialgoal.data.datarecoverysource.model.RecoveryModelRequest
 import com.br.everis.financialgoal.data.datarecoverysource.model.RecoveryModelResponse
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelResponse
@@ -20,4 +22,8 @@ interface ApiService
     @Headers("x-api-key: ${BuildConfig.API_KEY}")
     @POST("/${BuildConfig.AMBIENTE}/recovery-password")
     fun recoveryRequest(@Body recoveryBody: RecoveryModelRequest): Call<RecoveryModelResponse>
+
+    @Headers("x-api-key: ${BuildConfig.API_KEY}")
+    @POST("/${BuildConfig.AMBIENTE}/calcularjuroscomposto")
+    fun yearlyRequest(@Body yearlyBody: YearlyModelRequest): Call<YearlyModelResponse>
 }
