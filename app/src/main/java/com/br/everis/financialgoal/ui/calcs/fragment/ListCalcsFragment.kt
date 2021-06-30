@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.br.everis.financialgoal.R
+import com.br.everis.financialgoal.utils.home.SessionManagmentHome
 
 class ListCalcsFragment : Fragment() {
 
@@ -16,6 +17,8 @@ class ListCalcsFragment : Fragment() {
     lateinit var cardAplicacaoUnica: ConstraintLayout
     lateinit var cardCorrecaoValor: ConstraintLayout
     lateinit var cardConversaoTaxas: ConstraintLayout
+
+    lateinit var sessionManagementHome: SessionManagmentHome
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,30 +30,35 @@ class ListCalcsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val activity = activity as Context
-        initView(view)
+        initView(view,activity)
         setView(activity)
     }
 
     private fun setView(context: Context) {
         cardAplicacaoMensal.setOnClickListener {
+            sessionManagementHome.InitializeFlagFragment("aplicacaoMensal")
             Toast.makeText(context,"Não implementado", Toast.LENGTH_SHORT).show()
         }
         cardAplicacaoUnica.setOnClickListener {
+            sessionManagementHome.InitializeFlagFragment("aplicacaoUnica")
             Toast.makeText(context,"Não implementado", Toast.LENGTH_SHORT).show()
         }
         cardCorrecaoValor.setOnClickListener {
+            sessionManagementHome.InitializeFlagFragment("correcaoValor")
             Toast.makeText(context,"Não implementado", Toast.LENGTH_SHORT).show()
         }
         cardConversaoTaxas.setOnClickListener {
+            sessionManagementHome.InitializeFlagFragment("conversaoTaxas")
             Toast.makeText(context,"Não implementado", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun initView(view: View) {
+    private fun initView(view: View, context: Context) {
         cardAplicacaoMensal = view.findViewById(R.id.card_aplicação_mensal)
         cardAplicacaoUnica = view.findViewById(R.id.card_aplicacao_unica)
         cardCorrecaoValor = view.findViewById(R.id.card_correcao_valor)
         cardConversaoTaxas = view.findViewById(R.id.card_conversao_taxas)
+        sessionManagementHome = SessionManagmentHome(context)
     }
 
     companion object {

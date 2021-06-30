@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_airbnb"
-                android:padding="@dimen/margin_12dp"/>
+                android:layout_margin="@dimen/margin_12dp"/>
 
         </androidx.cardview.widget.CardView>
 
@@ -82,7 +82,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/margin_12dp"
+                android:layout_margin="@dimen/margin_12dp"
                 android:src="@drawable/ic_opcao_unica" />
 
         </androidx.cardview.widget.CardView>
@@ -134,7 +134,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/margin_12dp"
+                android:layout_margin="@dimen/margin_12dp"
                 android:src="@drawable/ic_correcao_valor" />
 
         </androidx.cardview.widget.CardView>
@@ -182,11 +182,10 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/margin_12dp"
+                android:layout_margin="@dimen/margin_12dp"
                 android:src="@drawable/ic_correcao_taxas" />
 
         </androidx.cardview.widget.CardView>
-
 
         <TextView
             android:id="@+id/title_icon_conversao_taxas"

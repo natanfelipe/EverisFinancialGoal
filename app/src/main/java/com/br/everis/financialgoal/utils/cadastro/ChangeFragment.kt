@@ -8,6 +8,8 @@ import com.br.everis.financialgoal.ui.cadastro.fragment.EmailFragment
 import com.br.everis.financialgoal.ui.cadastro.fragment.NomeFragment
 import com.br.everis.financialgoal.ui.cadastro.fragment.SenhaFragment
 import com.br.everis.financialgoal.ui.calcs.fragment.ListCalcsFragment
+import com.br.everis.financialgoal.utils.calcs.CalcsEnum
+import com.br.everis.financialgoal.utils.home.HomeEnum
 
 object ChangeFragment {
 
@@ -31,9 +33,19 @@ object ChangeFragment {
                 fragmentNav = NomeFragment.newInstance(cadastroObject, context)
             }
 
-            CadastroEnum.calc_list.toString() -> {
+            HomeEnum.calculadora.toString() -> {
                 fragmentNav = ListCalcsFragment.newInstance()
             }
+
+            CalcsEnum.aplicacaoMensal.toString() -> {
+                fragmentNav = ListCalcsFragment.newInstance()
+            }
+
+            CalcsEnum.aplicacaoUnica.toString() -> {}
+
+            CalcsEnum.conversaoTaxas.toString() -> {}
+
+            CalcsEnum.correcaoValor.toString() -> {}
         }
 
         context.supportFragmentManager.beginTransaction().apply {

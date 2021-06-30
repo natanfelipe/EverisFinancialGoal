@@ -10,7 +10,7 @@ import com.br.everis.financialgoal.ui.home.HomeActivity
 import com.br.everis.financialgoal.ui.loggedOut.LoggedOutActivity
 import com.br.everis.financialgoal.utils.cadastro.ChangeFragment
 
-class CalcActivity : AppCompatActivity() {
+class CalcActivity(private var fragment: String = "calculadora") : AppCompatActivity() {
 
     lateinit var tvTitleNavBar: TextView
     lateinit var btnBackCadastro: AppCompatImageView
@@ -37,7 +37,7 @@ class CalcActivity : AppCompatActivity() {
     }
 
     private fun inflateFragment() {
-        ChangeFragment.navigationFragment(this, "calc_list",R.id.fragment_calcs, null)
+        ChangeFragment.navigationFragment(this, fragment,R.id.fragment_calcs, null)
     }
 
     override fun onBackPressed() {
