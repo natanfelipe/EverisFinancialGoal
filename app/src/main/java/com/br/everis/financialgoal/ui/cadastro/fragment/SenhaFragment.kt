@@ -2,7 +2,6 @@ package com.br.everis.financialgoal.ui.cadastro.fragment
 
 import android.content.Context
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,8 +11,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
 import androidx.appcompat.widget.AppCompatImageView
-import com.br.everis.financialgoal.utils.DialogAlert
-import com.br.everis.financialgoal.utils.FieldValidator
+import com.br.everis.financialgoal.utils.dialogup.DialogAlert
+import com.br.everis.financialgoal.utils.validators.FieldValidator
 import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest

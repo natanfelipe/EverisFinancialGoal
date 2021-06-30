@@ -16,12 +16,12 @@ import androidx.lifecycle.Observer
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.data.datasource.model.login.LoginModelRequest
 import com.br.everis.financialgoal.ui.home.HomeActivity
-import com.br.everis.financialgoal.utils.FieldValidator
 import com.br.everis.financialgoal.viewmodel.login.LoginViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.br.everis.financialgoal.ui.loggedOut.LoggedOutActivity
 import com.br.everis.financialgoal.ui.login.fragment.ForgottenPasswordAlertDialog
 import com.br.everis.financialgoal.utils.sessionManagment.SessionManagement
+import com.br.everis.financialgoal.utils.validators.FieldValidator
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener{
 
@@ -52,7 +52,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
     fun initViews() {
         btnLogin = findViewById(R.id.buttonLogin)
         textForgot = findViewById(R.id.textForgot)
-        btnBackHome = findViewById(R.id.btnBackHome)
+        btnBackHome = findViewById(R.id.btn_back_home)
         frame = findViewById(R.id.loadingFrameLaoyut)
         email = findViewById(R.id.userName)
         senha = findViewById(R.id.loginPassword)
@@ -101,7 +101,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
             R.id.textForgot -> {
                 dialog.show(supportFragmentManager, R.string.tag_dialog.toString())
             }
-            R.id.btnBackHome ->{
+            R.id.btn_back_home ->{
                 startActivity(Intent(this,LoggedOutActivity::class.java))
                 finish()
             }

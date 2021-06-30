@@ -15,12 +15,11 @@
         android:paddingEnd="@dimen/paddind_end"/>
 
     <TextView
-        android:id="@+id/textNav"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:fontFamily="@font/roboto"
+        android:fontFamily="@font/poppins"
         android:gravity="center"
-        android:text="@string/headLogin"
+        android:text="@string/head_yearly"
         android:textColor="@color/black"
         android:textSize="@dimen/sizeTextHead"
         android:textStyle="bold" />
