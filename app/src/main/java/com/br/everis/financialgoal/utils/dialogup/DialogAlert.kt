@@ -1,17 +1,15 @@
-package com.br.everis.financialgoal.utils
+package com.br.everis.financialgoal.utils.dialogup
 
 import android.app.AlertDialog
 import android.graphics.Color
 import android.view.View
-import androidx.core.content.ContextCompat
-import com.br.everis.financialgoal.R
 
 class DialogAlert {
 
     private lateinit var alertDialogBuilder: AlertDialog.Builder
     private lateinit var alertDialog: AlertDialog
 
-    fun onAlertDialog(view: View, title: String, text: String, positiveButton: String) {
+    fun onAlertDialog(view: View, title: String?, text: String?, positiveButton: String?) {
 
         alertDialogBuilder = AlertDialog.Builder(view.context)
         alertDialog = alertDialogBuilder

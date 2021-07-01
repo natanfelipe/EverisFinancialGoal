@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="64dp"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:background="@color/white">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/btn_back_cadastro"
@@ -15,6 +16,7 @@
         android:paddingEnd="26dp"/>
 
     <TextView
+        android:id="@+id/tv_title_nav_bar"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:fontFamily="@font/poppins_semibold"

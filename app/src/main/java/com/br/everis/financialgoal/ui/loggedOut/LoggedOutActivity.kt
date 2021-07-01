@@ -1,21 +1,23 @@
 package com.br.everis.financialgoal.ui.loggedOut
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import android.view.View.OnTouchListener
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
-import com.br.everis.financialgoal.ui.login.LoginActivity
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.ui.cadastro.CadastroActivity
+import com.br.everis.financialgoal.ui.login.LoginActivity
+import com.br.everis.financialgoal.ui.home.HomeActivity
+import com.br.everis.financialgoal.utils.sessionManagment.SessionManagement
 import com.google.android.material.tabs.TabLayout
-import java.util.Timer
-import java.util.TimerTask
+import java.util.*
+
 
 class LoggedOutActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -25,6 +27,8 @@ class LoggedOutActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var tabLayout: TabLayout
     private lateinit var btnOpenAccount: Button
     private lateinit var btnLogin: Button
+
+    private lateinit var sessionManager:SessionManagement
 
     companion object {
         const val DELAY_MS: Long = 500
@@ -53,9 +57,20 @@ class LoggedOutActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_logged_out)
 
+        getInfoSession()
+
         setView()
         setAdapter()
         click()
+    }
+
+    private fun getInfoSession() {
+        sessionManager = SessionManagement(this)
+        val infoSession = sessionManager.getInfoSession()
+
+        if (infoSession){
+            startActivity(Intent(this,HomeActivity::class.java))
+        }
     }
 
     private fun setView() {
@@ -69,6 +84,7 @@ class LoggedOutActivity : AppCompatActivity(), View.OnClickListener {
     private fun setAdapter() {
         mViewPagerAdapter = ViewPagerAdapter(this@LoggedOutActivity, images)
         mViewPager.adapter = mViewPagerAdapter
+        mViewPager.setOnTouchListener { _, _ -> true }
         handler()
     }
 
@@ -111,5 +127,10 @@ class LoggedOutActivity : AppCompatActivity(), View.OnClickListener {
                 Toast.makeText(this, "Não implementado", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        isDestroyed
     }
 }

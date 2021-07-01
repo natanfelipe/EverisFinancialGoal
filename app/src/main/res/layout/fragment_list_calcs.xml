@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.calcs.fragment.ListCalcsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/card_aplicação_mensal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        android:background="@drawable/style_relative_layout">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/icon_airbnb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_12dp"
+            android:layout_marginBottom="@dimen/margin_12dp"
+            android:layout_marginStart="@dimen/margin_16dp"
+            app:cardCornerRadius="50dp"
+            android:backgroundTint="@color/color_btn_open_account"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/title_icon_airbnb">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_airbnb"
+                android:padding="@dimen/margin_12dp"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/title_icon_airbnb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_card_aplicação_mensal"
+            android:textSize="@dimen/text_size_14sp"
+            android:textColor="@color/dot_default"
+            android:fontFamily="@font/poppins"
+            android:foregroundGravity="center_vertical"
+            android:layout_marginStart="@dimen/margin_11dp"
+            app:layout_constraintStart_toEndOf="@id/icon_airbnb"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/card_aplicacao_unica"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/card_aplicação_mensal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        android:background="@drawable/style_relative_layout">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/icon_aplicacao_unica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_12dp"
+            android:layout_marginBottom="@dimen/margin_12dp"
+            android:layout_marginStart="@dimen/margin_16dp"
+            app:cardCornerRadius="50dp"
+            android:backgroundTint="@color/slide2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/title_icon_aplicacao_unica">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_12dp"
+                android:src="@drawable/ic_opcao_unica" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/title_icon_aplicacao_unica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_aplicacao_unica"
+            android:textSize="@dimen/text_size_14sp"
+            android:textColor="@color/dot_default"
+            android:fontFamily="@font/poppins"
+            android:foregroundGravity="center_vertical"
+            android:layout_marginStart="@dimen/margin_11dp"
+            app:layout_constraintStart_toEndOf="@id/icon_aplicacao_unica"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/card_correcao_valor"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/card_aplicacao_unica"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        android:background="@drawable/style_relative_layout">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/icon_correcao_valor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_12dp"
+            android:layout_marginBottom="@dimen/margin_12dp"
+            android:layout_marginStart="@dimen/margin_16dp"
+            app:cardCornerRadius="50dp"
+            android:backgroundTint="@color/slide3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/title_icon_correcao_valor">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_12dp"
+                android:src="@drawable/ic_correcao_valor" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/title_icon_correcao_valor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_correcao_valor"
+            android:textSize="@dimen/text_size_14sp"
+            android:textColor="@color/dot_default"
+            android:fontFamily="@font/poppins"
+            android:foregroundGravity="center_vertical"
+            android:layout_marginStart="@dimen/margin_11dp"
+            app:layout_constraintStart_toEndOf="@id/icon_correcao_valor"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/card_conversao_taxas"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/card_correcao_valor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        android:background="@drawable/style_relative_layout">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/icon_conversao_taxas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_12dp"
+            android:layout_marginBottom="@dimen/margin_12dp"
+            android:layout_marginStart="@dimen/margin_16dp"
+            app:cardCornerRadius="50dp"
+            android:backgroundTint="@color/slide4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/title_icon_conversao_taxas">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_12dp"
+                android:src="@drawable/ic_correcao_taxas" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/title_icon_conversao_taxas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Conversão de taxas"
+            android:textSize="@dimen/text_size_14sp"
+            android:textColor="@color/dot_default"
+            android:fontFamily="@font/poppins"
+            android:foregroundGravity="center_vertical"
+            android:layout_marginStart="@dimen/margin_11dp"
+            app:layout_constraintStart_toEndOf="@id/icon_conversao_taxas"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

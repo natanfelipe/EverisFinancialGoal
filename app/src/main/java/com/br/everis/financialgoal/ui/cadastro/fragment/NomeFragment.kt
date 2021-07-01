@@ -10,8 +10,8 @@ import android.widget.EditText
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
-import com.br.everis.financialgoal.utils.DialogAlert
-import com.br.everis.financialgoal.utils.FieldValidator
+import com.br.everis.financialgoal.utils.dialogup.DialogAlert
+import com.br.everis.financialgoal.utils.validators.FieldValidator
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
 import com.br.everis.financialgoal.utils.cadastro.ChangeFragment.navigationFragment
 
@@ -28,7 +28,6 @@ class NomeFragment(
     private lateinit var title: String
     private lateinit var text: String
     private lateinit var positiveButton: String
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,14 +55,14 @@ class NomeFragment(
 
             if (validator()) {
                 val cadastroObject = CadastroModelRequest(username = cadastroObjectNome?.username,nickname = edtNome.text.toString())
-            navigationFragment(contextActivity, "senha", cadastroObject)
+            navigationFragment(contextActivity, "senha",R.id.fragment, cadastroObject)
 
             } else {
                 dialogAlert.onAlertDialog(it, title, text, positiveButton)
             }
         }
             btnBackNavBar.setOnClickListener {
-                navigationFragment(contextActivity,"email",null)
+                navigationFragment(contextActivity,"email",R.id.fragment,null)
                 }
             }
 
