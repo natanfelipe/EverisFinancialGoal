@@ -16,7 +16,12 @@ import com.br.everis.financialgoal.utils.dialogup.DialogAlert
 import com.br.everis.financialgoal.utils.validators.FieldValidator
 import com.br.everis.financialgoal.viewmodel.yearly.YearlyViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.text.DecimalFormat
+import java.text.NumberFormat
+import java.util.*
+
+var DIALOG_TITLE = ""
+var DIALOG_TEXT = ""
+var DIALOG_POSITIVE_BUTTON = ""
 
 class YearlyFragment (
     private val contextActivity: FragmentActivity
@@ -57,38 +62,11 @@ class YearlyFragment (
 
             load.visibility = View.VISIBLE
 
-            if (edtMonthlyPeriod.text.toString().isNotEmpty() && edtMonthlyPeriod.text.toString().toDouble() > 2147483647){
-                load.visibility = View.GONE
-                dialogAlert.onAlertDialog(it,
-                    it.context.getString(R.string.txt_campo_invalido_periodo_mensal),
-                    "Período em meses muito extenso",
-                    it.context.getString(R.string.positive_button)
-                )
-            } else if (edtMonthlyPeriod.text.toString().isEmpty() || edtMonthlyPeriod.text.toString().toInt() == 0) {
-                load.visibility = View.GONE
-                dialogAlert.onAlertDialog(it,
-                    it.context.getString(R.string.txt_campo_invalido_periodo_mensal),
-                    it.context.getString(R.string.txt_periodo_text),
-                    it.context.getString(R.string.positive_button)
-                )
-            } else if (edtMonthlyTax.text.toString().isEmpty() || edtMonthlyTax.text.toString().toFloat() < 0.0000000001F) {
-                load.visibility = View.GONE
-                dialogAlert.onAlertDialog(
-                    it,
-                    it.context.getString(R.string.txt_campo_invalido_taxa),
-                    it.context.getString(R.string.txt_taxa_text),
-                    it.context.getString(R.string.positive_button)
-                )
-            } else if (edtUniqueApplicationValue.text.toString().isEmpty() || edtUniqueApplicationValue.text.toString().toDouble() == 0.0) {
-                load.visibility = View.GONE
-                dialogAlert.onAlertDialog(
-                    it,
-                    it.context.getString(R.string.txt_campo_invalido_valor_aplicacao),
-                    it.context.getString(R.string.txt_valor_text),
-                    it.context.getString(R.string.positive_button)
-                )
-            } else {
-
+            if (fieldValidator.isValidYearly(
+                    edtMonthlyPeriod.text.toString(),
+                    edtMonthlyTax.text.toString(),
+                    edtUniqueApplicationValue.text.toString(), it)
+            ) {
                 val calculoObject = YearlyModelRequest(
                     initial = edtUniqueApplicationValue.text.toString().toDouble(),
                     monthly = 0.0,
@@ -100,9 +78,17 @@ class YearlyFragment (
                 yearlyViewModel.initialize(calculoObject)
                 yearlyViewModel.response.observe(viewLifecycleOwner) { response ->
                     load.visibility = View.GONE
-                    edtFinalValue.setText(response.accruedEarnings.toString().toFloat().format())
+                    val valor = currencyFormat(response.accruedEarnings.toFloat())
+                    edtFinalValue.setText(valor)
 
                 }
+            } else {
+                load.visibility = View.GONE
+                dialogAlert.onAlertDialog(it,
+                DIALOG_TITLE,
+                DIALOG_TEXT,
+                DIALOG_POSITIVE_BUTTON
+                )
             }
         }
 
@@ -121,39 +107,18 @@ class YearlyFragment (
         load = view.findViewById(R.id.loadingFrameLaoyut_senha)
     }
 
-    private fun Float.format(): String {
-        val df = DecimalFormat("#.00")
-        return df.format(this)
-    }
-
     companion object {
         fun newInstance(
             contextActivity: FragmentActivity
         ) = YearlyFragment(contextActivity)
     }
 
-//    private var current: String = ""
+    fun currencyFormat(valor: Float) : String{
+        val format = NumberFormat.getCurrencyInstance();
+        format.setMaximumFractionDigits(2);
+        format.setCurrency(Currency.getInstance("BRL"));
 
-//    override fun onTextChanged(
-//        s: CharSequence,
-//        start: Int,
-//        before: Int,
-//        count: Int
-//    ) {
-//        if (s.toString() != current) {
-//            discount_amount_edit_text.removeTextChangedListener(this)
-//
-//            val cleanString: String = s.replace("""[R$,.]""".toRegex(), "")
-//
-//            val parsed = cleanString.toDouble()
-//            val formatted = NumberFormat.getCurrencyInstance().format((parsed / 100))
-//
-//            current = formatted
-//            discount_amount_edit_text.setText(formatted)
-//            discount_amount_edit_text.setSelection(formatted.length)
-//
-//            discount_amount_edit_text.addTextChangedListener(this)
-//        }
-//    }
+        return format.format(valor);
+    }
 
 }
