@@ -77,7 +77,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener{
                     if (it.res) {
                         frame.visibility = View.GONE
 
-                        sessionManagement.initializeSession(it)
+                        sessionManagement.initializeSession(it.user.username.toString())
                         startActivity(Intent(this,HomeActivity::class.java))
 
                     } else {
