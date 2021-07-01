@@ -18,7 +18,7 @@ import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
 import com.br.everis.financialgoal.ui.loggedOut.LoggedOutActivity
 import com.br.everis.financialgoal.ui.login.LoginActivity
-import com.br.everis.financialgoal.utils.cadastro.ChangeFragment.navigationFragment
+import com.br.everis.financialgoal.utils.ChangeFragment.navigationFragment
 import com.br.everis.financialgoal.utils.cadastro.setToastMessage.setMessage
 import com.br.everis.financialgoal.viewmodel.cadastro.CadastroViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel

@@ -5,8 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.ui.loggedOut.LoggedOutActivity
-import com.br.everis.financialgoal.ui.monthly.MonthlyFragment
-import com.br.everis.financialgoal.utils.cadastro.ChangeFragment.navigationFragment
+import com.br.everis.financialgoal.utils.ChangeFragment.navigationFragment
 
 class CadastroActivity : AppCompatActivity() {
 

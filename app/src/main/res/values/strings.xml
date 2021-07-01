@@ -67,5 +67,7 @@
     <string name="title_card_aplicação_mensal">Investimento com aplicação mensal</string>
     <string name="title_aplicacao_unica">Investimento com aplicação única</string>
     <string name="title_email_sucesso">E-mail enviado!</string>
+    <string name="title_correcao_valor">Correção de valor por um índice</string>
+    <string name="msg_nao_disponivel">Simulador não disponível</string>
 
 </resources>

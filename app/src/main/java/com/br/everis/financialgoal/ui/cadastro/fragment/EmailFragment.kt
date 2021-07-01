@@ -13,7 +13,7 @@ import com.br.everis.financialgoal.utils.validators.FieldValidator
 import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
-import com.br.everis.financialgoal.utils.cadastro.ChangeFragment.navigationFragment
+import com.br.everis.financialgoal.utils.ChangeFragment.navigationFragment
 
 class EmailFragment(private val contextActivity: FragmentActivity) : Fragment() {
 
