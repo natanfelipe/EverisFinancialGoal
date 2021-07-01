@@ -14,21 +14,23 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.ui.home.HomeActivity
-import com.br.everis.financialgoal.utils.cadastro.ChangeFragment
+import com.br.everis.financialgoal.utils.ChangeFragment
+import com.br.everis.financialgoal.utils.cadastro.setToastMessage.setMessage
+import com.br.everis.financialgoal.utils.calcs.CalcsEnum
 import com.br.everis.financialgoal.utils.home.SessionManagmentHome
 
 class ListCalcsFragment(
     private val contextActivity: FragmentActivity
 ) : Fragment() {
 
-    lateinit var cardAplicacaoMensal:ConstraintLayout
-    lateinit var cardAplicacaoUnica: ConstraintLayout
-    lateinit var cardCorrecaoValor: ConstraintLayout
-    lateinit var cardConversaoTaxas: ConstraintLayout
-    lateinit var tvTitleNavBar: TextView
-    lateinit var btnBackCadastro: AppCompatImageView
+    private lateinit var cardAplicacaoMensal:ConstraintLayout
+    private lateinit var cardAplicacaoUnica: ConstraintLayout
+    private lateinit var cardCorrecaoValor: ConstraintLayout
+    private lateinit var cardConversaoTaxas: ConstraintLayout
+    private lateinit var tvTitleNavBar: TextView
+    private lateinit var btnBackCadastro: AppCompatImageView
 
-    lateinit var sessionManagementHome: SessionManagmentHome
+    private lateinit var sessionManagementHome: SessionManagmentHome
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,25 +48,25 @@ class ListCalcsFragment(
 
     private fun setView(context: Context) {
         cardAplicacaoMensal.setOnClickListener {
-            sessionManagementHome.InitializeFlagFragment("aplicacaoMensal")
-            Toast.makeText(context,"Não implementado", Toast.LENGTH_SHORT).show()
+            sessionManagementHome.InitializeFlagFragment(CalcsEnum.APLICACAO_MENSAL.toString())
+            setMessage(context,context.getString(R.string.msg_nao_disponivel))
         }
         cardAplicacaoUnica.setOnClickListener {
-            sessionManagementHome.InitializeFlagFragment("aplicacaoUnica")
+            sessionManagementHome.InitializeFlagFragment(CalcsEnum.APLICACAO_UNICA.toString())
             ChangeFragment.navigationFragment(
                 contextActivity,
-                "yearly",
+                CalcsEnum.APLICACAO_UNICA.toString(),
                 R.id.fragment_calcs,
                 null
             )
         }
         cardCorrecaoValor.setOnClickListener {
-            sessionManagementHome.InitializeFlagFragment("correcaoValor")
-            Toast.makeText(context,"Não implementado", Toast.LENGTH_SHORT).show()
+            sessionManagementHome.InitializeFlagFragment(CalcsEnum.CORRECAO_VALOR.toString())
+            setMessage(context,context.getString(R.string.msg_nao_disponivel))
         }
         cardConversaoTaxas.setOnClickListener {
-            sessionManagementHome.InitializeFlagFragment("conversaoTaxas")
-            Toast.makeText(context,"Não implementado", Toast.LENGTH_SHORT).show()
+            sessionManagementHome.InitializeFlagFragment(CalcsEnum.CONVERSAO_TAXAS.toString())
+            setMessage(context,context.getString(R.string.msg_nao_disponivel))
         }
         btnBackCadastro.setOnClickListener {
             startActivity(Intent(context, HomeActivity::class.java))

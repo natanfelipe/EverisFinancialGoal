@@ -1,4 +1,4 @@
-package com.br.everis.financialgoal.utils.cadastro
+package com.br.everis.financialgoal.utils
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -8,6 +8,7 @@ import com.br.everis.financialgoal.ui.cadastro.fragment.NomeFragment
 import com.br.everis.financialgoal.ui.cadastro.fragment.SenhaFragment
 import com.br.everis.financialgoal.ui.home.fragment.YearlyFragment
 import com.br.everis.financialgoal.ui.calcs.fragment.ListCalcsFragment
+import com.br.everis.financialgoal.utils.cadastro.CadastroEnum
 import com.br.everis.financialgoal.utils.calcs.CalcsEnum
 import com.br.everis.financialgoal.utils.home.HomeEnum
 
@@ -22,38 +23,39 @@ object ChangeFragment {
         lateinit var fragmentNav: Fragment
 
         when(fragment){
-            CadastroEnum.email.toString() -> {
+            CadastroEnum.EMAIL.toString() -> {
                 fragmentNav = EmailFragment.newInstance(context)
             }
-            CadastroEnum.senha.toString() -> {
+            CadastroEnum.SENHA.toString() -> {
                 fragmentNav = SenhaFragment.newInstance(cadastroObject,context)
             }
 
-            CadastroEnum.nome.toString() -> {
+            CadastroEnum.NOME.toString() -> {
                 fragmentNav = NomeFragment.newInstance(cadastroObject, context)
             }
 
-            HomeEnum.calculadora.toString() -> {
+            HomeEnum.CALCULADORA.toString() -> {
                 fragmentNav = ListCalcsFragment.newInstance(context)
             }
-            CadastroEnum.yearly.toString() -> {
-                fragmentNav = YearlyFragment.newInstance(context)
-            }
-            CadastroEnum.calc_list.toString() -> {
+            CadastroEnum.CALC_LIST.toString() -> {
                 fragmentNav = ListCalcsFragment.newInstance(context)
             }
 
-            CalcsEnum.aplicacaoMensal.toString() -> {
-
+            CalcsEnum.APLICACAO_MENSAL.toString() -> {
+                //TODO
             }
 
-            CalcsEnum.aplicacaoUnica.toString() -> {
+            CalcsEnum.APLICACAO_UNICA.toString() -> {
                 fragmentNav = YearlyFragment.newInstance(context)
             }
 
-            CalcsEnum.conversaoTaxas.toString() -> {}
+            CalcsEnum.CONVERSAO_TAXAS.toString() -> {
+                //TODO
+            }
 
-            CalcsEnum.correcaoValor.toString() -> {}
+            CalcsEnum.CORRECAO_VALOR.toString() -> {
+                //TODO
+            }
         }
 
         context.supportFragmentManager.beginTransaction().apply {

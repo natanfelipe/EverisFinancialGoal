@@ -8,17 +8,13 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.fragment.app.FragmentActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.br.everis.financialgoal.R
-import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
 import com.br.everis.financialgoal.ui.calcs.CalcActivity
 import com.br.everis.financialgoal.ui.home.adapter.HomeListAdapter
 import com.br.everis.financialgoal.ui.login.LoginActivity
-import com.br.everis.financialgoal.utils.cadastro.CadastroEnum
-import com.br.everis.financialgoal.utils.cadastro.ChangeFragment
+import com.br.everis.financialgoal.utils.cadastro.setToastMessage.setMessage
 import com.br.everis.financialgoal.utils.home.ClickItemHome
 import com.br.everis.financialgoal.utils.home.HomeEnum
 import com.br.everis.financialgoal.utils.home.SessionManagmentHome
@@ -39,26 +35,27 @@ class HomeActivity : AppCompatActivity() {
 
     lateinit var sessionManagementHome: SessionManagmentHome
 
-    val listCards = arrayListOf<String>("calculadora","simulador")
-    val listImages = arrayListOf<Int>(R.drawable.ic_correcao_valor, R.drawable.ic_simulator)
+    private val listCards = arrayListOf(HomeEnum.CALCULADORA.toString(),HomeEnum.SIMULADOR.toString())
+    private val listImages = arrayListOf(R.drawable.ic_correcao_valor, R.drawable.ic_simulator)
+
+    lateinit var fragmentCalcs:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        appPreferences = AppPreferences(this)
 
         initView()
         setView()
         setAdapter(this)
-        eventClick()
+        eventClick(fragmentCalcs)
     }
 
-    private fun eventClick() {
+    private fun eventClick(fragment:String) {
         cardUltimaSimulacao.setOnClickListener {
-            val fragmentCalcs:String = sessionManagementHome.getFlagFragment()
-            if (fragmentCalcs.isNotEmpty()){
+
+            if (fragment.isNotEmpty()){
                 startActivity(Intent(this,CalcActivity::class.java).apply {
-                    putExtra("fragment",fragmentCalcs)
+                    putExtra("fragment",fragment)
                 }
                 )
             }
@@ -67,6 +64,11 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setView() {
         tvNameHome.text = appPreferences.getString(KEY_NICK_NAME)
+        if(fragmentCalcs.isEmpty()){
+            cardUltimaSimulacao.visibility = View.GONE
+        }else{
+            cardUltimaSimulacao.visibility = View.VISIBLE
+        }
     }
 
     private fun initView() {
@@ -74,6 +76,10 @@ class HomeActivity : AppCompatActivity() {
         cardUltimaSimulacao = findViewById(R.id.card_ultima_simulacao)
 
         sessionManagementHome = SessionManagmentHome(this)
+
+        fragmentCalcs = sessionManagementHome.getFlagFragment()
+
+        appPreferences = AppPreferences(this)
     }
 
     override fun onBackPressed() {
@@ -92,15 +98,15 @@ class HomeActivity : AppCompatActivity() {
             override fun ClickItemHome(fragment:String) {
 
                 when(fragment){
-                    HomeEnum.calculadora.toString() -> {
+                    HomeEnum.CALCULADORA.toString() -> {
                        startActivity(Intent(context,CalcActivity::class.java).apply {
-                           putExtra("fragment","calculadora")
+                           putExtra("fragment",HomeEnum.CALCULADORA.toString())
                             }
                        )
                     }
 
-                    HomeEnum.simulador.toString() -> {
-                        Toast.makeText(context,"Simulador não disponível", Toast.LENGTH_SHORT).show()
+                    HomeEnum.SIMULADOR.toString() -> {
+                        setMessage(context,getString(R.string.msg_nao_disponivel))
                     }
                 }
 

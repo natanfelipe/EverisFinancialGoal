@@ -3,15 +3,11 @@ package com.br.everis.financialgoal.ui.calcs
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
-import androidx.appcompat.widget.AppCompatImageView
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.ui.home.HomeActivity
-import com.br.everis.financialgoal.ui.loggedOut.LoggedOutActivity
-import com.br.everis.financialgoal.utils.cadastro.ChangeFragment
+import com.br.everis.financialgoal.utils.ChangeFragment
 
 class CalcActivity : AppCompatActivity() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,7 +1,6 @@
 package com.br.everis.financialgoal.ui.home.fragment
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,8 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.data.yearlysource.model.YearlyModelRequest
-import com.br.everis.financialgoal.ui.home.HomeActivity
-import com.br.everis.financialgoal.utils.cadastro.ChangeFragment
+import com.br.everis.financialgoal.utils.ChangeFragment
+import com.br.everis.financialgoal.utils.cadastro.CadastroEnum
 import com.br.everis.financialgoal.utils.dialogup.DialogAlert
 import com.br.everis.financialgoal.utils.validators.FieldValidator
 import com.br.everis.financialgoal.viewmodel.yearly.YearlyViewModel
@@ -75,7 +74,7 @@ class YearlyFragment (
         btnBackNavBar.setOnClickListener {
             ChangeFragment.navigationFragment(
                 contextActivity,
-                "calc_list",
+                CadastroEnum.CALC_LIST.toString(),
                 R.id.fragment_calcs,
                 null
             )
