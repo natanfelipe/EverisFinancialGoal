@@ -13,7 +13,7 @@ import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.utils.dialogup.DialogAlert
 import com.br.everis.financialgoal.utils.validators.FieldValidator
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
-import com.br.everis.financialgoal.utils.cadastro.ChangeFragment.navigationFragment
+import com.br.everis.financialgoal.utils.ChangeFragment.navigationFragment
 
 class NomeFragment(
         private val cadastroObjectNome:CadastroModelRequest?,
@@ -55,14 +55,14 @@ class NomeFragment(
 
             if (validator()) {
                 val cadastroObject = CadastroModelRequest(username = cadastroObjectNome?.username,nickname = edtNome.text.toString())
-            navigationFragment(contextActivity, "senha",R.id.fragment, cadastroObject)
+            navigationFragment(contextActivity, "SENHA",R.id.fragment, cadastroObject)
 
             } else {
                 dialogAlert.onAlertDialog(it, title, text, positiveButton)
             }
         }
             btnBackNavBar.setOnClickListener {
-                navigationFragment(contextActivity,"email",R.id.fragment,null)
+                navigationFragment(contextActivity,"EMAIL",R.id.fragment,null)
                 }
             }
 
