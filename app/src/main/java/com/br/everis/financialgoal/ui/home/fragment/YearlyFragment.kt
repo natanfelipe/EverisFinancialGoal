@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.FrameLayout
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -18,11 +19,16 @@ import com.br.everis.financialgoal.utils.dialogup.DialogAlert
 import com.br.everis.financialgoal.utils.validators.FieldValidator
 import com.br.everis.financialgoal.viewmodel.yearly.YearlyViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.text.DecimalFormat
+import java.text.NumberFormat
+import java.util.*
+
+var DIALOG_TITLE = ""
+var DIALOG_TEXT = ""
+var DIALOG_POSITIVE_BUTTON = ""
 
 class YearlyFragment (
     private val contextActivity: FragmentActivity
-    ) : Fragment() {
+) : Fragment() {
 
     private lateinit var edtMonthlyPeriod: EditText
     private lateinit var edtMonthlyTax: EditText
@@ -32,6 +38,8 @@ class YearlyFragment (
     private lateinit var btnCalcular: Button
     private lateinit var dialogAlert: DialogAlert
     private lateinit var fieldValidator: FieldValidator
+    private lateinit var load : FrameLayout
+
     private val yearlyViewModel: YearlyViewModel by viewModel()
 
     override fun onCreateView(
@@ -43,6 +51,7 @@ class YearlyFragment (
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val activity = activity as Context
         dialogAlert = DialogAlert()
         fieldValidator = FieldValidator()
@@ -53,22 +62,37 @@ class YearlyFragment (
     private fun setClick(context: Context) {
 
         btnCalcular.setOnClickListener {
-                if (validatorPeriod(it) && validatorTax(it) && validatorApplicationValue(it)) {
 
-                    val calculoObject = YearlyModelRequest(
-                        initial = edtUniqueApplicationValue.text.toString().toDouble(),
-                        month = 0.0,
-                        profitability = edtMonthlyTax.text.toString().toFloat(),
-                        period = edtMonthlyPeriod.text.toString().toInt(),
-                        interestIsMonthly = true
-                    )
+            load.visibility = View.VISIBLE
 
-                    yearlyViewModel.initialize(calculoObject)
-                    yearlyViewModel.response.observe(viewLifecycleOwner) { response ->
-                        edtFinalValue.setText(response.accruedEarnings.toString())
+            if (fieldValidator.isValidYearly(
+                    edtMonthlyPeriod.text.toString(),
+                    edtMonthlyTax.text.toString(),
+                    edtUniqueApplicationValue.text.toString(), it)
+            ) {
+                val calculoObject = YearlyModelRequest(
+                    initial = edtUniqueApplicationValue.text.toString().toDouble(),
+                    monthly = 0.0,
+                    profitability = edtMonthlyTax.text.toString().toFloat(),
+                    period = edtMonthlyPeriod.text.toString().toInt(),
+                    interestIsMonthly = true
+                )
 
-                    }
+                yearlyViewModel.initialize(calculoObject)
+                yearlyViewModel.response.observe(viewLifecycleOwner) { response ->
+                    load.visibility = View.GONE
+                    val valor = currencyFormat(response.accruedEarnings.toFloat())
+                    edtFinalValue.setText(valor)
+
                 }
+            } else {
+                load.visibility = View.GONE
+                dialogAlert.onAlertDialog(it,
+                DIALOG_TITLE,
+                DIALOG_TEXT,
+                DIALOG_POSITIVE_BUTTON
+                )
+            }
         }
 
         btnBackNavBar.setOnClickListener {
@@ -88,47 +112,7 @@ class YearlyFragment (
         edtFinalValue = view.findViewById(R.id.edt_final_value)
         btnBackNavBar = view.findViewById(R.id.btn_back_home)
         btnCalcular = view.findViewById(R.id.btn_calcular)
-    }
-
-    private fun Float.format(): String {
-        val df = DecimalFormat("#.00")
-        return df.format(this)
-    }
-
-    private fun validatorPeriod(view: View): Boolean {
-        if(edtMonthlyPeriod.text.isNotEmpty()) {
-            if (!fieldValidator.isValidPeriod(edtMonthlyPeriod.text.toString().toInt())) {
-                return true
-            } else {
-                if (edtMonthlyPeriod.text.toString().toInt() == 0) {
-                    dialogAlert.onAlertDialog(
-                        view,
-                        view.context.getString(R.string.txt_campo_invalido),
-                        "Agaboma",
-                        "teste11"
-                    )
-                    return true
-                }
-            }
-        }
-        dialogAlert.onAlertDialog(view, view.context.getString(R.string.txt_campo_invalido), "teste11", "teste11")
-        return false
-    }
-
-    private fun validatorTax(view: View): Boolean {
-        if (edtMonthlyTax.text.isNotEmpty()) {
-            return fieldValidator.isValidTax(edtMonthlyTax.text.toString().toFloat())
-        }
-        dialogAlert.onAlertDialog(view, view.context.getString(R.string.txt_campo_invalido), "teste22", "teste22")
-        return false
-    }
-
-    private fun validatorApplicationValue(view: View): Boolean {
-        if (edtUniqueApplicationValue.text.isNotEmpty()) {
-           return fieldValidator.isValidUniqueApplication(edtUniqueApplicationValue.text.toString().toDouble())
-        }
-        dialogAlert.onAlertDialog(view, view.context.getString(R.string.txt_campo_invalido), "teste33", "teste33")
-        return false
+        load = view.findViewById(R.id.loadingFrameLaoyut_senha)
     }
 
     companion object {
@@ -137,29 +121,12 @@ class YearlyFragment (
         ) = YearlyFragment(contextActivity)
     }
 
+    fun currencyFormat(valor: Float) : String{
+        val format = NumberFormat.getCurrencyInstance();
+        format.setMaximumFractionDigits(2);
+        format.setCurrency(Currency.getInstance("BRL"));
 
-//    private var current: String = ""
-
-//    override fun onTextChanged(
-//        s: CharSequence,
-//        start: Int,
-//        before: Int,
-//        count: Int
-//    ) {
-//        if (s.toString() != current) {
-//            discount_amount_edit_text.removeTextChangedListener(this)
-//
-//            val cleanString: String = s.replace("""[R$,.]""".toRegex(), "")
-//
-//            val parsed = cleanString.toDouble()
-//            val formatted = NumberFormat.getCurrencyInstance().format((parsed / 100))
-//
-//            current = formatted
-//            discount_amount_edit_text.setText(formatted)
-//            discount_amount_edit_text.setSelection(formatted.length)
-//
-//            discount_amount_edit_text.addTextChangedListener(this)
-//        }
-//    }
+        return format.format(valor);
+    }
 
 }

@@ -17,7 +17,7 @@ class CadastroActivity : AppCompatActivity() {
     }
 
     private fun inflateFragment() {
-        navigationFragment(this,"email",R.id.fragment, null)
+        navigationFragment(this,"EMAIL",R.id.fragment, null)
     }
 
     override fun onBackPressed() {
