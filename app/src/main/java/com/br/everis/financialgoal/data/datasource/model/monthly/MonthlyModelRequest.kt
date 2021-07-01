@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class MonthlyModelRequest(
     @SerializedName("initial")
     val val_inicial : Double,
-    @SerializedName("month")
+    @SerializedName("monthly")
     val aport_mensal : Double,
     @SerializedName("profitability")
     val taxa_juros : Float,

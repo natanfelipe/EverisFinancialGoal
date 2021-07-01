@@ -31,12 +31,20 @@ class MonthlyViewModel(private val repository: MonthlyRepository):ViewModel() {
         }
 
     }
-    fun isValid(periodo : Int):Boolean{
-        if(periodo == 0){
+    fun isValid(periodo : String, juros: String, aplic_inicial :String, aplic_mensal: String):Boolean{
+        if(periodo.isEmpty() || periodo.toInt() == 0){
             messageMonthlyValidator.value = R.string.preiodo_invalido
             return false
+        }else if(juros.isEmpty() || juros.toFloat() < 0){
+            messageMonthlyValidator.value = R.string.juros_invalido
+            return false
+        } else if(aplic_inicial.isEmpty() || aplic_inicial.toDouble() <= 0){
+            messageMonthlyValidator.value = R.string.aplic_inicial_invalida
+            return false
+        }else if(aplic_mensal.isEmpty() || aplic_mensal.toDouble() < 0){
+            messageMonthlyValidator.value = R.string.aplic_mensal_invalida
+            return false
         }else{
-            messageMonthlyValidator.value = R.string.is_valid
             return true
         }
     }

@@ -38,6 +38,7 @@
     <string name="aplic_inicial_invalida">Insira um valor válido para a aplicação inicial!</string>
     <string name="aplic_mensal_invalida">Insira um valor válido para a aplicação mensal!</string>
     <string name="is_valid">Tudo certo</string>
+    <string name="erro_dialog_monthly">Verifique os dados!</string>
 
     <!-- Textos AlertDialog -->
     <string name="email_alert_title">E-mail inválido</string>

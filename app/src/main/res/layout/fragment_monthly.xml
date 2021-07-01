@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.monthly.MonthlyFragment"
     android:orientation="vertical"
+    android:fillViewport="true"
     android:id="@+id/layout_monthly">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/grey">
+
         <include
             android:id="@+id/monthly_nav_bar"
             layout="@layout/navbar_login"
@@ -32,18 +35,20 @@
             android:fontFamily="@font/roboto"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/monthly_nav_bar" />
+
         <EditText
             android:id="@+id/edt_periodo_meses"
-            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_txt_monthly"
             android:layout_marginTop="@dimen/text_margin"
-            android:layout_marginEnd="@dimen/margin_txt_monthly"
-            android:textSize="@dimen/text_size_monthly"
-            android:elevation="@dimen/elevation"
-            android:paddingStart="5dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/custom_edi_text_user"
+            android:elevation="@dimen/elevation"
+            android:inputType="number"
+            android:paddingStart="@dimen/padding_text_monthly"
+            android:textSize="@dimen/text_size_monthly"
+            app:layout_constraintEnd_toStartOf="@+id/loading_frameLayout_monthly"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_periodo_meses" />
         <TextView
@@ -61,6 +66,7 @@
             app:layout_constraintTop_toBottomOf="@+id/edt_periodo_meses" />
         <EditText
             android:id="@+id/edt_taxa"
+            android:inputType="numberDecimal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/text_margin"
@@ -68,7 +74,7 @@
             android:layout_marginEnd="@dimen/margin_txt_monthly"
             android:textSize="@dimen/text_size_monthly"
             android:elevation="@dimen/elevation"
-            android:paddingStart="5dp"
+            android:paddingStart="@dimen/padding_text_monthly"
             android:background="@drawable/custom_edi_text_user"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_taxa"/>
@@ -87,6 +93,7 @@
             app:layout_constraintTop_toBottomOf="@+id/edt_taxa" />
         <EditText
             android:id="@+id/edit_val_init"
+            android:inputType="numberDecimal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/text_margin"
@@ -95,7 +102,7 @@
             android:layout_marginEnd="@dimen/margin_txt_monthly"
             android:textSize="@dimen/text_size_monthly"
             android:elevation="@dimen/elevation"
-            android:padding="5dp"
+            android:padding="@dimen/padding_text_monthly"
             android:background="@drawable/custom_edi_text_user"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_val_init"/>
@@ -114,6 +121,7 @@
             app:layout_constraintTop_toBottomOf="@+id/edit_val_init" />
         <EditText
             android:id="@+id/edit_val_mensal"
+            android:inputType="numberDecimal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/text_margin"
@@ -122,7 +130,7 @@
             android:layout_marginEnd="@dimen/margin_txt_monthly"
             android:textSize="@dimen/text_size_monthly"
             android:elevation="@dimen/elevation"
-            android:paddingStart="@dimen/margin_5p"
+            android:paddingStart="@dimen/padding_text_monthly"
             android:background="@drawable/custom_edi_text_user"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_val_mensal"/>
@@ -149,10 +157,10 @@
             android:layout_marginEnd="@dimen/margin_txt_monthly"
             android:textSize="@dimen/text_size_monthly"
             android:elevation="@dimen/elevation"
-            android:text="Teste"
             android:gravity="center_vertical"
             android:textColor="@color/white"
-            android:paddingStart="5dp"
+            android:paddingStart="@dimen/padding_text_monthly"
+            android:text=""
             android:background="@drawable/custom_edit_blocked"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_val_final"/>
@@ -163,24 +171,33 @@
             android:text="@string/btn_montlhy"
             android:fontFamily="@font/roboto"
             android:padding="@dimen/margin_txt_monthly"
+            android:elevation="@dimen/elevation"
             android:layout_marginTop="@dimen/margin_edit"
             android:backgroundTint="@color/dot_next"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edit_val_final"
             android:layout_marginStart="@dimen/margin_txt_monthly"
             android:layout_marginEnd="@dimen/margin_txt_monthly"/>
-        <ProgressBar
-            android:id="@+id/progressBar_monthly"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:elevation="3dp"
-            android:visibility="gone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
 
+        <FrameLayout
+            android:id="@+id/loading_frameLayout_monthly"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_frame_monthly"
+            android:background="@color/frame_background"
+            android:elevation="@dimen/elevation_frame_monthly"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ProgressBar
+                android:id="@+id/progressBar_monthly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical" />
+        </FrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </ScrollView>
