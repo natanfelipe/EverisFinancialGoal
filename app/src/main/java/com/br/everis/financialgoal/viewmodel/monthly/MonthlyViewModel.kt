@@ -17,8 +17,8 @@ class MonthlyViewModel(private val repository: MonthlyRepository):ViewModel() {
 
     private var monthlyModelResponse = MutableLiveData<MonthlyModelResponse>()
     val response: LiveData<MonthlyModelResponse>get() = monthlyModelResponse
-    private var validatorMessage = MutableLiveData<Int>()
-    val messageValidator = validatorMessage
+    private var validatorMonthlyMessage = MutableLiveData<Int>()
+    val messageMonthlyValidator = validatorMonthlyMessage
 
     fun init(monthly: MonthlyModelRequest){
         repository.monthlyRepository(::getResponse,monthly)
@@ -33,11 +33,11 @@ class MonthlyViewModel(private val repository: MonthlyRepository):ViewModel() {
     }
     fun isValid(periodo : Int):Boolean{
         if(periodo == 0){
+            messageMonthlyValidator.value = R.string.preiodo_invalido
             return false
-            messageValidator.value = R.string.preiodo_invalido
         }else{
+            messageMonthlyValidator.value = R.string.is_valid
             return true
-            messageValidator.value = R.string.is_valid
         }
     }
 }

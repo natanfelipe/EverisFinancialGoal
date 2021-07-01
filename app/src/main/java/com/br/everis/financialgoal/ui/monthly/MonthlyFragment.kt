@@ -70,12 +70,12 @@ class MonthlyFragment: Fragment() {
 
            if (monthlyViewModel.isValid(periodo = periodo.text.toString().toInt())){
 
-                monthlyViewModel.messageValidator.observe(viewLifecycleOwner){
+                monthlyViewModel.messageMonthlyValidator.observe(viewLifecycleOwner){
                     message -> onAlertDialogLogin(getString(message))
                 }
 
             }else{
-                monthlyViewModel.messageValidator.observe(viewLifecycleOwner){
+                monthlyViewModel.messageMonthlyValidator.observe(viewLifecycleOwner){
                         message -> onAlertDialogLogin(getString(message))
                 }
             }
