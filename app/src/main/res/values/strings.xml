@@ -41,12 +41,12 @@
     <string name="tv_valor_da_aplica_o_nica_hoje">Valor da aplicação única hoje</string>
     <string name="txt_valor_obtido_no_final">Valor obtido no final</string>
 
-    <string name="txt_campo_invalido"> Campo inválido </string>
-    <string name="txt_periodo_text"> O período não pode estar em branco e deve ser maior que 0</string>
-
-    <string name="txt_taxa_text"> Preencha o campo de taxa de juros </string>
-
-    <string name="txt_valor_text"> Preencha o campo de valor de aplicação </string>
+    <string name="txt_campo_invalido_periodo_mensal"> Período mensal inválido </string>
+    <string name="txt_periodo_text"> O período em meses não pode estar em branco e deve ser maior que 0</string>
+    <string name="txt_campo_invalido_taxa"> Taxa inválida </string>
+    <string name="txt_taxa_text"> O campo de taxa de juros não pode estar em branco e deve ter valor maior que 0 </string>
+    <string name="txt_campo_invalido_valor_aplicacao"> Valor de aplicação inválido </string>
+    <string name="txt_valor_text"> O campo de valor da aplicação não pode estar em branco e deve ter um valor maior que 0 </string>
 
     <!-- Textos AlertDialog -->
     <string name="email_alert_title">E-mail inválido</string>

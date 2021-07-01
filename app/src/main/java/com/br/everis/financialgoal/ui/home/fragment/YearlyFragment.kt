@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.FrameLayout
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -19,7 +20,7 @@ import java.text.DecimalFormat
 
 class YearlyFragment (
     private val contextActivity: FragmentActivity
-    ) : Fragment() {
+) : Fragment() {
 
     private lateinit var edtMonthlyPeriod: EditText
     private lateinit var edtMonthlyTax: EditText
@@ -29,6 +30,8 @@ class YearlyFragment (
     private lateinit var btnCalcular: Button
     private lateinit var dialogAlert: DialogAlert
     private lateinit var fieldValidator: FieldValidator
+    private lateinit var load : FrameLayout
+
     private val yearlyViewModel: YearlyViewModel by viewModel()
 
     override fun onCreateView(
@@ -41,6 +44,7 @@ class YearlyFragment (
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         dialogAlert = DialogAlert()
         fieldValidator = FieldValidator()
         setView(view)
@@ -50,22 +54,56 @@ class YearlyFragment (
     private fun setClick() {
 
         btnCalcular.setOnClickListener {
-                if (validatorPeriod(it) && validatorTax(it) && validatorApplicationValue(it)) {
 
-                    val calculoObject = YearlyModelRequest(
-                        initial = edtUniqueApplicationValue.text.toString().toDouble(),
-                        month = 0.0,
-                        profitability = edtMonthlyTax.text.toString().toFloat(),
-                        period = edtMonthlyPeriod.text.toString().toInt(),
-                        interestIsMonthly = true
-                    )
+            load.visibility = View.VISIBLE
 
-                    yearlyViewModel.initialize(calculoObject)
-                    yearlyViewModel.response.observe(viewLifecycleOwner) { response ->
-                        edtFinalValue.setText(response.accruedEarnings.toString())
+            if (edtMonthlyPeriod.text.toString().isNotEmpty() && edtMonthlyPeriod.text.toString().toDouble() > 2147483647){
+                load.visibility = View.GONE
+                dialogAlert.onAlertDialog(it,
+                    it.context.getString(R.string.txt_campo_invalido_periodo_mensal),
+                    "Período em meses muito extenso",
+                    it.context.getString(R.string.positive_button)
+                )
+            } else if (edtMonthlyPeriod.text.toString().isEmpty() || edtMonthlyPeriod.text.toString().toInt() == 0) {
+                load.visibility = View.GONE
+                dialogAlert.onAlertDialog(it,
+                    it.context.getString(R.string.txt_campo_invalido_periodo_mensal),
+                    it.context.getString(R.string.txt_periodo_text),
+                    it.context.getString(R.string.positive_button)
+                )
+            } else if (edtMonthlyTax.text.toString().isEmpty() || edtMonthlyTax.text.toString().toFloat() < 0.0000000001F) {
+                load.visibility = View.GONE
+                dialogAlert.onAlertDialog(
+                    it,
+                    it.context.getString(R.string.txt_campo_invalido_taxa),
+                    it.context.getString(R.string.txt_taxa_text),
+                    it.context.getString(R.string.positive_button)
+                )
+            } else if (edtUniqueApplicationValue.text.toString().isEmpty() || edtUniqueApplicationValue.text.toString().toDouble() == 0.0) {
+                load.visibility = View.GONE
+                dialogAlert.onAlertDialog(
+                    it,
+                    it.context.getString(R.string.txt_campo_invalido_valor_aplicacao),
+                    it.context.getString(R.string.txt_valor_text),
+                    it.context.getString(R.string.positive_button)
+                )
+            } else {
 
-                    }
+                val calculoObject = YearlyModelRequest(
+                    initial = edtUniqueApplicationValue.text.toString().toDouble(),
+                    monthly = 0.0,
+                    profitability = edtMonthlyTax.text.toString().toFloat(),
+                    period = edtMonthlyPeriod.text.toString().toInt(),
+                    interestIsMonthly = true
+                )
+
+                yearlyViewModel.initialize(calculoObject)
+                yearlyViewModel.response.observe(viewLifecycleOwner) { response ->
+                    load.visibility = View.GONE
+                    edtFinalValue.setText(response.accruedEarnings.toString().toFloat().format())
+
                 }
+            }
         }
 
         btnBackNavBar.setOnClickListener {
@@ -80,6 +118,7 @@ class YearlyFragment (
         edtFinalValue = view.findViewById(R.id.edt_final_value)
         btnBackNavBar = view.findViewById(R.id.btn_back_home)
         btnCalcular = view.findViewById(R.id.btn_calcular)
+        load = view.findViewById(R.id.loadingFrameLaoyut_senha)
     }
 
     private fun Float.format(): String {
@@ -87,48 +126,11 @@ class YearlyFragment (
         return df.format(this)
     }
 
-    private fun validatorPeriod(view: View): Boolean {
-        if(edtMonthlyPeriod.text.isNotEmpty()) {
-            if (!fieldValidator.isValidPeriod(edtMonthlyPeriod.text.toString().toInt())) {
-                return true
-            } else {
-                if (edtMonthlyPeriod.text.toString().toInt() == 0) {
-                    dialogAlert.onAlertDialog(
-                        view,
-                        view.context.getString(R.string.txt_campo_invalido),
-                        "Agaboma",
-                        "teste11"
-                    )
-                    return true
-                }
-            }
-        }
-        dialogAlert.onAlertDialog(view, view.context.getString(R.string.txt_campo_invalido), "teste11", "teste11")
-        return false
-    }
-
-    private fun validatorTax(view: View): Boolean {
-        if (edtMonthlyTax.text.isNotEmpty()) {
-            return fieldValidator.isValidTax(edtMonthlyTax.text.toString().toFloat())
-        }
-        dialogAlert.onAlertDialog(view, view.context.getString(R.string.txt_campo_invalido), "teste22", "teste22")
-        return false
-    }
-
-    private fun validatorApplicationValue(view: View): Boolean {
-        if (edtUniqueApplicationValue.text.isNotEmpty()) {
-           return fieldValidator.isValidUniqueApplication(edtUniqueApplicationValue.text.toString().toDouble())
-        }
-        dialogAlert.onAlertDialog(view, view.context.getString(R.string.txt_campo_invalido), "teste33", "teste33")
-        return false
-    }
-
     companion object {
         fun newInstance(
             contextActivity: FragmentActivity
         ) = YearlyFragment(contextActivity)
     }
-
 
 //    private var current: String = ""
 

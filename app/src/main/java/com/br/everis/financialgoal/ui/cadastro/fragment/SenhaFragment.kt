@@ -73,28 +73,33 @@ class SenhaFragment(
                 edtSenha.text.toString(),
                 cadastro?.nickname
             )
-            cadastroViewModel.initialize(cadastroObject)
-            cadastroViewModel.response.observe(viewLifecycleOwner) { response ->
-                load.visibility = View.GONE
-                if (response.statusCode == 201) {
-                    setMessage(context, response.message)
-                    requireActivity().finish()
-                    startActivity(Intent(activity, LoggedOutActivity::class.java))
-                } else if (response.statusCode == 422) {
-                    setMessage(context, response.message)
-                    requireActivity().finish()
-                    startActivity(Intent(context, LoginActivity::class.java))
-                } else {
-                    view?.let { it1 ->
-                        dialogAlert.onAlertDialog(
-                            it1,
-                            title,
-                            text,
-                            positiveButton
-                        )
+            if (validator()) {
+                cadastroViewModel.initialize(cadastroObject)
+                cadastroViewModel.response.observe(viewLifecycleOwner) { response ->
+                    load.visibility = View.GONE
+                    if (response.statusCode == 201) {
+                        setMessage(context, response.message)
+                        requireActivity().finish()
+                        startActivity(Intent(activity, LoggedOutActivity::class.java))
+                    } else if (response.statusCode == 422) {
+                        setMessage(context, response.message)
+                        requireActivity().finish()
+                        startActivity(Intent(context, LoginActivity::class.java))
+                    } else {
+                        view?.let { it1 ->
+                            dialogAlert.onAlertDialog(
+                                it1,
+                                title,
+                                text,
+                                positiveButton
+                            )
+                        }
                     }
                 }
-               }
+            } else {
+                view?.let { it1 -> dialogAlert.onAlertDialog(it1, title, text, positiveButton) }
+                load.visibility = View.GONE
+            }
         }
         btnBackNavBar.setOnClickListener {
             navigationFragment(contextActivity, "nome",R.id.fragment, cadastro)
@@ -110,7 +115,7 @@ private fun setView(view: View) {
     password = edtSenha.text.toString()
 }
 
-private fun validator(senha: String): Boolean = fieldValidator.isValidPassword(senha)
+private fun validator(): Boolean = fieldValidator.isValidPassword(edtSenha.text.toString())
 
 companion object {
     fun newInstance(
