@@ -6,11 +6,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.calcs.fragment.ListCalcsFragment">
 
+    <include
+        android:id="@+id/nav_bar"
+        layout="@layout/navbar_cadastro"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/card_aplicação_mensal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nav_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:orientation="horizontal"
@@ -34,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_airbnb"
-                android:padding="@dimen/margin_12dp"/>
+                android:layout_margin="@dimen/margin_12dp"/>
 
         </androidx.cardview.widget.CardView>
 
@@ -82,7 +89,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/margin_12dp"
+                android:layout_margin="@dimen/margin_12dp"
                 android:src="@drawable/ic_opcao_unica" />
 
         </androidx.cardview.widget.CardView>
@@ -134,7 +141,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/margin_12dp"
+                android:layout_margin="@dimen/margin_12dp"
                 android:src="@drawable/ic_correcao_valor" />
 
         </androidx.cardview.widget.CardView>
@@ -182,11 +189,10 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/margin_12dp"
+                android:layout_margin="@dimen/margin_12dp"
                 android:src="@drawable/ic_correcao_taxas" />
 
         </androidx.cardview.widget.CardView>
-
 
         <TextView
             android:id="@+id/title_icon_conversao_taxas"
@@ -203,5 +209,13 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/card_conversao_taxas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
