@@ -11,13 +11,16 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
+import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
 import com.br.everis.financialgoal.data.datasource.model.monthly.MonthlyModelRequest
+import com.br.everis.financialgoal.utils.ChangeFragment
+import com.br.everis.financialgoal.utils.cadastro.CadastroEnum
 import com.br.everis.financialgoal.viewmodel.monthly.MonthlyViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.NumberFormat
 
 
-class MonthlyFragment : Fragment() {
+class MonthlyFragment(private val contextActivity: FragmentActivity) : Fragment() {
 
     lateinit var text_navBar: TextView
     lateinit var btn_calcular: Button
@@ -62,7 +65,7 @@ class MonthlyFragment : Fragment() {
         aplic_mensal = v.findViewById(R.id.edit_val_mensal)
         valor_final = v.findViewById(R.id.edit_val_final)
         progressBar = v.findViewById(R.id.progressBar_monthly)
-        btn_back = v.findViewById(R.id.btnBackHome)
+        btn_back = v.findViewById(R.id.btn_back_home)
         frame_monthly = v.findViewById(R.id.loading_frameLayout_monthly)
 
     }
@@ -99,7 +102,12 @@ class MonthlyFragment : Fragment() {
             }
         }
         btn_back.setOnClickListener {
-            onAlertDialogLogin("Não implementado")
+            ChangeFragment.navigationFragment(
+                contextActivity,
+                CadastroEnum.CALC_LIST.toString(),
+                R.id.fragment_calcs,
+                null
+            )
         }
     }
 
@@ -117,8 +125,6 @@ class MonthlyFragment : Fragment() {
     }
 
     companion object {
-
-        fun newInstance(contextActivity: FragmentActivity) = MonthlyFragment()
-
+        fun newInstance(contextActivity: FragmentActivity) = MonthlyFragment(contextActivity)
     }
 }

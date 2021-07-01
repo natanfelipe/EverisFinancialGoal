@@ -8,8 +8,7 @@
     android:background="@color/grey"
     tools:context=".ui.monthly.MonthlyFragment"
     android:orientation="vertical"
-    android:fillViewport="true"
-    android:id="@+id/layout_monthly">
+    android:fillViewport="true">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -182,7 +181,7 @@
         <FrameLayout
             android:id="@+id/loading_frameLayout_monthly"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height_frame_monthly"
+            android:layout_height="0dp"
             android:background="@color/frame_background"
             android:elevation="@dimen/elevation_frame_monthly"
             android:visibility="gone"

@@ -2,7 +2,6 @@ package com.br.everis.financialgoal.ui.cadastro.fragment
 
 import android.content.Context
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,15 +11,17 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
 import androidx.appcompat.widget.AppCompatImageView
-import com.br.everis.financialgoal.utils.DialogAlert
-import com.br.everis.financialgoal.utils.FieldValidator
+import com.br.everis.financialgoal.utils.dialogup.DialogAlert
+import com.br.everis.financialgoal.utils.validators.FieldValidator
 import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelRequest
+import com.br.everis.financialgoal.ui.home.HomeActivity
 import com.br.everis.financialgoal.ui.loggedOut.LoggedOutActivity
 import com.br.everis.financialgoal.ui.login.LoginActivity
-import com.br.everis.financialgoal.utils.cadastro.ChangeFragment.navigationFragment
+import com.br.everis.financialgoal.utils.ChangeFragment.navigationFragment
 import com.br.everis.financialgoal.utils.cadastro.setToastMessage.setMessage
+import com.br.everis.financialgoal.utils.sessionManagment.SessionManagement
 import com.br.everis.financialgoal.viewmodel.cadastro.CadastroViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -41,6 +42,7 @@ class SenhaFragment(
     private lateinit var load : FrameLayout
 
     private val cadastroViewModel: CadastroViewModel by viewModel()
+    lateinit var sessionManagement: SessionManagement
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -74,31 +76,37 @@ class SenhaFragment(
                 edtSenha.text.toString(),
                 cadastro?.nickname
             )
-            cadastroViewModel.initialize(cadastroObject)
-            cadastroViewModel.response.observe(viewLifecycleOwner) { response ->
-                load.visibility = View.GONE
-                if (response.statusCode == 200) {
-                    setMessage(context, response.message)
-                    requireActivity().finish()
-                    startActivity(Intent(activity, LoggedOutActivity::class.java))
-                } else if (response.statusCode == 422) {
-                    setMessage(context, response.message)
-                    requireActivity().finish()
-                    startActivity(Intent(context, LoginActivity::class.java))
-                } else {
-                    view?.let { it1 ->
-                        dialogAlert.onAlertDialog(
-                            it1,
-                            title,
-                            text,
-                            positiveButton
-                        )
+            if (validator()) {
+                cadastroViewModel.initialize(cadastroObject)
+                cadastroViewModel.response.observe(viewLifecycleOwner) { response ->
+                    load.visibility = View.GONE
+                    if (response.statusCode == 201) {
+                        setMessage(context, response.message)
+                        requireActivity().finish()
+                        sessionManagement.initializeSession(cadastro?.username.toString())
+                        startActivity(Intent(context, HomeActivity::class.java))
+                    } else if (response.statusCode == 422) {
+                        setMessage(context, response.message)
+                        requireActivity().finish()
+                        startActivity(Intent(context, LoginActivity::class.java))
+                    } else {
+                        view?.let { it1 ->
+                            dialogAlert.onAlertDialog(
+                                it1,
+                                title,
+                                text,
+                                positiveButton
+                            )
+                        }
                     }
                 }
-               }
+            } else {
+                view?.let { it1 -> dialogAlert.onAlertDialog(it1, title, text, positiveButton) }
+                load.visibility = View.GONE
+            }
         }
         btnBackNavBar.setOnClickListener {
-            navigationFragment(contextActivity, "nome",R.id.fragment, cadastro)
+            navigationFragment(contextActivity, "NOME",R.id.fragment, cadastro)
         }
 }
 
@@ -107,11 +115,11 @@ private fun setView(view: View) {
     btnBackNavBar = view.findViewById(R.id.btn_back_cadastro)
     edtSenha = view.findViewById(R.id.edt_senha)
     load = view.findViewById(R.id.loadingFrameLaoyut_senha)
-
+    sessionManagement = SessionManagement(view.context)
     password = edtSenha.text.toString()
 }
 
-private fun validator(senha: String): Boolean = fieldValidator.isValidPassword(senha)
+private fun validator(): Boolean = fieldValidator.isValidPassword(edtSenha.text.toString())
 
 companion object {
     fun newInstance(

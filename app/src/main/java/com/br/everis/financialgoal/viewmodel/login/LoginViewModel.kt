@@ -8,7 +8,7 @@ import com.br.everis.financialgoal.data.datasource.model.login.LoginModelRequest
 import com.br.everis.financialgoal.data.datasource.model.login.LoginModelResponse
 import com.br.everis.financialgoal.data.datasource.worker.login.LoginResult
 import com.br.everis.financialgoal.repository.cadastro.ImpLoginRepository
-import com.br.everis.financialgoal.utils.FieldValidator
+import com.br.everis.financialgoal.utils.validators.FieldValidator
 
 class LoginViewModel(private val repository: ImpLoginRepository): ViewModel() {
 

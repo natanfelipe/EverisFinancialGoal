@@ -14,10 +14,10 @@ class SessionManagement(context:Context) {
 
     private val mSharedPreferences = AppPreferences(context)
 
-    fun initializeSession(loginModelResponse: LoginModelResponse){
+    fun initializeSession(nome: String){
         mSharedPreferences.storeSessionInfo(KEY_SESSION_INFO, true)
-        mSharedPreferences.storeString(KEY_USER_NAME, loginModelResponse.user.username.toString())
-        mSharedPreferences.storeString(KEY_NICK_NAME, loginModelResponse.user.nickname.toString())
+        mSharedPreferences.storeString(KEY_USER_NAME, nome)
+        mSharedPreferences.storeString(KEY_NICK_NAME, nome)
     }
 
     fun finishSession(){

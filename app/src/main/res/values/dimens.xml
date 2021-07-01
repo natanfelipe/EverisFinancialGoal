@@ -45,4 +45,10 @@
     <dimen name="elevation_frame_monthly">9dp</dimen>
     <dimen name="height_frame_monthly">0dp</dimen>
     <dimen name="padding_text_monthly">8dp</dimen>
+    <dimen name="img_card_home24dp">24dp</dimen>
+    <dimen name="margin_64dp">64dp</dimen>
+    <dimen name="margin_79dp">79dp</dimen>
+    <dimen name="margin_96dp">96dp</dimen>
+    <dimen name="margin_1dp">1dp</dimen>
+
 </resources>
