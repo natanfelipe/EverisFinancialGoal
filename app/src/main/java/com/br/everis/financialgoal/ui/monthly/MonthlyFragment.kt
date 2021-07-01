@@ -1,5 +1,8 @@
 package com.br.everis.financialgoal.ui.monthly
 
+import android.app.AlertDialog
+import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +11,8 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.core.view.isInvisible
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.data.datasource.model.monthly.MonthlyModelRequest
@@ -41,6 +46,8 @@ class MonthlyFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
             setView(view)
             setClick()
         }
@@ -61,7 +68,19 @@ class MonthlyFragment: Fragment() {
 
         btn_calcular.setOnClickListener {
 
-            val monthlyDados = MonthlyModelRequest(val_inicial = aplic_inicial.text.toString().toDouble(),
+           if (monthlyViewModel.isValid(periodo = periodo.text.toString().toInt())){
+
+                monthlyViewModel.messageValidator.observe(viewLifecycleOwner){
+                    message -> onAlertDialogLogin(getString(message))
+                }
+
+            }else{
+                monthlyViewModel.messageValidator.observe(viewLifecycleOwner){
+                        message -> onAlertDialogLogin(getString(message))
+                }
+            }
+
+            /*val monthlyDados = MonthlyModelRequest(val_inicial = aplic_inicial.text.toString().toDouble(),
             aport_mensal = aplic_mensal.text.toString().toDouble(),
             taxa_juros = juros.text.toString().toFloat(),
             periodo_meses = periodo.text.toString().toInt(),
@@ -69,8 +88,21 @@ class MonthlyFragment: Fragment() {
             monthlyViewModel.init(monthlyDados)
             monthlyViewModel.response.observe(viewLifecycleOwner){
                     response -> valor_final.setText(response.ganho_acumulado.toString())
-            }
+            }*/
         }
+    }
+
+    fun onAlertDialogLogin(message:String) {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle(R.string.dialog_title)
+        builder.setMessage(message)
+        builder.setPositiveButton(R.string.positive_button){dialog, which ->
+            dialog.dismiss()
+        }
+
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLUE)
     }
 
     companion object {
