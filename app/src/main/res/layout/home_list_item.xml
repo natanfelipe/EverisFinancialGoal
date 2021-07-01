@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="124dp"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:background="@color/slide3">
@@ -18,8 +18,7 @@
             android:id="@+id/img_card"
             android:layout_width="@dimen/img_card_home24dp"
             android:layout_height="@dimen/img_card_home24dp"
-            android:layout_marginStart="76dp"
-            android:src="@drawable/ic_correcao_taxas"
+            android:layout_marginStart="79dp"
             android:layout_marginTop="@dimen/margin_5p"
             android:layout_marginEnd="@dimen/margin_9dp"
             app:layout_constraintTop_toTopOf="parent"
@@ -32,10 +31,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
+            android:layout_marginTop="@dimen/margin_96dp"
             android:layout_gravity="bottom"
             android:fontFamily="@font/poppins"
-            android:text="simulador"
+            android:layout_marginStart="@dimen/margin_1dp"
+            android:layout_marginEnd="@dimen/margin_1dp"
             android:textSize="@dimen/text_size_16_sp"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>

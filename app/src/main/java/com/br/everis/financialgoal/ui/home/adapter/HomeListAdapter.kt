@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.utils.home.ClickItemHome
+import java.util.*
+import kotlin.collections.ArrayList
 
 class HomeListAdapter(
     private val listCards: ArrayList<String>,
@@ -27,7 +29,7 @@ class HomeListAdapter(
             itemView.setOnClickListener {
                 listener.ClickItemHome(card)
             }
-            tv_card.text = card
+            tv_card.text = card.toLowerCase(Locale.ROOT)
             image_card.load(imagem)
         }
     }
