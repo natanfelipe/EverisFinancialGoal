@@ -83,7 +83,7 @@ class SenhaFragment(
                     if (response.statusCode == 201) {
                         setMessage(context, response.message)
                         requireActivity().finish()
-                        sessionManagement.initializeSession(cadastro?.username.toString())
+                        sessionManagement.initializeSession(cadastro?.nickname.toString())
                         startActivity(Intent(context, HomeActivity::class.java))
                     } else if (response.statusCode == 422) {
                         setMessage(context, response.message)

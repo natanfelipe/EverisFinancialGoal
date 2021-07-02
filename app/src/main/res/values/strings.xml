@@ -33,6 +33,12 @@
     <string name="txt_monthly_val_final">Valor obtido no final</string>
     <string name="btn_montlhy">Calcular</string>
     <string name="nav_bar_monthly">aplicação mensal</string>
+    <string name="preiodo_invalido">Insira um valor válido para o período!</string>
+    <string name="juros_invalido">Insira um valor válido para o juros!</string>
+    <string name="aplic_inicial_invalida">Insira um valor válido para a aplicação inicial!</string>
+    <string name="aplic_mensal_invalida">Insira um valor válido para a aplicação mensal!</string>
+    <string name="is_valid">Tudo certo</string>
+    <string name="erro_dialog_monthly">Verifique os dados!</string>
     <string name="head_yearly">aplicação única</string>
     <string name="txt_hint_aplicação_única_120">120</string>
     <string name="edt_txt_periodo_meses">Período em meses</string>
@@ -40,7 +46,6 @@
     <string name="txt_taxa_de_juros_mensal">Taxa de juros mensal</string>
     <string name="tv_valor_da_aplica_o_nica_hoje">Valor da aplicação única hoje</string>
     <string name="txt_valor_obtido_no_final">Valor obtido no final</string>
-
     <string name="txt_campo_invalido_periodo_mensal"> Período mensal inválido </string>
     <string name="txt_periodo_text"> O período em meses não pode estar em branco e deve ser maior que 0</string>
     <string name="txt_campo_invalido_taxa"> Taxa inválida </string>

@@ -13,7 +13,7 @@ class CadastroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro)
 
-        inflateFragment()
+      inflateFragment()
     }
 
     private fun inflateFragment() {

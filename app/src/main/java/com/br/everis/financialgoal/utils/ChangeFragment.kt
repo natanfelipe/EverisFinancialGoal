@@ -8,6 +8,7 @@ import com.br.everis.financialgoal.ui.cadastro.fragment.NomeFragment
 import com.br.everis.financialgoal.ui.cadastro.fragment.SenhaFragment
 import com.br.everis.financialgoal.ui.home.fragment.YearlyFragment
 import com.br.everis.financialgoal.ui.calcs.fragment.ListCalcsFragment
+import com.br.everis.financialgoal.ui.monthly.MonthlyFragment
 import com.br.everis.financialgoal.utils.cadastro.CadastroEnum
 import com.br.everis.financialgoal.utils.calcs.CalcsEnum
 import com.br.everis.financialgoal.utils.home.HomeEnum
@@ -42,7 +43,7 @@ object ChangeFragment {
             }
 
             CalcsEnum.APLICACAO_MENSAL.toString() -> {
-                //TODO
+                fragmentNav = MonthlyFragment.newInstance(context)
             }
 
             CalcsEnum.APLICACAO_UNICA.toString() -> {

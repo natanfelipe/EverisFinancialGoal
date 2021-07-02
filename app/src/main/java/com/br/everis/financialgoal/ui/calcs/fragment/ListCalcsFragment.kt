@@ -49,7 +49,12 @@ class ListCalcsFragment(
     private fun setView(context: Context) {
         cardAplicacaoMensal.setOnClickListener {
             sessionManagementHome.InitializeFlagFragment(CalcsEnum.APLICACAO_MENSAL.toString())
-            setMessage(context,context.getString(R.string.msg_nao_disponivel))
+            ChangeFragment.navigationFragment(
+                contextActivity,
+                CalcsEnum.APLICACAO_MENSAL.toString(),
+                R.id.fragment_calcs,
+                null
+            )
         }
         cardAplicacaoUnica.setOnClickListener {
             sessionManagementHome.InitializeFlagFragment(CalcsEnum.APLICACAO_UNICA.toString())
