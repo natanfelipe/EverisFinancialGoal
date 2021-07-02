@@ -15,6 +15,8 @@ import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.data.yearlysource.model.YearlyModelRequest
 import com.br.everis.financialgoal.ui.cadastro.fragment.EmailFragment
+import com.br.everis.financialgoal.utils.ChangeFragment
+import com.br.everis.financialgoal.utils.cadastro.CadastroEnum
 import com.br.everis.financialgoal.utils.dialogup.DialogAlert
 import com.br.everis.financialgoal.utils.validators.FieldValidator
 import com.br.everis.financialgoal.viewmodel.taxes.TaxesViewModel
@@ -60,7 +62,12 @@ class TaxesFragment(private val contextActivity: FragmentActivity) : Fragment() 
     private fun setClick() {
 
         btnBackNavBar.setOnClickListener {
-            requireActivity().finish()
+            ChangeFragment.navigationFragment(
+                contextActivity,
+                CadastroEnum.CALC_LIST.toString(),
+                R.id.fragment_calcs,
+                null
+            )
         }
     }
     private fun setView(view: View) {
