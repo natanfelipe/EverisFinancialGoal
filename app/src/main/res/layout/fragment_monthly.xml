@@ -12,6 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fillViewport="true"
         android:background="@color/grey">
 
         <include
@@ -185,6 +186,7 @@
             android:background="@color/frame_background"
             android:elevation="@dimen/elevation_frame_monthly"
             android:visibility="gone"
+            android:fillViewport="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
