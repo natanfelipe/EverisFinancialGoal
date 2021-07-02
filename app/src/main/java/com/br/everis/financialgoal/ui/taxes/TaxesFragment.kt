@@ -10,12 +10,12 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
 import com.br.everis.financialgoal.utils.ChangeFragment
 import com.br.everis.financialgoal.utils.cadastro.CadastroEnum
 import com.br.everis.financialgoal.viewmodel.taxes.TaxesViewModel
-
 
 class TaxesFragment(private val contextActivity: FragmentActivity) : Fragment() {
 
@@ -44,11 +44,12 @@ class TaxesFragment(private val contextActivity: FragmentActivity) : Fragment() 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
                 if (s.isNullOrEmpty()) {
                     taxmensal.text = "0"
                 } else {
                     val text = taxesViewModel.converterTaxes(s.toString().toDouble())
-                    taxmensal.text = text.toString()
+                    taxmensal.text = taxesViewModel.currencyFormat(text)
                 }
             }
         })
