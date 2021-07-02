@@ -1,15 +1,16 @@
 package com.br.everis.financialgoal.viewmodel.taxes
 
+import java.text.DecimalFormat
 import kotlin.math.pow
 
 class TaxesViewModel {
 
-    fun calcularjuros( val juros_anual : Double) : Double{
+    fun converterTaxes(juros_anual: Double): Double {
+        return  ((((1+(juros_anual/100)).pow((1/12.toDouble())))-1) * 100).format().toDouble()
+    }
 
-        val juros_convertido : Double = juros_anual / 100
-
-        val juros_mensal = ((1.0 / juros_convertido).toDouble()).pow(5)) - 1
-        return juros_mensal
-
+     fun Double.format(): String {
+        val df = DecimalFormat("#.00")
+        return df.format(this)
     }
 }
