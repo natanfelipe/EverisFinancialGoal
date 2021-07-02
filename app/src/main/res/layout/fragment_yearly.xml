@@ -11,7 +11,6 @@
     android:background="@color/grey">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:fillViewport="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -167,7 +166,6 @@
             android:layout_height="0dp"
             android:background="@color/frame_background"
             android:elevation="20dp"
-            android:fillViewport="true"
             android:visibility="gone"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
