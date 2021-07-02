@@ -35,6 +35,7 @@ interface ApiService
     @POST("${BuildConfig.AMBIENTE}/calcularjuroscomposto")
     fun monthlyRequest(@Body monthlyBody: MonthlyModelRequest): Call<MonthlyModelResponse>
 
+    @Headers("x-api-key: ${BuildConfig.API_KEY}")
     @POST("/${BuildConfig.AMBIENTE}/calcularjuroscomposto")
     fun yearlyRequest(@Body yearlyBody: YearlyModelRequest): Call<YearlyModelResponse>
 
