@@ -50,6 +50,7 @@
         android:focusable="false"
         android:textSize="19sp"
         android:paddingStart="20dp"
+        android:textColor="@color/white"
         android:gravity="center_vertical"
         android:layout_marginEnd="@dimen/margin_15_dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
