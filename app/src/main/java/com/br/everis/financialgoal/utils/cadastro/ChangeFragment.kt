@@ -8,6 +8,8 @@ import com.br.everis.financialgoal.ui.cadastro.fragment.NomeFragment
 import com.br.everis.financialgoal.ui.cadastro.fragment.SenhaFragment
 import com.br.everis.financialgoal.ui.home.fragment.YearlyFragment
 import com.br.everis.financialgoal.ui.calcs.fragment.ListCalcsFragment
+import com.br.everis.financialgoal.ui.taxes.TaxesFragment
+
 object ChangeFragment {
 
     fun navigationFragment(
@@ -35,6 +37,9 @@ object ChangeFragment {
             }
             CadastroEnum.calc_list.toString() -> {
                 fragmentNav = ListCalcsFragment.newInstance()
+            }
+            CadastroEnum.calc_taxes.toString() -> {
+                fragmentNav = TaxesFragment.newInstance(context)
             }
         }
 

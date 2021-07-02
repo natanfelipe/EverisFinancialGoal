@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.br.everis.financialgoal.R
+import com.br.everis.financialgoal.utils.cadastro.ChangeFragment
 
 class ListCalcsFragment : Fragment() {
 
@@ -42,7 +43,7 @@ class ListCalcsFragment : Fragment() {
             Toast.makeText(context,"Não implementado", Toast.LENGTH_SHORT).show()
         }
         cardConversaoTaxas.setOnClickListener {
-            Toast.makeText(context,"Não implementado", Toast.LENGTH_SHORT).show()
+            ChangeFragment.navigationFragment(requireActivity(), "calc_taxes",R.id.fragment_calcs, null)
         }
     }
 

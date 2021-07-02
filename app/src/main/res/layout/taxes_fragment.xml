@@ -6,57 +6,38 @@
     android:layout_height="match_parent"
     android:background="@color/cinza_claro">
 
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="136dp"
         android:layout_height="70dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="464dp"
+        android:layout_marginBottom="476dp"
         android:gravity="center_vertical|end"
         android:text="Taxa Mensal:"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/taxmensal"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent" />
-
-<!--    <TextView-->
-<!--        android:id="@+id/taxestittle"-->
-<!--        android:layout_width="411dp"-->
-<!--        android:layout_height="66dp"-->
-<!--        android:layout_marginTop="4dp"-->
-<!--        android:background="@color/white"-->
-<!--        android:gravity="center_horizontal|center_vertical"-->
-<!--        android:text="conversor de taxas"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="25sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/textView2"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.0" />-->
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="136dp"
         android:layout_height="70dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="13dp"
         android:gravity="center_vertical|end"
         android:text="Taxa Anual:"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toStartOf="@+id/taxanual"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/taxmensal"
         android:layout_width="225dp"
         android:layout_height="70dp"
-        android:layout_marginBottom="464dp"
         android:background="@drawable/rounded_edittext"
         android:backgroundTint="@color/dot_default"
         android:elevation="18dp"
@@ -64,38 +45,27 @@
         android:inputType=""
         android:paddingStart="21dp"
         android:paddingEnd="21dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.565"
-        app:layout_constraintStart_toEndOf="@+id/textView4" />
+        tools:layout_editor_absoluteX="170dp"
+        tools:layout_editor_absoluteY="185dp" />
 
     <EditText
         android:id="@+id/taxanual"
         android:layout_width="225dp"
         android:layout_height="70dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="12dp"
         android:background="@drawable/rounded_edittext"
         android:backgroundTint="@color/light_grey"
         android:elevation="18dp"
         android:inputType=""
         android:paddingStart="21dp"
         android:paddingEnd="21dp"
-        app:layout_constraintBottom_toTopOf="@+id/taxmensal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        tools:layout_editor_absoluteX="170dp"
+        tools:layout_editor_absoluteY="102dp" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/headNavBar"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/btnBackHome"
