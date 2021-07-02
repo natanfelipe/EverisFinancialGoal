@@ -7,7 +7,6 @@
     android:orientation="vertical"
     android:fillViewport="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.home.fragment.YearlyFragment"
     android:background="@color/grey">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -140,6 +139,7 @@
         android:elevation="18dp"
         android:paddingStart="21dp"
         android:paddingEnd="21dp"
+        android:textColor="@color/white"
         android:backgroundTint="@color/dot_default"
         android:background="@drawable/rounded_edittext"
         app:layout_constraintLeft_toLeftOf="parent"

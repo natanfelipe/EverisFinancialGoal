@@ -7,18 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
-import com.br.everis.financialgoal.data.yearlysource.model.YearlyModelRequest
-import com.br.everis.financialgoal.ui.cadastro.fragment.EmailFragment
 import com.br.everis.financialgoal.utils.ChangeFragment
 import com.br.everis.financialgoal.utils.cadastro.CadastroEnum
-import com.br.everis.financialgoal.utils.dialogup.DialogAlert
-import com.br.everis.financialgoal.utils.validators.FieldValidator
 import com.br.everis.financialgoal.viewmodel.taxes.TaxesViewModel
 
 
@@ -34,7 +29,7 @@ class TaxesFragment(private val contextActivity: FragmentActivity) : Fragment() 
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(R.layout.taxes_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_taxes, container, false)
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

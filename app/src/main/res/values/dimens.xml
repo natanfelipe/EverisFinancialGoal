@@ -42,7 +42,7 @@
     <dimen name="margin_16dp">16dp</dimen>
     <dimen name="margin_11dp">11dp</dimen>
     <dimen name="text_size_14sp">14sp</dimen>
-    <dimen name="elevation_frame_monthly">9dp</dimen>
+    <dimen name="elevation_frame_monthly">30dp</dimen>
     <dimen name="height_frame_monthly">0dp</dimen>
     <dimen name="padding_text_monthly">8dp</dimen>
     <dimen name="img_card_home24dp">24dp</dimen>
