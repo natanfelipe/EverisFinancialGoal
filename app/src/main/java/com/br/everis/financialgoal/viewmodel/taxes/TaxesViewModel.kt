@@ -1,6 +1,5 @@
 package com.br.everis.financialgoal.viewmodel.taxes
 
-import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
 import kotlin.math.pow

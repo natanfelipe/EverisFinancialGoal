@@ -69,17 +69,18 @@ class ForgottenPasswordAlertDialog : DialogFragment() {
         val recoveryModelRequest = RecoveryModelRequest(
             username = email
         )
-        recoveryViewModel.initialize(recoveryModelRequest)
-        recoveryViewModel.response.observe(viewLifecycleOwner){
-            if (it.statusCode == 200){
-                dialog?.cancel()
-                dialogAlert.onAlertDialog(view, titleSuccess, it.message, positiveButton)
-            }else{
-                dialog?.cancel()
-                dialogAlert.onAlertDialog(view, title, it.message, positiveButton)
+            recoveryViewModel.initialize(recoveryModelRequest)
+            recoveryViewModel.response.observe(viewLifecycleOwner) {
+                if (it.statusCode == 200) {
+                    dialog?.cancel()
+                    dialogAlert.onAlertDialog(view, titleSuccess, it.message, positiveButton)
+                    dialog?.cancel()
+                } else {
+                    dialog?.cancel()
+                    dialogAlert.onAlertDialog(view, title, it.message, positiveButton)
+                }
             }
         }
-    }
     private fun validator(): Boolean = fieldValidator.isValidEmail(email.text.toString())
 
 }

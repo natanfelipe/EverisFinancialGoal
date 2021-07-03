@@ -22,7 +22,6 @@ class FieldValidator {
         return !TextUtils.isEmpty(password) && password.length > 7
     }
 
-
     fun isValidYearly(period: String, tax: String, applicationValue: String, view: View) : Boolean {
 
         if (period.isNotEmpty() && period.toDouble() > 2147483647){
@@ -43,6 +42,17 @@ class FieldValidator {
         } else if (applicationValue.isEmpty() || applicationValue.toDouble() == 0.0) {
             DIALOG_TITLE = view.context.getString(R.string.txt_campo_invalido_valor_aplicacao)
             DIALOG_TEXT = view.context.getString(R.string.txt_valor_text)
+            DIALOG_POSITIVE_BUTTON = view.context.getString(R.string.positive_button)
+            return false
+        }
+        return true
+    }
+
+    fun isNaNorInfinite(accruedEarnings: Double, view: View?) : Boolean {
+        if (accruedEarnings.isNaN())
+        {
+            DIALOG_TITLE = view!!.context.getString(R.string.title_valor_final_muito_alto)
+            DIALOG_TEXT = view.context.getString(R.string.txt_valor_final_muito_alto)
             DIALOG_POSITIVE_BUTTON = view.context.getString(R.string.positive_button)
             return false
         }
