@@ -1,4 +1,4 @@
-package com.br.everis.financialgoal.data.datasource.worker.yearly.model
+package com.br.everis.financialgoal.data.datasource.model.yearly
 
 data class YearlyModelRequest (
     val initial: Double,

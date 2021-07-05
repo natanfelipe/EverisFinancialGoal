@@ -3,8 +3,8 @@ package com.br.everis.financialgoal.viewmodel.yearly
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.br.everis.financialgoal.data.datasource.worker.yearly.model.YearlyModelRequest
-import com.br.everis.financialgoal.data.datasource.worker.yearly.model.YearlyModelResponse
+import com.br.everis.financialgoal.data.datasource.model.yearly.YearlyModelRequest
+import com.br.everis.financialgoal.data.datasource.model.yearly.YearlyModelResponse
 import com.br.everis.financialgoal.data.datasource.worker.yearly.yearlydatasource.YearlyResult
 import com.br.everis.financialgoal.repository.yearly.YearlyRepository
 
