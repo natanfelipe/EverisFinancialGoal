@@ -7,13 +7,12 @@ import kotlin.math.pow
 class TaxesViewModel {
 
     fun converterTaxes(juros_anual: Double): Double {
-        return  ((((1+(juros_anual/100)).pow((1/12.toDouble())))-1) * 100)
+        return  ((((1+(juros_anual/100)).pow((1/12.toDouble())))-1))
     }
 
     fun currencyFormat(valor: Double) : String{
-        val format = NumberFormat.getCurrencyInstance();
-        format.setMaximumFractionDigits(2);
-        format.setCurrency(Currency.getInstance("BRL"));
+        val format = NumberFormat.getPercentInstance()
+        format.setMaximumFractionDigits(2)
 
         return format.format(valor);
     }

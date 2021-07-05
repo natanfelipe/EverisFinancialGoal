@@ -1,6 +1,6 @@
 package com.br.everis.financialgoal.di
 
-import com.br.everis.financialgoal.data.yearlysource.yearlydatasource.ImpYearlyDataSource
+import com.br.everis.financialgoal.data.datasource.worker.yearly.yearlydatasource.ImpYearlyDataSource
 import com.br.everis.financialgoal.data.datarecoverysource.recovery.ImpRecoveryDataSource
 import com.br.everis.financialgoal.data.datasource.service.ImpApiService
 import com.br.everis.financialgoal.data.datasource.worker.cadastro.ImpCadastroDataSource

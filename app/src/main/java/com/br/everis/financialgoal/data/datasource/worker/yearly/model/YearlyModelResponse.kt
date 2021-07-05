@@ -1,4 +1,4 @@
-package com.br.everis.financialgoal.data.yearlysource.model
+package com.br.everis.financialgoal.data.datasource.worker.yearly.model
 
 data class YearlyModelResponse (
     val totalInvestment: Double,
