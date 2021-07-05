@@ -54,6 +54,10 @@
     <string name="txt_valor_text"> O campo de valor da aplicação não pode estar em branco e deve ter um valor maior que 0 </string>
     <string name="txt_periodo_extenso"> Período em meses muito extenso </string>
     <string name="txt_indice_correcao">Indices para correção</string>
+    <string name="txt_porcentagem_ano">Porcentagem ao ano</string>
+    <string name="txt_porcentagem_CDB">Porcentagem do CDB ao ano</string>
+    <string name="txt_valor_final">Valor obtidono final</string>
+    <string name="title_nav_index">correção por índice</string>
 
 
     <!-- Array spinner - Tela Index -->

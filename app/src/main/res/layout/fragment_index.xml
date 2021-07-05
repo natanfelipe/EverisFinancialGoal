@@ -37,6 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_edittext"
+            android:textSize="@dimen/text_size_calculadoras"
             android:elevation="@dimen/elevation"
             android:fontFamily="@font/roboto"
             android:layout_marginStart="@dimen/margin_16dp"
@@ -51,7 +52,7 @@
             android:text="mudar"
             android:textColor="@color/btn_index_mudar"
             android:padding="20dp"
-            android:backgroundTint="@color/grey"
+            android:backgroundTint="@color/grey_button"
             android:fontFamily="@font/roboto"
             android:layout_marginTop="@dimen/margin_5p"
             app:layout_constraintStart_toEndOf="@+id/spinner_indice"
@@ -64,5 +65,81 @@
 
 
 
+        <TextView
+            android:id="@+id/txt_porcent_ano"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="@string/txt_porcentagem_ano"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_calculadoras"
+            android:layout_marginTop="150dp"
+            android:layout_marginStart="@dimen/margin_16dp"
+            android:layout_marginEnd="@dimen/margin_txt_monthly"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/index_nav_bar"/>
+        <EditText
+            android:id="@+id/edt_porcentagem_ano"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_edittext"
+            android:elevation="@dimen/elevation"
+            android:inputType="numberDecimal"
+            android:layout_marginStart="@dimen/margin_16dp"
+            android:layout_marginEnd="@dimen/margin_16dp"
+            android:layout_marginTop="@dimen/margin_5p"
+            android:paddingStart="@dimen/padding_text_calculadoras"
+            android:textSize="@dimen/text_size_calculadoras"
+            app:layout_constraintTop_toBottomOf="@+id/txt_porcent_ano"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+            android:id="@+id/txt_valor_final"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="@string/txt_valor_final"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_calculadoras"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:layout_marginStart="@dimen/margin_16dp"
+            android:layout_marginEnd="@dimen/margin_txt_monthly"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_porcentagem_ano"/>
+        <TextView
+            android:id="@+id/valor_final"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_edittext"
+            android:backgroundTint="@color/dot_default"
+            android:elevation="@dimen/elevation"
+            android:inputType="numberDecimal"
+            android:paddingStart="@dimen/padding_text_calculadoras"
+            android:textSize="@dimen/text_size_calculadoras"
+            android:layout_marginStart="@dimen/margin_16dp"
+            android:layout_marginEnd="@dimen/margin_16dp"
+            android:layout_marginTop="@dimen/margin_5p"
+            app:layout_constraintTop_toBottomOf="@+id/txt_valor_final"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <FrameLayout
+            android:id="@+id/loading_frameLayout_index"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/frame_background"
+            android:elevation="@dimen/elevetionLoginFrameLoading"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ProgressBar
+                android:id="@+id/progressBar_monthly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical" />
+        </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

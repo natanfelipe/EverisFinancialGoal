@@ -27,4 +27,5 @@
     <color name="btn_calcular">#2F2E33</color>
     <color name="background_Monthly">#E5E5E5</color>
     <color name="btn_index_mudar">#6200EE</color>
+    <color name="grey_button">#FFF5F6FA</color>
 </resources>
