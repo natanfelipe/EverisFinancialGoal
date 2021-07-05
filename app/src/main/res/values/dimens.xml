@@ -11,7 +11,7 @@
     <dimen name="buttonLogin">60dp</dimen>
     <dimen name="textButtonSize">15sp</dimen>
     <dimen name="elevation">18dp</dimen>
-    <dimen name="elevetionLoginFrameLoading">30dp</dimen>
+    <dimen name="elevetionLoginFrameLoading">39dp</dimen>
     <dimen name="radius">15dp</dimen>
     <dimen name="radius_edit">35dp</dimen>
     <dimen name="topEdit">1dp</dimen>
@@ -42,7 +42,7 @@
     <dimen name="margin_16dp">16dp</dimen>
     <dimen name="margin_11dp">11dp</dimen>
     <dimen name="text_size_14sp">14sp</dimen>
-    <dimen name="elevation_frame_monthly">30dp</dimen>
+    <dimen name="elevation_frame_monthly">39dp</dimen>
     <dimen name="height_frame_monthly">0dp</dimen>
     <dimen name="padding_text_calculadoras">21dp</dimen>
     <dimen name="img_card_home24dp">24dp</dimen>
@@ -54,5 +54,4 @@
     <dimen name="radius_rounded_edittext">15dp</dimen>
     <dimen name="height_rounded_edittext">60dp</dimen>
     <dimen name="padding_rounded_edittext">10dp</dimen>
-
 </resources>
