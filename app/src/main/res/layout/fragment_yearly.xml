@@ -7,7 +7,6 @@
     android:orientation="vertical"
     android:fillViewport="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.home.fragment.YearlyFragment"
     android:background="@color/grey">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -135,10 +134,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_16dp"
         android:layout_marginEnd="@dimen/margin_16dp"
-        android:layout_marginTop="@dimen/Margin_text"
-        android:elevation="@dimen/elevation"
-        android:paddingStart="@dimen/padding_text_calculadoras"
-        android:paddingEnd="@dimen/padding_text_calculadoras"
+        android:layout_marginTop="8dp"
+        android:elevation="18dp"
+        android:paddingStart="21dp"
+        android:paddingEnd="21dp"
+        android:textColor="@color/white"
         android:backgroundTint="@color/dot_default"
         android:background="@drawable/rounded_edittext"
         app:layout_constraintLeft_toLeftOf="parent"

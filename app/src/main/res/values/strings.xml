@@ -73,6 +73,11 @@
     <string name="title_aplicacao_unica">Investimento com aplicação única</string>
     <string name="title_email_sucesso">E-mail enviado!</string>
     <string name="title_correcao_valor">Correção de valor por um índice</string>
+    <string name="txt_taxa_mensal">Taxa Mensal:</string>
+    <string name="txt_taxa_anual">Taxa Anual:</string>
     <string name="msg_nao_disponivel">Simulador não disponível</string>
+    <string name="txt_conversor_de_taxas">conversor de taxas</string>
+    <string name="title_valor_final_muito_alto">Erro de API</string>
+    <string name="txt_valor_final_muito_alto">Valor retornado da API é NaN ou muito alto</string>
 
 </resources>

@@ -6,9 +6,10 @@ import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelR
 import com.br.everis.financialgoal.ui.cadastro.fragment.EmailFragment
 import com.br.everis.financialgoal.ui.cadastro.fragment.NomeFragment
 import com.br.everis.financialgoal.ui.cadastro.fragment.SenhaFragment
-import com.br.everis.financialgoal.ui.home.fragment.YearlyFragment
 import com.br.everis.financialgoal.ui.calcs.fragment.ListCalcsFragment
+import com.br.everis.financialgoal.ui.taxes.TaxesFragment
 import com.br.everis.financialgoal.ui.monthly.MonthlyFragment
+import com.br.everis.financialgoal.ui.yearly.YearlyFragment
 import com.br.everis.financialgoal.utils.cadastro.CadastroEnum
 import com.br.everis.financialgoal.utils.calcs.CalcsEnum
 import com.br.everis.financialgoal.utils.home.HomeEnum
@@ -50,12 +51,11 @@ object ChangeFragment {
                 fragmentNav = YearlyFragment.newInstance(context)
             }
 
-            CalcsEnum.CONVERSAO_TAXAS.toString() -> {
-                //TODO
-            }
-
             CalcsEnum.CORRECAO_VALOR.toString() -> {
                 //TODO
+            }
+            CalcsEnum.CONVERSAO_TAXAS.toString() -> {
+                fragmentNav = TaxesFragment.newInstance(context)
             }
         }
 

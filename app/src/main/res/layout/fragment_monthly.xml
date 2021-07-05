@@ -153,10 +153,8 @@
             android:elevation="@dimen/elevation"
             android:gravity="center_vertical"
             android:textColor="@color/white"
-            android:paddingStart="@dimen/padding_text_calculadoras"
-            android:text=""
-            android:backgroundTint="@color/dot_default"
-            android:background="@drawable/rounded_edittext"
+            android:paddingStart="@dimen/padding_text_monthly"
+            android:background="@drawable/custom_edit_blocked"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_val_final"/>
         <Button

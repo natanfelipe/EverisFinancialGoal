@@ -2,8 +2,8 @@ package com.br.everis.financialgoal.data.datasource.service
 
 
 import com.br.everis.financialgoal.BuildConfig
-import com.br.everis.financialgoal.data.yearlysource.model.YearlyModelRequest
-import com.br.everis.financialgoal.data.yearlysource.model.YearlyModelResponse
+import com.br.everis.financialgoal.data.datasource.worker.yearly.model.YearlyModelRequest
+import com.br.everis.financialgoal.data.datasource.worker.yearly.model.YearlyModelResponse
 import com.br.everis.financialgoal.data.datarecoverysource.model.RecoveryModelRequest
 import com.br.everis.financialgoal.data.datarecoverysource.model.RecoveryModelResponse
 import com.br.everis.financialgoal.data.datasource.model.cadastro.CadastroModelResponse
@@ -35,6 +35,7 @@ interface ApiService
     @POST("${BuildConfig.AMBIENTE}/calcularjuroscomposto")
     fun monthlyRequest(@Body monthlyBody: MonthlyModelRequest): Call<MonthlyModelResponse>
 
+    @Headers("x-api-key: ${BuildConfig.API_KEY}")
     @POST("/${BuildConfig.AMBIENTE}/calcularjuroscomposto")
     fun yearlyRequest(@Body yearlyBody: YearlyModelRequest): Call<YearlyModelResponse>
 
