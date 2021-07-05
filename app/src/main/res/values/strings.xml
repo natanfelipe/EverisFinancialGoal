@@ -53,6 +53,19 @@
     <string name="txt_campo_invalido_valor_aplicacao"> Valor de aplicação inválido </string>
     <string name="txt_valor_text"> O campo de valor da aplicação não pode estar em branco e deve ter um valor maior que 0 </string>
     <string name="txt_periodo_extenso"> Período em meses muito extenso </string>
+    <string name="txt_indice_correcao">Indices para correção</string>
+
+
+    <!-- Array spinner - Tela Index -->
+    <string-array name="indice_correcao">
+        <item>CDB</item>
+        <item>LCI</item>
+    </string-array>
+    <string-array name="lucratividade">
+        <item>PRE</item>
+        <item>POS</item>
+    </string-array>
+
     <!-- Textos AlertDialog -->
     <string name="email_alert_title">E-mail inválido</string>
     <string name="email_alert_text">forneça um endereço de e-mail válido</string>

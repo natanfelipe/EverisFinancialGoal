@@ -65,8 +65,13 @@ class ListCalcsFragment(
             )
         }
         cardCorrecaoValor.setOnClickListener {
-//            sessionManagementHome.InitializeFlagFragment(CalcsEnum.CORRECAO_VALOR.toString())
-            setMessage(context,context.getString(R.string.msg_nao_disponivel))
+           sessionManagementHome.InitializeFlagFragment(CalcsEnum.CORRECAO_VALOR.toString())
+            ChangeFragment.navigationFragment(
+                contextActivity,
+                CalcsEnum.CORRECAO_VALOR.toString(),
+                R.id.fragment_calcs,
+                null
+           )
         }
         cardConversaoTaxas.setOnClickListener {  sessionManagementHome.InitializeFlagFragment(CalcsEnum.CONVERSAO_TAXAS.toString())
             sessionManagementHome.InitializeFlagFragment(CalcsEnum.CONVERSAO_TAXAS.toString())

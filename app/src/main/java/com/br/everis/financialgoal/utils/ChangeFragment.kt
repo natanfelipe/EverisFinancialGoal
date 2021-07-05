@@ -7,6 +7,7 @@ import com.br.everis.financialgoal.ui.cadastro.fragment.EmailFragment
 import com.br.everis.financialgoal.ui.cadastro.fragment.NomeFragment
 import com.br.everis.financialgoal.ui.cadastro.fragment.SenhaFragment
 import com.br.everis.financialgoal.ui.calcs.fragment.ListCalcsFragment
+import com.br.everis.financialgoal.ui.index.IndexFragment
 import com.br.everis.financialgoal.ui.taxes.TaxesFragment
 import com.br.everis.financialgoal.ui.monthly.MonthlyFragment
 import com.br.everis.financialgoal.ui.yearly.YearlyFragment
@@ -52,7 +53,7 @@ object ChangeFragment {
             }
 
             CalcsEnum.CORRECAO_VALOR.toString() -> {
-                //TODO
+                fragmentNav = IndexFragment.newInstance(context)
             }
             CalcsEnum.CONVERSAO_TAXAS.toString() -> {
                 fragmentNav = TaxesFragment.newInstance(context)

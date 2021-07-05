@@ -54,4 +54,5 @@
     <dimen name="radius_rounded_edittext">15dp</dimen>
     <dimen name="height_rounded_edittext">60dp</dimen>
     <dimen name="padding_rounded_edittext">10dp</dimen>
+    <string name="margin_16dp">16dp</string>
 </resources>
