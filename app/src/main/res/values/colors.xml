@@ -26,4 +26,5 @@
     <color name="taxesedittext"> #f6f6f6</color>
     <color name="btn_calcular">#2F2E33</color>
     <color name="background_Monthly">#E5E5E5</color>
+    <color name="btn_index_mudar">#6200EE</color>
 </resources>
