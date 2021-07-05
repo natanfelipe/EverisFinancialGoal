@@ -1,7 +1,7 @@
-package com.br.everis.financialgoal.data.yearlysource.yearlydatasource
+package com.br.everis.financialgoal.data.datasource.worker.yearly.yearlydatasource
 
-import com.br.everis.financialgoal.data.yearlysource.model.YearlyModelRequest
-import com.br.everis.financialgoal.data.yearlysource.model.YearlyModelResponse
+import com.br.everis.financialgoal.data.datasource.worker.yearly.model.YearlyModelRequest
+import com.br.everis.financialgoal.data.datasource.worker.yearly.model.YearlyModelResponse
 import com.br.everis.financialgoal.data.datasource.service.ImpApiService
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope

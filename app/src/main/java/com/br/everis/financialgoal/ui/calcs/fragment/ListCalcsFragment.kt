@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.FragmentActivity
@@ -66,12 +65,17 @@ class ListCalcsFragment(
             )
         }
         cardCorrecaoValor.setOnClickListener {
-            sessionManagementHome.InitializeFlagFragment(CalcsEnum.CORRECAO_VALOR.toString())
+//            sessionManagementHome.InitializeFlagFragment(CalcsEnum.CORRECAO_VALOR.toString())
             setMessage(context,context.getString(R.string.msg_nao_disponivel))
         }
-        cardConversaoTaxas.setOnClickListener {
+        cardConversaoTaxas.setOnClickListener {  sessionManagementHome.InitializeFlagFragment(CalcsEnum.CONVERSAO_TAXAS.toString())
             sessionManagementHome.InitializeFlagFragment(CalcsEnum.CONVERSAO_TAXAS.toString())
-            setMessage(context,context.getString(R.string.msg_nao_disponivel))
+            ChangeFragment.navigationFragment(
+                contextActivity,
+                CalcsEnum.CONVERSAO_TAXAS.toString(),
+                R.id.fragment_calcs,
+                null
+            )
         }
         btnBackCadastro.setOnClickListener {
             startActivity(Intent(context, HomeActivity::class.java))

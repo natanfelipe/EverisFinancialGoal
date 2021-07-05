@@ -19,7 +19,7 @@
         android:layout_height="match_parent"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
-        android:text="@string/head_yearly"
+        android:text="@string/txt_conversor_de_taxas"
         android:textColor="@color/black"
         android:textSize="@dimen/sizeTextHead"
         android:textStyle="bold" />

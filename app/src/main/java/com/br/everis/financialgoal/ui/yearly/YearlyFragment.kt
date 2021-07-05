@@ -1,4 +1,4 @@
-package com.br.everis.financialgoal.ui.home.fragment
+package com.br.everis.financialgoal.ui.yearly
 
 import android.content.Context
 import android.os.Bundle
@@ -12,7 +12,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
-import com.br.everis.financialgoal.data.yearlysource.model.YearlyModelRequest
+import com.br.everis.financialgoal.data.datasource.worker.yearly.model.YearlyModelRequest
 import com.br.everis.financialgoal.utils.ChangeFragment
 import com.br.everis.financialgoal.utils.cadastro.CadastroEnum
 import com.br.everis.financialgoal.utils.dialogup.DialogAlert
@@ -88,9 +88,9 @@ class YearlyFragment (
             } else {
                 load.visibility = View.GONE
                 dialogAlert.onAlertDialog(it,
-                DIALOG_TITLE,
-                DIALOG_TEXT,
-                DIALOG_POSITIVE_BUTTON
+                    DIALOG_TITLE,
+                    DIALOG_TEXT,
+                    DIALOG_POSITIVE_BUTTON
                 )
             }
         }

@@ -154,9 +154,8 @@
             android:gravity="center_vertical"
             android:textColor="@color/white"
             android:paddingStart="@dimen/padding_text_calculadoras"
-            android:text=""
-            android:backgroundTint="@color/dot_default"
             android:background="@drawable/rounded_edittext"
+            android:backgroundTint="@color/dot_default"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_val_final"/>
         <Button
@@ -179,7 +178,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@color/frame_background"
-            android:elevation="@dimen/elevation_frame_monthly"
+            android:elevation="@dimen/elevetionLoginFrameLoading"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -4,9 +4,9 @@ import android.text.TextUtils
 import android.util.Patterns
 import android.view.View
 import com.br.everis.financialgoal.R
-import com.br.everis.financialgoal.ui.home.fragment.DIALOG_POSITIVE_BUTTON
-import com.br.everis.financialgoal.ui.home.fragment.DIALOG_TEXT
-import com.br.everis.financialgoal.ui.home.fragment.DIALOG_TITLE
+import com.br.everis.financialgoal.ui.yearly.DIALOG_POSITIVE_BUTTON
+import com.br.everis.financialgoal.ui.yearly.DIALOG_TEXT
+import com.br.everis.financialgoal.ui.yearly.DIALOG_TITLE
 
 class FieldValidator {
 
@@ -21,7 +21,6 @@ class FieldValidator {
     fun isValidPassword(password: String) : Boolean {
         return !TextUtils.isEmpty(password) && password.length > 7
     }
-
 
     fun isValidYearly(period: String, tax: String, applicationValue: String, view: View) : Boolean {
 
@@ -43,6 +42,17 @@ class FieldValidator {
         } else if (applicationValue.isEmpty() || applicationValue.toDouble() == 0.0) {
             DIALOG_TITLE = view.context.getString(R.string.txt_campo_invalido_valor_aplicacao)
             DIALOG_TEXT = view.context.getString(R.string.txt_valor_text)
+            DIALOG_POSITIVE_BUTTON = view.context.getString(R.string.positive_button)
+            return false
+        }
+        return true
+    }
+
+    fun isNaNorInfinite(accruedEarnings: Double, view: View?) : Boolean {
+        if (accruedEarnings.isNaN())
+        {
+            DIALOG_TITLE = view!!.context.getString(R.string.title_valor_final_muito_alto)
+            DIALOG_TEXT = view.context.getString(R.string.txt_valor_final_muito_alto)
             DIALOG_POSITIVE_BUTTON = view.context.getString(R.string.positive_button)
             return false
         }

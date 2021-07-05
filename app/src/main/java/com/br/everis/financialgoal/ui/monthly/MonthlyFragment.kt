@@ -18,6 +18,7 @@ import com.br.everis.financialgoal.utils.cadastro.CadastroEnum
 import com.br.everis.financialgoal.viewmodel.monthly.MonthlyViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.NumberFormat
+import java.util.*
 
 
 class MonthlyFragment(private val contextActivity: FragmentActivity) : Fragment() {
@@ -33,23 +34,18 @@ class MonthlyFragment(private val contextActivity: FragmentActivity) : Fragment(
     lateinit var progressBar: ProgressBar
     lateinit var frame_monthly: FrameLayout
 
-
     val monthlyViewModel: MonthlyViewModel by viewModel()
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
         return inflater.inflate(R.layout.fragment_monthly, container, false)
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         setView(view)
         setClick()
@@ -67,7 +63,6 @@ class MonthlyFragment(private val contextActivity: FragmentActivity) : Fragment(
         progressBar = v.findViewById(R.id.progressBar_monthly)
         btn_back = v.findViewById(R.id.btn_back_home)
         frame_monthly = v.findViewById(R.id.loading_frameLayout_monthly)
-
     }
 
     fun setClick() {
@@ -91,8 +86,8 @@ class MonthlyFragment(private val contextActivity: FragmentActivity) : Fragment(
                 monthlyViewModel.init(monthlyDados)
                 monthlyViewModel.response.observe(viewLifecycleOwner) { response ->
                     frame_monthly.visibility = View.GONE
-                    val resp = response.ganho_acumulado.toString().toDouble()
-                    valor_final.setText(NumberFormat.getCurrencyInstance().format(resp))
+                    val resp = currencyFormat(response.ganho_acumulado.toString().toDouble())
+                    valor_final.setText(resp)
                 }
             } else {
                 frame_monthly.visibility = View.GONE
@@ -126,5 +121,13 @@ class MonthlyFragment(private val contextActivity: FragmentActivity) : Fragment(
 
     companion object {
         fun newInstance(contextActivity: FragmentActivity) = MonthlyFragment(contextActivity)
+    }
+
+    fun currencyFormat(valor: Double) : String{
+        val format = NumberFormat.getCurrencyInstance();
+        format.setMaximumFractionDigits(2);
+        format.setCurrency(Currency.getInstance("BRL"));
+
+        return format.format(valor);
     }
 }

@@ -11,7 +11,7 @@
     <dimen name="buttonLogin">60dp</dimen>
     <dimen name="textButtonSize">15sp</dimen>
     <dimen name="elevation">18dp</dimen>
-    <dimen name="elevetionLoginFrameLoading">30dp</dimen>
+    <dimen name="elevetionLoginFrameLoading">39dp</dimen>
     <dimen name="radius">15dp</dimen>
     <dimen name="radius_edit">35dp</dimen>
     <dimen name="topEdit">1dp</dimen>
@@ -54,5 +54,4 @@
     <dimen name="radius_rounded_edittext">15dp</dimen>
     <dimen name="height_rounded_edittext">60dp</dimen>
     <dimen name="padding_rounded_edittext">10dp</dimen>
-
 </resources>
