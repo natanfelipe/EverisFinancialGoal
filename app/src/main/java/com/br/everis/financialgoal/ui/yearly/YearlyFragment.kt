@@ -12,7 +12,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.br.everis.financialgoal.R
-import com.br.everis.financialgoal.data.datasource.worker.yearly.model.YearlyModelRequest
+import com.br.everis.financialgoal.data.datasource.model.yearly.YearlyModelRequest
 import com.br.everis.financialgoal.utils.ChangeFragment
 import com.br.everis.financialgoal.utils.cadastro.CadastroEnum
 import com.br.everis.financialgoal.utils.dialogup.DialogAlert

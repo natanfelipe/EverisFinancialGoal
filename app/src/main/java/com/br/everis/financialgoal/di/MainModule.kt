@@ -4,10 +4,13 @@ import com.br.everis.financialgoal.data.datasource.worker.yearly.yearlydatasourc
 import com.br.everis.financialgoal.data.datarecoverysource.recovery.ImpRecoveryDataSource
 import com.br.everis.financialgoal.data.datasource.service.ImpApiService
 import com.br.everis.financialgoal.data.datasource.worker.cadastro.ImpCadastroDataSource
+import com.br.everis.financialgoal.data.datasource.worker.index.indexdatasource.ImpIndexDataSource
 import com.br.everis.financialgoal.data.datasource.worker.login.ImpLoginDataSource
 import com.br.everis.financialgoal.data.datasource.worker.monthly.ImpMonthlyDataSource
 import com.br.everis.financialgoal.repository.cadastro.ImpCadastroRepository
 import com.br.everis.financialgoal.repository.cadastro.ImpLoginRepository
+import com.br.everis.financialgoal.repository.index.ImpIndexRepository
+import com.br.everis.financialgoal.repository.index.IndexRepository
 import com.br.everis.financialgoal.repository.monthly.ImpMonthlyRepository
 import com.br.everis.financialgoal.repository.monthly.MonthlyRepository
 import com.br.everis.financialgoal.repository.yearly.YearlyRepository
@@ -15,6 +18,7 @@ import com.br.everis.financialgoal.repository.yearly.ImpYearlyRepository
 import com.br.everis.financialgoal.repository.recovery.ImpRecoveryRepository
 import com.br.everis.financialgoal.viewmodel.yearly.YearlyViewModel
 import com.br.everis.financialgoal.viewmodel.cadastro.CadastroViewModel
+import com.br.everis.financialgoal.viewmodel.index.IndexViewModel
 import com.br.everis.financialgoal.viewmodel.login.LoginViewModel
 import com.br.everis.financialgoal.viewmodel.monthly.MonthlyViewModel
 import com.br.everis.financialgoal.viewmodel.recovery.RecoveryViewModel
@@ -92,6 +96,22 @@ val mainModule = module {
     }
     viewModel<YearlyViewModel>{
         YearlyViewModel(
+            repository = get()
+        )
+    }
+
+    factory<ImpIndexDataSource>{
+        ImpIndexDataSource(
+            apiService = get()
+        )
+    }
+    factory<IndexRepository>{
+        ImpIndexRepository(
+            dataSource = get()
+        )
+    }
+    viewModel<IndexViewModel>{
+        IndexViewModel(
             repository = get()
         )
     }
