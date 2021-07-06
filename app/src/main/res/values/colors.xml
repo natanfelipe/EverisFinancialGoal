@@ -15,5 +15,15 @@
     <color name="grey">#F5F6FA</color>
     <color name="light_grey">#F6F6F6</color>
     <color name="dark_grey">#969696</color>
-
+    <color name="green">#4CAF50</color>
+    <color name="frame_background">#802F2E33</color>
+    <color name="positive_button">#7b1fa2</color>
+    <color name="slide1">#9bae0c</color>
+    <color name="slide2">#ff914d</color>
+    <color name="slide3">#ff5757</color>
+    <color name="slide4">#92551f</color>
+    <color name="cinza_claro"> #f5f6fa</color>
+    <color name="taxesedittext"> #f6f6f6</color>
+    <color name="btn_calcular">#2F2E33</color>
+    <color name="background_Monthly">#E5E5E5</color>
 </resources>

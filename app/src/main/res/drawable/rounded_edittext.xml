@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle"
-    android:padding="10dp">
+    android:padding="@dimen/padding_rounded_edittext">
 
     <solid android:color="@color/light_grey" />
-    <corners
-        android:bottomRightRadius="15dp"
-        android:bottomLeftRadius="15dp"
-        android:topLeftRadius="15dp"
-        android:topRightRadius="15dp" />
+    <corners android:radius="@dimen/radius_rounded_edittext" />
+    <size android:height="@dimen/height_rounded_edittext"/>
+
 </shape>

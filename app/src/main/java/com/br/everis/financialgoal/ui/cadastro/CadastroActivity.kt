@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.br.everis.financialgoal.R
-import com.br.everis.financialgoal.ui.cadastro.fragment.EmailFragment
 import com.br.everis.financialgoal.ui.loggedOut.LoggedOutActivity
+import com.br.everis.financialgoal.utils.ChangeFragment.navigationFragment
 
 class CadastroActivity : AppCompatActivity() {
 
@@ -13,15 +13,11 @@ class CadastroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro)
 
-        inflateFragment()
+      inflateFragment()
     }
 
     private fun inflateFragment() {
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.fragment, EmailFragment.newInstance())
-            addToBackStack(null)
-            commit()
-        }
+        navigationFragment(this,"EMAIL",R.id.fragment, null)
     }
 
     override fun onBackPressed() {
