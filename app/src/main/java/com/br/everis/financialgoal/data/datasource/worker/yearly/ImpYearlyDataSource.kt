@@ -1,7 +1,7 @@
-package com.br.everis.financialgoal.data.datasource.worker.yearly.yearlydatasource
+package com.br.everis.financialgoal.data.datasource.worker.yearly
 
-import com.br.everis.financialgoal.data.datasource.worker.yearly.model.YearlyModelRequest
-import com.br.everis.financialgoal.data.datasource.worker.yearly.model.YearlyModelResponse
+import com.br.everis.financialgoal.data.datasource.model.yearly.YearlyModelRequest
+import com.br.everis.financialgoal.data.datasource.model.yearly.YearlyModelResponse
 import com.br.everis.financialgoal.data.datasource.service.ImpApiService
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
@@ -38,13 +38,15 @@ class ImpYearlyDataSource(
             }else {
                 val gson = Gson()
                 val response = gson.fromJson(request.errorBody()?.charStream(), YearlyModelResponse::class.java)
-                yearlyResultCallback(YearlyResult.RequestError(
-                    YearlyModelResponse(
-                        response.totalEarning,
-                        response.totalInvestment,
-                        response.accruedEarnings
+                yearlyResultCallback(
+                    YearlyResult.RequestError(
+                        YearlyModelResponse(
+                            response.totalEarning,
+                            response.totalInvestment,
+                            response.accruedEarnings
+                        )
                     )
-                ))
+                )
             }
         }
     }
